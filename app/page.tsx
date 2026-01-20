@@ -60,7 +60,7 @@ export default function HomePage() {
           </div>
         ) : status === 'failed' ? (
           <div className="text-center py-12">
-            <p className="text-red-500">Fasiled to load products</p>
+            <p className="text-red-500">Failed to load products</p>
           </div>
         ) : (
           <ProductGrid  /> 

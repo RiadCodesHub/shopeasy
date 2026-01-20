@@ -17,7 +17,7 @@ const Footer = () => {
                   viewport={{ once: true }}
                 >
                     <h3 className="text-2xl font-bold mb-4">
-                     Prime <span className="text-yellow-400">Cart</span>
+                     Shop<span className="text-yellow-400">Easy</span>
                     </h3>
                     <p className="text-gray-400 mb-6">
                         Your trusted online shopping destination offering premium products 

@@ -31,15 +31,32 @@ import {
 import { toggleMobileMenu } from '@/src/lib/store/slices/uiSlice';
 
 const CategoryFilter = () => {
-  const [priceRange, setPriceRange] = useState({ min: 0, max: 1000 });
-  const [selectedSort, setSelectedSort] = useState('default');
-  const [activeCategory, setActiveCategory] = useState('all');
-  const [showPriceFilter, setShowPriceFilter] = useState(false);  
-
   const dispatch = useAppDispatch();
-  const { categories, filteredProducts, products } = useAppSelector((state) => state.products);
+  const { categories,
+         filteredProducts,
+         products,
+         currentCategory,
+         currentPriceRange,
+         currentSort } = useAppSelector((state) => state.products);
+  const [priceRange, setPriceRange] = useState(currentPriceRange);
+  const [selectedSort, setSelectedSort] = useState(currentSort);
+  const [activeCategory, setActiveCategory] = useState(currentCategory);
+  const [showPriceFilter, setShowPriceFilter] = useState(false);  
   const { isMobileMenuOpen } = useAppSelector((state) => state.ui);
 
+
+useEffect(() => {
+  setActiveCategory(currentCategory);
+}, [currentCategory]);
+
+
+useEffect(() => {
+    setSelectedSort(currentSort);
+  }, [currentSort]);
+
+  useEffect(() => {
+    setPriceRange(currentPriceRange);
+  }, [currentPriceRange]);
   // Calculate price range from products
   useEffect(() => {
     if (products.length > 0) {
@@ -57,11 +74,6 @@ const CategoryFilter = () => {
     if (isMobileMenuOpen) {
       dispatch(toggleMobileMenu());
     }
-  };
-
-  const handlePriceFilter = () => {
-    dispatch(filterByPrice(priceRange));
-    setShowPriceFilter(false);
   };
 
   const handleSortChange = (sortType: string) => {
@@ -378,7 +390,7 @@ const CategoryFilter = () => {
               <h3 className="font-bold text-lg mb-4 text-gray-900 dark:text-white">
                 Shop by Collection
               </h3>
-              <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
+              <div className="flex gap-4 overflow-x-auto pb-4">
                 {featuredCategories.map((cat) => (
                   <motion.button
                     key={cat.name}
