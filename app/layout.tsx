@@ -18,6 +18,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ShopEasy - Your online shopping destination",
   description: "Premium e-commerce experience with best prices",
+  verification: {
+    google: "5BP6pwMPN87LBxn1xWf8cA8kn7qZZxTbW5y6JDnvKMU",
+  },
 };
 
 
@@ -29,9 +32,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        <meta name="google-site-verification" content="5BP6pwMPN87LBxn1xWf8cA8kn7qZZxTbW5y6JDnvKMU" />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
