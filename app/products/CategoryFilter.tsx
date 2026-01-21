@@ -146,8 +146,8 @@ useEffect(() => {
     <div className="mb-8">
       {/* Mobile Filter Header */}
       <div className="md:hidden">
-        <div className="flex items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-4">
-          <div className="flex items-center gap-3">
+        <div className="flex  items-center justify-between p-4 bg-white dark:bg-gray-800 rounded-xl shadow-lg mb-4">
+          <div className="flex  items-center gap-3">
             <div className="relative">
               <div className="p-2 bg-linear-to-r from-blue-600 to-purple-600 rounded-lg">
                 <Filter className="h-5 w-5 text-white" />
@@ -259,8 +259,8 @@ useEffect(() => {
 
                   {/* All Categories */}
                   <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <h4 className="font-bold text-lg flex items-center gap-2 text-gray-900 dark:text-white">
+                    <div className="flex items-center justify-between mb-4 ">
+                      <h4 className="font-bold text-lg flex  items-center gap-2 text-gray-900 dark:text-white">
                         <Filter className="h-5 w-5 text-blue-500" />
                         All Categories
                       </h4>
@@ -352,7 +352,7 @@ useEffect(() => {
                 Browse Products
               </h2>
               <p className="text-gray-600 dark:text-gray-400">
-                Find Exactly whay you are looking for
+                Find Exactly why you are looking for
               </p>
             </div>
         
@@ -386,7 +386,7 @@ useEffect(() => {
           {/* Categories Section */}
           <div className="space-y-6">
             {/* Featured Categories */}
-            <div>
+            <div className=''>
               <h3 className="font-bold text-lg mb-4 text-gray-900 dark:text-white">
                 Shop by Collection
               </h3>

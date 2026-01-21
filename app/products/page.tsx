@@ -8,11 +8,11 @@ export default function ProductPage() {
             <p className="text-gray-600 dark:text-gray-400 mb-10">
                 Discover amazing products at great prices
             </p>
-            <div className="flex gap-8">
-                <div className="w-1/4">
+            <div className="flex flex-col items-center gap-8">
+                <div className="w-full">
                     <CategoryFilter />
                 </div>
-                <div className="w-3/4">
+                <div className="w-full">
                     <ProductGrid />
                 </div>
             </div>
