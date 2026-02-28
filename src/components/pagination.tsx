@@ -10,8 +10,7 @@ import {
 } from '@/src/lib/store/slices/productSlice';
 import { ChevronLeft, ChevronRight, Grid3x3, List } from 'lucide-react';
 import {motion} from 'framer-motion';
-import { checkPrime } from "crypto";
-import { div } from "framer-motion/client";
+
 
 
 
