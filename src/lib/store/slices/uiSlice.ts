@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface UIState {
   isMobileMenuOpen: boolean;
+  isFilterMenuOpen: boolean;
   theme: 'light' | 'dark';
   notifications: Notification[];
 }
@@ -14,6 +15,7 @@ interface Notification {
 
 const initialState: UIState = {
   isMobileMenuOpen: false,
+  isFilterMenuOpen: false,
   theme: 'light',
   notifications: [],
 };
@@ -24,6 +26,9 @@ const uiSlice = createSlice({
   reducers: {
     toggleMobileMenu: (state) => {
       state.isMobileMenuOpen = !state.isMobileMenuOpen;
+    },
+    toggleFilterMenu: (state) => {
+       state.isFilterMenuOpen = !state.isFilterMenuOpen;
     },
     
     setTheme: (state, action: PayloadAction<'light' | 'dark'>) => {
@@ -45,6 +50,7 @@ const uiSlice = createSlice({
 
 export const { 
   toggleMobileMenu, 
+  toggleFilterMenu,
   setTheme, 
   addNotification, 
   removeNotification 

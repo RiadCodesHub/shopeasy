@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk, PayloadAction, } from "@reduxjs/toolkit";
-import { stat } from "fs";
 
 export interface Product {
     id: string;
