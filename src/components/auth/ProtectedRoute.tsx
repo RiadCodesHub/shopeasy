@@ -1,6 +1,6 @@
 'use client';
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 interface ProtectedRouteProps {
@@ -40,9 +40,7 @@ export default function ProtectedRoute({
     if(!session) {
             return null;
         }
-    if(!adminOnly && session.user?.role !== 'admin') {
-        return null
-    }
+    if(!adminOnly && session.user?.role !== 'admin') return null
 
     return <>{children}</>
 
