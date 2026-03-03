@@ -1,7 +1,7 @@
 'use client';
 
 import { useSession, signOut } from "next-auth/react";
-import ProtectedRoute from "@/src/components/auth/ProtectedRoute";
+//import ProtectedRoute from "@/src/components/auth/ProtectedRoute";
 import { User, LogOut } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -12,7 +12,7 @@ export default function ProfilePage() {
   const { data: session } = useSession();
 
   return (
-    <ProtectedRoute>
+   // <ProtectedRoute>
       <div className="min-h-screen bg-gray-50">
 
         {/* Header */}
@@ -141,6 +141,6 @@ export default function ProfilePage() {
         </div>
 
       </div>
-    </ProtectedRoute>
+   // </ProtectedRoute>
   );
 }
