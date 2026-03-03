@@ -6,6 +6,8 @@ import { User, LogOut } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
+export const dynamic = 'force-dynamic';
+
 export default function ProfilePage() {
   const { data: session } = useSession();
 
