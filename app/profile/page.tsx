@@ -1,18 +1,26 @@
 'use client';
 
+import { useState, useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
-//import ProtectedRoute from "@/src/components/auth/ProtectedRoute";
+import ProtectedRoute from "@/src/components/auth/ProtectedRoute";
 import { User, LogOut } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-export const dynamic = 'force-dynamic';
-
 export default function ProfilePage() {
   const { data: session } = useSession();
+  const [isMountend, setIsMountend] = useState(false);
+
+  useEffect(() => {
+    setIsMountend(true)
+  }, []);
+
+  if(!isMountend) {
+    <div>Loading...</div>
+  }
 
   return (
-   // <ProtectedRoute>
+    <ProtectedRoute>
       <div className="min-h-screen bg-gray-50">
 
         {/* Header */}
@@ -141,6 +149,6 @@ export default function ProfilePage() {
         </div>
 
       </div>
-   // </ProtectedRoute>
+   </ProtectedRoute>
   );
 }
