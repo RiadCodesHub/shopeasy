@@ -28,7 +28,7 @@ import {
   sortProducts,
   resetFilters 
 } from '@/src/lib/store/slices/productSlice';
-import { toggleMobileMenu } from '@/src/lib/store/slices/uiSlice';
+import { toggleMobileMenu, toggleFilterMenu } from '@/src/lib/store/slices/uiSlice';
 
 const CategoryFilter = () => {
   const dispatch = useAppDispatch();
@@ -43,6 +43,7 @@ const CategoryFilter = () => {
   const [activeCategory, setActiveCategory] = useState(currentCategory);
   const [showPriceFilter, setShowPriceFilter] = useState(false);  
   const { isMobileMenuOpen } = useAppSelector((state) => state.ui);
+  const { isFilterMenuOpen } = useAppSelector((state) => state.ui);
 
 
 useEffect(() => {
@@ -71,8 +72,8 @@ useEffect(() => {
   const handleCategoryClick = (category: string) => {
     setActiveCategory(category);
     dispatch(filterByCategory(category));
-    if (isMobileMenuOpen) {
-      dispatch(toggleMobileMenu());
+    if (isFilterMenuOpen) {
+      dispatch(toggleFilterMenu());
     }
   };
 
@@ -174,7 +175,7 @@ useEffect(() => {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            onClick={() => dispatch(toggleMobileMenu())}
+            onClick={() => dispatch(toggleFilterMenu())}
             className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-all"
           >
             <SlidersHorizontal className="h-4 w-4" />
@@ -184,13 +185,13 @@ useEffect(() => {
 
         {/* Mobile Filter Menu */}
         <AnimatePresence>
-          {isMobileMenuOpen && (
+          {isFilterMenuOpen && (
             <>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                onClick={() => dispatch(toggleMobileMenu())}
+                onClick={() => dispatch(toggleFilterMenu())}
                 className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm z-40"
               />
               
@@ -220,7 +221,7 @@ useEffect(() => {
                       </div>
                     </div>
                     <button
-                      onClick={() => dispatch(toggleMobileMenu())}
+                      onClick={() => dispatch(toggleFilterMenu())}
                       className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-colors"
                     >
                       <X className="h-5 w-5" />

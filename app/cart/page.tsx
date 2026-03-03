@@ -28,16 +28,22 @@ import {
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 const CartPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const {data : session} = useSession();
   const { items, totalQuantity, totalPrice } = useAppSelector((state) => state.cart);
   const [showMobileSummary, setShowMobileSummary] = useState(false);
 
   const handleProceedToCheckout = () => {
     if (items.length > 0) {
+     if(session) {
       router.push('/checkout');
+     } else {
+      router.push('/auth/login?returnUrl=/checkout');
+     }
     }
   };
 
@@ -506,6 +512,14 @@ const CartPage = () => {
                       </div>
                     </div>
                   </div>
+
+                  {!session && (
+                    <div className="mb-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
+                      <p className="text-sm text-amber-800 dark:text-amber-400 text-center">
+                        🔒 You'll need to login before checkout
+                      </p>
+                    </div>
+                  )}
 
                   {/* Checkout Button */}
                   <motion.button
