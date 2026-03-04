@@ -59,7 +59,7 @@ const CheckoutNavigation: React.FC<CheckoutNavigationProps> = ({
         </motion.button>
       ) : (
         <motion.button
-          type="button"
+          type="submit"
           onClick={onSubmit}
           disabled={isSubmitting}
           whileHover={{ scale: 1.02 }}
