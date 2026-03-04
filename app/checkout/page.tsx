@@ -25,7 +25,7 @@ import OrderSummary from '@/src/components/checkout/OrderSummary';
 import CheckoutNavigation from '@/src/components/checkout/CheckoutNavigation';
 import OrderConfirmation from '@/src/components/checkout/OrderConfirmation';
 import CheckoutProgress from '@/src/components/checkout/CheckoutProgress';
-import { useSession } from 'next-auth/react';
+import { useSession } from 'next-auth/react'; 
 
 
 const CheckoutPage = () => {
@@ -107,7 +107,11 @@ const CheckoutPage = () => {
   )
  }
 
- if(!isAuthenticated || items.length === 0) {
+ if(!isAuthenticated) {
+  return null;
+ }
+
+ if(items.length === 0 && !isSubmitted) {
   return null;
  }
 
