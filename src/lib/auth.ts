@@ -1,6 +1,6 @@
 // src/lib/auth.ts
 import { connectToDatabase } from './mongodb';
-import User from '../models/user';
+import User from "../models/User";
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
