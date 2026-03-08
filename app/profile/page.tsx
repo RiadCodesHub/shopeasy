@@ -10,14 +10,25 @@ import Image from "next/image";
 export default function ProfilePage() {
   const { data: session } = useSession();
   const [isMountend, setIsMountend] = useState(false);
-
+  const [user, setUser] = useState<any>(null);
+  
   useEffect(() => {
     setIsMountend(true)
   }, []);
 
   if(!isMountend) {
-    <div>Loading...</div>
+   return <div>Loading...</div>
   }
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await fetch("/api/user");
+      const data = await res.json();
+      setUser(data)
+    };
+
+    fetchUser();
+  }, [])
 
   return (
     <ProtectedRoute>
@@ -29,10 +40,10 @@ export default function ProfilePage() {
 
             {/* Avatar */}
             <div className="w-20 h-20 rounded-full bg-white overflow-hidden flex items-center justify-center">
-              {session?.user?.image ? (
+              {user?.image ? (
                 <Image
-                  src={session.user.image}
-                  alt={session.user.name || "User"}
+                  src={user.image}
+                  alt={user.name || "User"}
                   width={80}
                   height={80}
                   className="object-cover"
@@ -45,15 +56,15 @@ export default function ProfilePage() {
             {/* User Info */}
             <div>
               <h1 className="text-3xl font-bold">
-                {session?.user?.name}
+                {user?.name}
               </h1>
 
               <p className="text-blue-100">
-                {session?.user?.email}
+                {user?.email}
               </p>
 
               <p className="text-sm text-blue-200 mt-1">
-                Role: {session?.user?.role}
+                Role: {user?.role}
               </p>
             </div>
 
