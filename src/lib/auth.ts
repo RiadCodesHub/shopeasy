@@ -1,8 +1,8 @@
 // src/lib/auth.ts
 import { connectToDatabase } from './mongodb';
-import User from "../models/User";
 import type { NextAuthOptions } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import User from '../models/User';
 
 export const authOptions: NextAuthOptions = {
   session: {
@@ -20,7 +20,7 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error('Please provide email and password');
+          return null;
         }
 
         try {
@@ -31,7 +31,7 @@ export const authOptions: NextAuthOptions = {
           }).select('+password');
 
           if (!user) {
-            throw new Error('No user found with this email');
+            return null;
           }
 
           const isValid = await user.comparePassword(credentials.password);
