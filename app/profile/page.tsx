@@ -12,9 +12,6 @@ export default function ProfilePage() {
   const [isMounted, setIsMounted] = useState(false);
   const [user, setUser] = useState<any>(null);
 
-   useEffect(() => {
-    setIsMounted(true)
-  }, []);
   
  useEffect(() => {
     const fetchUser = async () => {
@@ -26,8 +23,11 @@ export default function ProfilePage() {
     fetchUser();
   }, [])
 
+  useEffect(() => {
+    setIsMounted(true)
+  }, []);
 
-  if(!isMounted || !user) {
+  if(!isMounted) {
    return <div>Loading...</div>
   }
 
