@@ -9,18 +9,11 @@ import Image from "next/image";
 
 export default function ProfilePage() {
   const { data: session } = useSession();
-  const [isMountend, setIsMountend] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
   const [user, setUser] = useState<any>(null);
+
   
-  useEffect(() => {
-    setIsMountend(true)
-  }, []);
-
-  if(!isMountend) {
-   return <div>Loading...</div>
-  }
-
-  useEffect(() => {
+ useEffect(() => {
     const fetchUser = async () => {
       const res = await fetch("/api/user");
       const data = await res.json();
@@ -29,6 +22,16 @@ export default function ProfilePage() {
 
     fetchUser();
   }, [])
+
+  useEffect(() => {
+    setIsMounted(true)
+  }, []);
+
+  if(!isMounted || !user) {
+   return <div>Loading...</div>
+  }
+
+
 
   return (
     <ProtectedRoute>

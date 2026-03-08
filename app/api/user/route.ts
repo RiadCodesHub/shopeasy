@@ -2,8 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/src/lib/auth";
 import { connectToDatabase } from "@/src/lib/mongodb";
-import user from "@/src/models/User";
-import { error } from "console";
+import User from "@/src/models/User";
 
 export async function GET() {
     try {
@@ -17,7 +16,7 @@ export async function GET() {
         }
         await connectToDatabase();
 
-        const member = await user.findOne({
+        const user = await User.findOne({
             email: session.user.email
         }).lean();
 
@@ -27,7 +26,7 @@ export async function GET() {
                 {status: 500}
             )
         }
-        return NextResponse.json(member);
+        return NextResponse.json(user);
     } catch (error) {
         return NextResponse.json(
             {error: "server error"},
