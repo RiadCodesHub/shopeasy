@@ -83,9 +83,9 @@ const Header = () => {
   // Menu items for authenticated users
   const profileMenuItems = [
     { href: '/profile', icon: <User className="h-4 w-4" />, label: 'My Profile' },
-    { href: '/profile/orders', icon: <Package className="h-4 w-4" />, label: 'My Orders' },
-    { href: '/profile/wishlist', icon: <Heart className="h-4 w-4" />, label: 'Wishlist' },
-    { href: '/profile/settings', icon: <Settings className="h-4 w-4" />, label: 'Settings' },
+    { href: '/orders', icon: <Package className="h-4 w-4" />, label: 'My Orders' },
+    { href: '/wishlist', icon: <Heart className="h-4 w-4" />, label: 'Wishlist' },
+    { href: '/settings', icon: <Settings className="h-4 w-4" />, label: 'Settings' },
   ];
 
   // Admin only menu item
