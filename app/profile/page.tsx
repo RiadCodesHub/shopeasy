@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
-import ProtectedRoute from "@/src/components/auth/ProtectedRoute";
+import ProtectedRoute from "@/components/auth/ProtectedRoute";
 import { User, LogOut } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";

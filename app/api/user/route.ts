@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/src/lib/auth";
-import { connectToDatabase } from "@/src/lib/mongodb";
-import User from "@/src/models/User";
+import { authOptions } from "@/lib/auth";
+import { connectToDatabase } from "@/lib/mongodb";
+import User from "@/models/User";
 
 export async function GET() {
     try {

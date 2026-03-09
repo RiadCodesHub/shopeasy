@@ -16,11 +16,11 @@ import {
   Shield,
   ChevronDown
 } from 'lucide-react';
-import { useAppSelector, useAppDispatch } from '@/src/lib/store/hooks';
-import { toggleCart } from '@/src/lib/store/slices/cartSlice';
-import { toggleMobileMenu } from '@/src/lib/store/slices/uiSlice';
-import { searchProducts } from '@/src/lib/store/slices/productSlice';
-import CartSidebar from '@/src/components/cart/CartSidebar';
+import { useAppSelector, useAppDispatch } from '@/lib/store/hooks';
+import { toggleCart } from '@/lib/store/slices/cartSlice';
+import { toggleMobileMenu } from '@/lib/store/slices/uiSlice';
+import { searchProducts } from '@/lib/store/slices/productSlice';
+import CartSidebar from '@/components/cart/CartSidebar';
 import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import Image from 'next/image';

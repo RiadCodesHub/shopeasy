@@ -5,8 +5,8 @@ import { useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { FormProvider, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useAppSelector, useAppDispatch } from '@/src/lib/store/hooks';
-import { clearCart } from '@/src/lib/store/slices/cartSlice';
+import { useAppSelector, useAppDispatch } from '@/lib/store/hooks';
+import { clearCart } from '@/lib/store/slices/cartSlice';
 import { 
   setStep, 
   nextStep, 
@@ -14,17 +14,17 @@ import {
   submissionSuccess, 
   resetForm ,
   setSubmitting
-} from '@/src/lib/store/slices/formSlice';
+} from '@/lib/store/slices/formSlice';
 import { useRouter } from 'next/navigation'; 
-import PersonalInfoStep from '@/src/components/checkout/steps/PersonalInfoStep';
-import { checkoutSchema, type CheckoutFormData } from '@/src/components/checkout/schemas/checkout';
-import ShippingStep from '@/src/components/checkout/steps/ShippingStep';
-import PaymentStep from '@/src/components/checkout/steps/PaymentStep';
-import ReviewStep from '@/src/components/checkout/steps/ReviewStep';
-import OrderSummary from '@/src/components/checkout/OrderSummary';
-import CheckoutNavigation from '@/src/components/checkout/CheckoutNavigation';
-import OrderConfirmation from '@/src/components/checkout/OrderConfirmation';
-import CheckoutProgress from '@/src/components/checkout/CheckoutProgress';
+import PersonalInfoStep from '@/components/checkout/steps/PersonalInfoStep';
+import { checkoutSchema, type CheckoutFormData } from '@/components/checkout/schemas/checkout';
+import ShippingStep from '@/components/checkout/steps/ShippingStep';
+import PaymentStep from '@/components/checkout/steps/PaymentStep';
+import ReviewStep from '@/components/checkout/steps/ReviewStep';
+import OrderSummary from '@/components/checkout/OrderSummary';
+import CheckoutNavigation from '@/components/checkout/CheckoutNavigation';
+import OrderConfirmation from '@/components/checkout/OrderConfirmation';
+import CheckoutProgress from '@/components/checkout/CheckoutProgress';
 import { useSession } from 'next-auth/react'; 
 
 
