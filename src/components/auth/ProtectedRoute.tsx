@@ -40,8 +40,6 @@ export default function ProtectedRoute({
     if(!session) {
             return null;
         }
-    if(!adminOnly && session.user?.role !== 'admin') return null
-
     return <>{children}</>
 
     }  
