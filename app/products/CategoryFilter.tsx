@@ -20,15 +20,15 @@ import {
   Flame,
   ShoppingBag
 } from 'lucide-react';
-import { useAppSelector, useAppDispatch } from '@/src//lib/store/hooks';
+import { useAppSelector, useAppDispatch } from '@/lib/store/hooks';
 import { 
   filterByCategory, 
   filterByPrice,
   searchProducts,
   sortProducts,
   resetFilters 
-} from '@/src/lib/store/slices/productSlice';
-import { toggleMobileMenu, toggleFilterMenu } from '@/src/lib/store/slices/uiSlice';
+} from '@/lib/store/slices/productSlice';
+import { toggleMobileMenu, toggleFilterMenu } from '@/lib/store/slices/uiSlice';
 
 const CategoryFilter = () => {
   const dispatch = useAppDispatch();

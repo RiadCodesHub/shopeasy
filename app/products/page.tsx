@@ -1,5 +1,5 @@
-import ProductGrid from "@/src/components/products/ProductGrid";
-import CategoryFilter from "@/app/products/CategoryFilter";
+import ProductGrid from "@/components/products/ProductGrid";
+import CategoryFilter from "../products/CategoryFilter";
 
 export default function ProductPage() {
     return (

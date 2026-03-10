@@ -4,7 +4,7 @@
 import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { ShoppingBag, Tag, Truck, Shield } from 'lucide-react';
-import { useAppSelector } from '@/src/lib/store/hooks';
+import { useAppSelector } from '@/lib/store/hooks';
 
 const OrderSummary = () => {
   const { watch } = useFormContext();

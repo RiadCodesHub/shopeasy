@@ -18,13 +18,13 @@ import {
   ChevronLeft,
   Home
 } from 'lucide-react';
-import { useAppSelector, useAppDispatch } from '@/src/lib/store/hooks';
+import { useAppSelector, useAppDispatch } from '@/lib/store/hooks';
 import { 
   removeFromCart, 
   removeItemCompletely,
   addToCart,
   clearCart 
-} from '@/src/lib/store/slices/cartSlice';
+} from '@/lib/store/slices/cartSlice';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import type { CheckoutFormData } from '@/src/components/checkout/schemas/checkout';
+import type { CheckoutFormData } from '@/components/checkout/schemas/checkout';
 
 interface FormState {
     currentStep: number;

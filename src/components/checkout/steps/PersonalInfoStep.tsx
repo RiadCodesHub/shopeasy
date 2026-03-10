@@ -1,5 +1,5 @@
 import react from 'react';
-import  FormInput from '@/src/components/checkout/ui/FormInput';
+import  FormInput from '@/components/checkout/ui/FormInput';
 import { useFormContext } from 'react-hook-form';
 
 const PersonalInfoStep = () => {

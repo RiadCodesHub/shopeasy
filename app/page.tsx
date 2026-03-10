@@ -2,11 +2,11 @@
 
 import { useEffect } from "react";
 import {motion} from 'framer-motion';
-import { useAppDispatch, useAppSelector } from "@/src/lib/store/hooks";
-import { fetchProducts } from '@/src/lib/store/slices/productSlice';
-import ProductGrid from "@/src/components/products/ProductGrid";
-import HeroSection from "@/src/components/layouts/HeroSection";
-import CategoryFilter from "@/app/products/CategoryFilter";
+import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
+import { fetchProducts } from '@/lib/store/slices/productSlice';
+import ProductGrid from "@/components/products/ProductGrid";
+import HeroSection from "@/components/layouts/HeroSection";
+import CategoryFilter from "./products/CategoryFilter";
 
 
 

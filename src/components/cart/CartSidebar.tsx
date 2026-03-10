@@ -2,14 +2,14 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ShoppingBag, Trash2, Plus, Minus, ArrowRight } from 'lucide-react';
-import { useAppSelector, useAppDispatch } from '@/src/lib/store/hooks';
+import { useAppSelector, useAppDispatch } from '@/lib/store/hooks';
 import { 
   toggleCart, 
   removeFromCart, 
   removeItemCompletely,
   addToCart,
   clearCart 
-} from '@/src/lib/store/slices/cartSlice';
+} from '@/lib/store/slices/cartSlice';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 

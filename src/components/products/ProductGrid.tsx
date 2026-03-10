@@ -1,9 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useAppSelector, useAppDispatch } from '@/src/lib/store/hooks';
-import { fetchProducts } from '@/src/lib/store/slices/productSlice';
-import ProductCard from '@/app/products/ProductCard';
+import { useAppSelector, useAppDispatch } from '@/lib/store/hooks';
+import { fetchProducts } from '@/lib/store/slices/productSlice';
+import ProductCard from '../products/ProductCard';
 import Pagination from '../pagination';
 
 

@@ -13,9 +13,9 @@ import {
   ShoppingBag
 } from 'lucide-react';
 import { CheckoutFormData } from '../schemas/checkout';
-import { useAppSelector } from '@/src/lib/store/hooks';
+import { useAppSelector } from '@/lib/store/hooks';
 import { UseDispatch } from 'react-redux';
-import { setStep } from '@/src/lib/store/slices/formSlice';
+import { setStep } from '@/lib/store/slices/formSlice';
 import { useDispatch } from 'react-redux';
 
 interface ReviewStepProps {

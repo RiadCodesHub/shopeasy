@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { CreditCard, WalletCards, Apple } from 'lucide-react';
-import FormSelect from '@/src/components/checkout/ui/FormSelect';
-import FormInput from '@/src/components/checkout/ui/FormInput';
+import FormSelect from '@/components/checkout/ui/FormSelect';
+import FormInput from '@/components/checkout/ui/FormInput';
 import { CheckoutFormData } from '../schemas/checkout';
 
 const PaymentStep = () => {

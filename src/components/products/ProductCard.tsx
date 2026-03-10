@@ -2,9 +2,9 @@
 
 import {motion} from 'framer-motion';
 import { ShoppingCart, Star } from 'lucide-react';
-import { useAppDispatch } from '@/src/lib/store/hooks';
-import { addToCart } from '@/src/lib/store/slices/cartSlice';
-import { Product } from '@/src/lib/store/slices/productSlice';
+import { useAppDispatch } from '@/lib/store/hooks';
+import { addToCart } from '@/lib/store/slices/cartSlice';
+import { Product } from '@/lib/store/slices/productSlice';
 import Link from 'next/link';
 
 interface ProductCardProps {

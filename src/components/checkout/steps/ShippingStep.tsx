@@ -4,8 +4,8 @@ import React from 'react';
 import { useFormContext } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import { Truck } from 'lucide-react';
-import FormInput from '@/src/components/checkout/ui/FormInput';
-import FormSelect from '@/src/components/checkout/ui/FormSelect';
+import FormInput from '@/components/checkout/ui/FormInput';
+import FormSelect from '@/components/checkout/ui/FormSelect';
 
 const ShippingStep = ({ shippingCost = 5.99 }: { shippingCost?: number }) => {
   const { register, formState: { errors }, watch } = useFormContext();

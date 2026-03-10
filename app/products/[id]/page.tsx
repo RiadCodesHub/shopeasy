@@ -18,9 +18,9 @@ import {
   CheckCircle
 } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { useAppSelector, useAppDispatch } from '@/src/lib/store/hooks';
-import { addToCart } from '@/src/lib/store/slices/cartSlice';
-import { fetchProducts, Product } from '@/src/lib/store/slices/productSlice';
+import { useAppSelector, useAppDispatch } from '@/lib/store/hooks';
+import { addToCart } from '@/lib/store/slices/cartSlice';
+import { fetchProducts, Product } from '@/lib/store/slices/productSlice';
 import Link from 'next/link';
 
 interface ProductDetailPageProps {
