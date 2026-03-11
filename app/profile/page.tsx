@@ -36,10 +36,10 @@ export default function ProfilePage() {
 
         {/* Header */}
         <div className="bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-xl">
-          <div className="container mx-auto px-4 py-12 flex flex-col sm:flex-row justify-center sm:items-center gap-6">
+          <div className="container mx-auto px-4 py-12 flex flex-col sm:flex-row items-center justify-center gap-6">
 
             {/* Avatar */}
-            <div className="w-20 h-20 rounded-full bg-white overflow-hidden flex items-center justify-center">
+            <div className="w-20 h-20 rounded-full bg-white overflow-hidden flex items-center">
               {user?.image ? (
                 <Image
                   src={user.image}
