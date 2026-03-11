@@ -9,7 +9,6 @@ import Image from "next/image";
 
 export default function ProfilePage() {
   const { data: session } = useSession();
-  const [isMounted, setIsMounted] = useState(false);
   const [user, setUser] = useState<any>(null);
 
   
@@ -36,8 +35,8 @@ export default function ProfilePage() {
       <div className="min-h-screen bg-gray-50">
 
         {/* Header */}
-        <div className="bg-linear-to-r from-blue-600 to-purple-600 text-white">
-          <div className="container mx-auto px-4 py-12 flex items-center gap-6">
+        <div className="bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-xl">
+          <div className="container mx-auto px-4 py-12 flex flex-col sm:flex-row items-center gap-6">
 
             {/* Avatar */}
             <div className="w-20 h-20 rounded-full bg-white overflow-hidden flex items-center justify-center">
@@ -131,7 +130,7 @@ export default function ProfilePage() {
                   Profile Information
                 </h2>
 
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
                   <div>
                     <label className="block text-sm text-gray-500 mb-1">
