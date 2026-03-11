@@ -39,7 +39,7 @@ export default function ProfilePage() {
           <div className="container mx-auto px-4 py-12 flex items-center  justify-between">
 
             {/* Avatar */}
-            <div className="w-20 h-20 rounded-full bg-white overflow-hidden flex items-center">
+            <div className="w-20 h-20 rounded-full bg-white overflow-hidden flex items-center justify-center">
               {user?.image ? (
                 <Image
                   src={user.image}
