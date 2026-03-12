@@ -36,7 +36,7 @@ export default function ProfilePage() {
 
         {/* Header */}
         <div className="bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-xl">
-          <div className="container mx-auto px-4 py-12 flex items-center  justify-between">
+          <div className="container mx-auto px-4 py-12 flex items-center justify-center gap-4 sm:gap-0  sm:justify-between">
 
             {/* Avatar */}
             <div className="w-20 h-20 rounded-full bg-white overflow-hidden flex items-center justify-center">
