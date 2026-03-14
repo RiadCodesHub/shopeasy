@@ -289,7 +289,6 @@ const CheckoutPage = () => {
                   onNext={handleNextStep}
                   onPrev={() => dispatch(prevStep())}
                   isSubmitting={isSubmitting}
-                  onSubmit={handleSubmit(onSubmit)}
                   onBackToCart={handleBackToCart}
                 />
               </div>

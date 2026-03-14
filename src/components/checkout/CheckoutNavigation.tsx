@@ -11,7 +11,6 @@ interface CheckoutNavigationProps {
   onNext: () => void;
   onPrev: () => void;
   isSubmitting: boolean;
-  onSubmit: () => void;
   onBackToCart: () => void;
 }
 
@@ -21,7 +20,6 @@ const CheckoutNavigation: React.FC<CheckoutNavigationProps> = ({
   onNext,
   onPrev,
   isSubmitting,
-  onSubmit,
   onBackToCart
 }) => {
   return (
@@ -60,7 +58,6 @@ const CheckoutNavigation: React.FC<CheckoutNavigationProps> = ({
       ) : (
         <motion.button
           type="submit"
-          onClick={onSubmit}
           disabled={isSubmitting}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
