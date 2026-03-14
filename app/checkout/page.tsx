@@ -153,14 +153,14 @@ const CheckoutPage = () => {
     }
 
    const handleNextStep = async () => {
-    console.log('Step validation failed:', errors)
     const isValidStep = await validationStep(currentStep);
-    if(!isValidStep) return;
+    if(!isValidStep) {
+      console.log('Step validation failed:', errors);
+      return
+    }
     
     if (currentStep < 3) {
       dispatch(nextStep());
-    } else {
-      console.log('Step validation failed:', errors);
     }
   };
 
