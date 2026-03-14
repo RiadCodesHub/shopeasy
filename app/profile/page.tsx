@@ -36,8 +36,8 @@ export default function ProfilePage() {
 
         {/* Header */}
         <div className="bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-xl">
-          <div className="container mx-auto px-4 py-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-0  sm:justify-between">
-
+          <div className="container mx-auto px-4 py-12 flex flex-col sm:flex-row items-center justify-center gap-4 sm:justify-between">
+            <div className="flex flex-col sm:flex-row items-center gap-4">
             {/* Avatar */}
             <div className="w-20 h-20 rounded-full bg-white overflow-hidden flex items-center justify-center">
               {user?.image ? (
@@ -54,7 +54,7 @@ export default function ProfilePage() {
             </div>
 
             {/* User Info */}
-            <div>
+            <div className="flex flex-col flex-1 items-center text-center sm:items-start sm:text-left">
               <h1 className="text-3xl font-bold">
                 {user?.name}
               </h1>
@@ -67,11 +67,12 @@ export default function ProfilePage() {
                 Role: {user?.role}
               </p>
             </div>
+            </div>
 
             {/* Logout */}
             <button
               onClick={() => signOut({ callbackUrl: "/" })}
-              className="ml-auto flex items-center gap-2 px-4 py-2 bg-white/20 rounded-lg hover:bg-white/30 transition"
+              className="flex items-center justify-center gap-2 px-4 py-2 bg-white/20 rounded-lg hover:bg-white/30 transition"
             >
               <LogOut className="h-5 w-5" />
               Logout
