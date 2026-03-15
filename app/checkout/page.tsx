@@ -70,7 +70,7 @@ const CheckoutPage = () => {
       },
       billing: undefined,
       useShippingAsBilling: true,
-      agreeToTerms: false,
+      agreeToTerms: true,
     },
   });
 
