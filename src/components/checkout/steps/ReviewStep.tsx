@@ -29,7 +29,7 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
   tax, 
   orderTotal 
 }) => {
-  const { watch, setValue } = useFormContext<CheckoutFormData>();
+  const { watch, setValue, register, formState: {errors} } = useFormContext<CheckoutFormData>();
   const {items} = useAppSelector((state) => state.cart);
   const formData = watch();
   const useShippingAsBilling = watch('useShippingAsBilling');
@@ -251,7 +251,27 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
                 Easy returns within 30 days of delivery. No questions asked.
               </p>
             </div>
+
+
           </div>
+        </div>
+
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-sm">
+          <label className="flex items-start gap-3 cursor-pointer">
+            <input type="checkbox"
+                    {...register(('agreeToTerms'))}
+                    className="mt-1 h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+              <span className="text-sm text-gray-600 dark:text-gray-400">
+                 I agree to the terms
+              </span>
+          </label>
+           {
+            errors.agreeToTerms && (
+              <p className='mt-2 text-sm text-red-600'>
+                 {errors.agreeToTerms.message}
+              </p>
+            )
+           }
         </div>
       </div>
     </motion.div>
