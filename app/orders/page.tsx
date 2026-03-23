@@ -4,7 +4,7 @@ import { useEffect, useState} from 'react';
 import { useAppDispatch, useAppSelector } from '@/lib/store/hooks';
 import { fetchOrders } from '@/lib/store/slices/orderSlice';
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
      Package, Clock, Truck, CheckCircle,
