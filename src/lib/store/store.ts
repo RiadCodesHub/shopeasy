@@ -3,7 +3,7 @@ import cartReducer from './slices/cartSlice';
 import  ProductReducer from "./slices/productSlice";
 import uiReducer from './slices/uiSlice';
 import formReducer from '../store/slices/formSlice';
-
+import orderReducer from '../store/slices/orderSlice'
 
 export const makeStore = () => {
     return configureStore({
@@ -12,6 +12,7 @@ export const makeStore = () => {
             products: ProductReducer,
             form : formReducer,
             ui: uiReducer,
+            orders: orderReducer,
         }
     },
     );

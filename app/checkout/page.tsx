@@ -169,32 +169,51 @@ const CheckoutPage = () => {
        dispatch(setSubmitting(true));
       
       const orderPayload = {
-        ...data,
-        userId : user?.id,
-        items: items.map(item => ({
+         customerInfo: {
+          firstName : data.personalInfo.firstName,
+          lastName : data.personalInfo.lastName,
+          email: data.personalInfo.email,
+          phone: data.personalInfo.phone,
+         },
+         shippingAddress: data.shipping.address,
+         shippingMethod: data.shipping.shippingMethod,
+         lastFourDigits: data.payment.cardNumber?.slice(-4),
+         items: items.map((item) => ({
           productId: item.id,
           name: item.name,
           price: item.price,
           quantity: item.quantity,
           image: item.image
-        })),
-        totals: {
-          subtotal: totalPrice,
-          shipping: shippingCost,
-          tax,
-          total: orderTotal,
-        }
+         })),
+        subtotal: totalPrice,
+        shipping: shippingCost,
+        tax,
+        total: orderTotal,
+        estimatedDelivery: new Date(Date.now() + 7 * 24 * 60 * 1000)
       };
 
-      console.log('Order submitted:', orderPayload);
-      
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      const newOrderId = `SHOP-${Date.now().toString().slice(-8)}`;
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: {
+          'Content-Type' : 'application/json',
+        },
+        body: JSON.stringify(orderPayload)
+      });
 
-      dispatch(submissionSuccess(newOrderId));
+      if(!response.ok) {
+        throw new Error('Failed to create order');
+      }
+
+      const saveOrder = await response.json();
+
+      console.log('Order submitted:', orderPayload);
+    
+      dispatch(submissionSuccess(saveOrder.orderId));
       dispatch(clearCart());
     } catch (error) {
       console.error('Order submission error:', error);
+    } finally{
+      dispatch(setSubmitting(false));
     }
   };
 
