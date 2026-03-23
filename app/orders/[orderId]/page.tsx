@@ -35,7 +35,6 @@ export default function OrderDetailsPage({ params }: { params: { orderId: string
     if (sessionStatus === 'loading') return;
 
     if (!session) {
-      // ✅ Fixed typo: "orders" instead of "ordrs"
       router.push(`/auth/login?returnUrl=${encodeURIComponent(`/orders/${params.orderId}`)}`);
       return;
     }
@@ -64,8 +63,7 @@ export default function OrderDetailsPage({ params }: { params: { orderId: string
     return null;
   }
 
-  // ✅ Fixed: Check if order exists before trying to display
-  if (!order) {
+    if (!order) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -88,7 +86,6 @@ export default function OrderDetailsPage({ params }: { params: { orderId: string
     );
   }
 
-  // ✅ Main render when order exists
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-8">
       <div className="container mx-auto px-4 max-w-5xl">

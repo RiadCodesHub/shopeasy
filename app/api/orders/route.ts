@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { connectToDatabase } from "@/lib/mongodb";
 import Order from "@/models/Order";
@@ -26,8 +26,7 @@ export async function GET(req : Request) {
         const orders = await Order.find({userId: session.user.id})
                .sort({createdAt: -1})
                .skip(skip)
-               .limit(limit)
-               .exec();
+               .limit(limit);
 
         const totalOrders = await Order.countDocuments({userId: session.user.id});
 
@@ -49,7 +48,7 @@ export async function GET(req : Request) {
     } 
 }
 
-export async function Post(req:Request) {
+export async function POST(request : NextRequest) {
     try {
         const session = await getServerSession(authOptions);
 
@@ -59,7 +58,7 @@ export async function Post(req:Request) {
                 {status: 401}
             );
         }
-        const data = await req.json();
+        const data = await request.json();
         await connectToDatabase();
 
         const orderId = `SHOP-${Date.now()}-${Math.random().toString(36).substring(2,9)}`;
