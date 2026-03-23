@@ -37,7 +37,7 @@ export async function GET(request : NextRequest) {
             orders,
             pagination: {
                 currentPage: page,
-                totalPage: Math.ceil(totalOrders / limit),
+                totalPages: Math.ceil(totalOrders / limit),
                 totalOrders,
                 hasMore: skip + orders.length < totalOrders
             }
@@ -65,6 +65,11 @@ export async function POST(request : NextRequest) {
         await connectToDatabase();
 
         const orderId = `SHOP-${Date.now()}-${Math.random().toString(36).substring(2,9)}`;
+        const userId = (session.user as any)?.id;
+
+        if (!userId) {
+          return NextResponse.json({ error: 'User ID missing' }, { status: 400 });
+           }
 
         const order = await Order.create({
             orderId,
