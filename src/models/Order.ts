@@ -100,7 +100,7 @@ const orderSchema = new mongoose.Schema({
         defalult: 'pending'
     },
 
-    createAt: {
+    createdAt: {
         typr: Date,
         default: Date.now
     },

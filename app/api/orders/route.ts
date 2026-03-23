@@ -4,7 +4,10 @@ import { connectToDatabase } from "@/lib/mongodb";
 import Order from "@/models/Order";
 import { authOptions } from "@/lib/auth";
 
-export async function GET(req : Request) {
+
+export const dynamic = 'force-dynamic';
+
+export async function GET(request : NextRequest) {
     try {
         const session = await getServerSession(authOptions);
 
@@ -17,7 +20,7 @@ export async function GET(req : Request) {
 
         await connectToDatabase();
 
-        const { searchParams } = new URL(req.url);
+        const { searchParams } = new URL(request.url);
 
         const page = parseInt(searchParams.get('page') || '1');
         const limit = parseInt(searchParams.get('limit') || '10');
@@ -68,7 +71,7 @@ export async function POST(request : NextRequest) {
             userId: session.user.id,
             ...data,
             status: 'pending',
-            createAt: new Date(),
+            createdAt: new Date(),
             updatedAt: new Date()
         });
 

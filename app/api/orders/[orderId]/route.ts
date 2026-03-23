@@ -1,10 +1,12 @@
-// app/api/orders/[orderId]/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { connectToDatabase } from '@/lib/mongodb';
 import Order from '@/models/Order';
 import { authOptions } from '@/lib/auth'
 
+
+export const dynamic = 'force-dynamic';
 
 export async function GET(
   request: NextRequest,
