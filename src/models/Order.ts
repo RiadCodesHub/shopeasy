@@ -114,9 +114,8 @@ const orderSchema = new mongoose.Schema({
     deliveredAt : Date
 });
 
-orderSchema.pre('save', function(next) {
+orderSchema.pre('save', async function() {
     this.updatedAt = new Date();
-    next()
 });
 
 const Order = mongoose.models.Order || mongoose.model('Order', orderSchema);
