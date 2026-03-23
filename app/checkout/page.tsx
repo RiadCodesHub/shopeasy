@@ -186,7 +186,7 @@ const CheckoutPage = () => {
           image: item.image
          })),
         subtotal: totalPrice,
-        shipping: shippingCost,
+        shippingCost,
         tax,
         total: orderTotal,
         estimatedDelivery: new Date(Date.now() + 7 * 24 * 60 * 1000)
