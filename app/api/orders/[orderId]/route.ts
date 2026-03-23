@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { orderId: string }}
+  context : { params: Promise<{ orderId: string }>}
 ) {
   try {
     const session = await getServerSession(authOptions);
@@ -22,7 +22,7 @@ export async function GET(
       );
     }
 
-    const { orderId } = await params;
+    const { orderId } = await context.params;
 
     await connectToDatabase();
 
@@ -38,26 +38,7 @@ export async function GET(
       );
     }
 
-     return NextResponse.json({
-      _id: order._id,
-      orderId: order.orderId,
-      userId: order.userId,
-      customerInfo: order.customerInfo,
-      items: order.items,
-      shippingAddress: order.shippingAddress,
-      shippingMethod: order.shippingMethod,
-      shippingCost: order.shippingCost,
-      paymentMethod: order.paymentMethod,
-      lastFourDigits: order.lastFourDigits,
-      subtotal: order.subtotal,
-      tax: order.tax,
-      total: order.total,
-      status: order.status,
-      trackingNumber: order.trackingNumber,
-      estimatedDelivery: order.estimatedDelivery,
-      createdAt: order.createdAt,
-      updatedAt: order.updatedAt
-    });
+     return NextResponse.json(order);
   } catch (error) {
     console.error('Error fetching order:', error);
     return NextResponse.json(
