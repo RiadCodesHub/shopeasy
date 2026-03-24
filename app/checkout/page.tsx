@@ -35,10 +35,10 @@ const CheckoutPage = () => {
   const { items, totalPrice } = useAppSelector((state) => state.cart);
   const { currentStep, formData, isSubmitted, isSubmitting, orderId } = useAppSelector((state) => state.form);
   
-  const {data: sesson, status} = useSession();
+  const {data: session, status} = useSession();
   const isLoading = status === 'loading';
-  const isAuthenticated = !!sesson;
-  const user = sesson?.user;
+  const isAuthenticated = !!session;
+  const user = session?.user;
 
   const methods = useForm<CheckoutFormData>({
     resolver: zodResolver(checkoutSchema) as any ,
@@ -186,6 +186,7 @@ const CheckoutPage = () => {
           image: item.image
          })),
         subtotal: totalPrice,
+        paymentMethod: data.payment.paymentMethod,
         shippingCost,
         tax,
         total: orderTotal,
@@ -199,6 +200,8 @@ const CheckoutPage = () => {
         },
         body: JSON.stringify(orderPayload)
       });
+
+      console.log('📡 Response status:', response.status);
 
       if(!response.ok) {
         throw new Error('Failed to create order');
