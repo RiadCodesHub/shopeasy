@@ -212,6 +212,7 @@ const CheckoutPage = () => {
       dispatch(clearCart());
     } catch (error) {
       console.error('Order submission error:', error);
+      alert(error instanceof Error ? error.message : 'Failed to place order. Please try again.');
     } finally{
       dispatch(setSubmitting(false));
     }

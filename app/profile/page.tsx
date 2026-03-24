@@ -99,7 +99,7 @@ export default function ProfilePage() {
                   </Link>
 
                   <Link
-                    href="/profile/orders"
+                    href="/orders"
                     className="block px-4 py-2 hover:bg-gray-50 rounded-lg"
                   >
                     Orders
