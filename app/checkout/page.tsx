@@ -168,7 +168,7 @@ const CheckoutPage = () => {
     try {
        dispatch(setSubmitting(true));
       
-      const orderPayload = {
+    const orderPayload = {
          customerInfo: {
           firstName : data.personalInfo.firstName,
           lastName : data.personalInfo.lastName,

@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic';
 export async function GET(request : NextRequest) {
     try {
         const session = await getServerSession(authOptions);
-
+        
         if(!session) {
             return NextResponse.json(
                 {error: 'You must be logged in'},
@@ -70,10 +70,12 @@ export async function POST(request : NextRequest) {
         if (!userId) {
           return NextResponse.json({ error: 'User ID missing' }, { status: 400 });
            }
+        console.log("Creating order for:", userId);
+
 
         const order = await Order.create({
             orderId,
-            userId: session.user.id,
+            userId: userId,
             ...data,
             status: 'pending',
             createdAt: new Date(),
