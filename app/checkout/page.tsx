@@ -203,9 +203,11 @@ const CheckoutPage = () => {
 
       console.log('📡 Response status:', response.status);
 
-      if(!response.ok) {
-        throw new Error('Failed to create order');
-      }
+      if (!response.ok) {
+  const errorData = await response.json();
+  console.error("🔥 Backend error:", errorData);
+  throw new Error(errorData.error || 'Failed to create order');
+}
 
       const saveOrder = await response.json();
 

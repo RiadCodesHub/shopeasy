@@ -3,8 +3,7 @@ import mongoose from "mongoose";
 
 const orderItemSchema = new mongoose.Schema({
     productId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'product',
+        type: String,
         required: true,
     },
     name: {
@@ -72,7 +71,7 @@ const orderSchema = new mongoose.Schema({
         required: true
     },
 
-    larsFourDigits: String,
+    lastFourDigits: String,
 
     subtotal: {
         type: Number,
@@ -97,7 +96,7 @@ const orderSchema = new mongoose.Schema({
             'cancelled',
             'refunded'
         ],
-        defalult: 'pending'
+        default: 'pending'
     },
 
     createdAt: {
@@ -109,7 +108,7 @@ const orderSchema = new mongoose.Schema({
         default: Date.now
     },
 
-    trauckingNumber: String,
+    trackingNumber: String,
     estimatedDelivery: Date,
     deliveredAt : Date
 });
