@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/store/hooks";
 import { fetchOrderById, clearCurrentOrder } from "@/lib/store/slices/orderSlice";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation"; // ✅ Fixed import
+import { useRouter, useParams } from "next/navigation"; 
 import Link from "next/link";
 import { motion } from 'framer-motion';
 import {
@@ -25,9 +25,11 @@ const statusColors = {
   refunded: 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
 }
 
-export default function OrderDetailsPage({ params }: { params: { orderId: string } }) {
+export default function OrderDetailsPage() {
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const params = useParams();
+  const orderId = params?.orderId as string;
   const { data: session, status: sessionStatus } = useSession();
   const { currentOrder: order, loading } = useAppSelector((state) => state.orders);
 
@@ -39,12 +41,12 @@ export default function OrderDetailsPage({ params }: { params: { orderId: string
       return;
     }
 
-    dispatch(fetchOrderById(params.orderId));
+    dispatch(fetchOrderById(orderId));
     
     return () => {
       dispatch(clearCurrentOrder());
     };
-  }, [session, sessionStatus, dispatch, params.orderId, router]);
+  }, [session, sessionStatus, dispatch, orderId, router]);
 
   if (sessionStatus === 'loading' || loading) {
     return (

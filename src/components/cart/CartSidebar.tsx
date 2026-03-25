@@ -12,6 +12,7 @@ import {
 } from '@/lib/store/slices/cartSlice';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
+import { useState, useEffect } from 'react';
 
 const CartSidebar = () => {
   const dispatch = useAppDispatch();
@@ -19,6 +20,12 @@ const CartSidebar = () => {
     (state) => state.cart
   );
   const { data: session } = useSession();
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
 
   const handleClose = () => {
     dispatch(toggleCart());
@@ -31,9 +38,12 @@ const CartSidebar = () => {
     }
   };
 
-  // Determine checkout URL based on auth state
   const checkoutUrl = session ? '/checkout' : '/auth/login?returnUrl=/checkout';
 
+  if(!isHydrated) {
+    return null;
+  }
+  
   return (
     <AnimatePresence>
       {isCartOpen && (
@@ -139,7 +149,13 @@ const CartSidebar = () => {
                         </span>
                         
                         <button
-                          onClick={() => dispatch(addToCart(item))}
+                          onClick={() => dispatch(addToCart({
+                            id: item.id,
+                            name: item.name,
+                            price: item.price,
+                            image: item.image,
+                            quantity: 1
+                          }))}
                           className="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
                         >
                           <Plus className="h-4 w-4" />

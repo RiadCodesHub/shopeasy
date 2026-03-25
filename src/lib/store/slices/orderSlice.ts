@@ -81,7 +81,7 @@ export const fetchOrders = createAsyncThunk(
 
 export const fetchOrderById = createAsyncThunk<Order, string>(
     'orders/fetchOrderById',
-    async (orderId) => {
+    async (orderId : string) => {
         const response = await fetch(`/api/orders/${orderId}`);
         if(!response.ok) {
             throw new Error('Failed to fetch order');

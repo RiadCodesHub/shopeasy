@@ -27,7 +27,7 @@ import {
 } from '@/lib/store/slices/cartSlice';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 
 const CartPage = () => {
@@ -36,6 +36,19 @@ const CartPage = () => {
   const {data : session} = useSession();
   const { items, totalQuantity, totalPrice } = useAppSelector((state) => state.cart);
   const [showMobileSummary, setShowMobileSummary] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
+
+  useEffect(() => {
+    setIsHydrated(true);
+  }, []);
+
+  if(!isHydrated) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      </div>
+    )
+  }
 
   const handleProceedToCheckout = () => {
     if (items.length > 0) {
@@ -362,7 +375,8 @@ const CartPage = () => {
                                     id: item.id,
                                     name: item.name,
                                     price: item.price,
-                                    image: item.image
+                                    image: item.image,
+                                    quantity: 1
                                   }))}
                                   className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                                 >
@@ -398,7 +412,8 @@ const CartPage = () => {
                               id: item.id,
                               name: item.name,
                               price: item.price,
-                              image: item.image
+                              image: item.image,
+                              quantity: 1,
                             }))}
                             className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
                           >
