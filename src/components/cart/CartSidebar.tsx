@@ -17,18 +17,20 @@ import { useState, useEffect } from 'react';
 const CartSidebar = () => {
   const dispatch = useAppDispatch();
   const { items, totalQuantity, totalPrice, isCartOpen } = useAppSelector(
-    (state) => state.cart
+    (state) => state.cart || {itemsL: [], totalQuantity: 0, totalPrice: 0, isCartOpen: false}
   );
   const { data: session } = useSession();
-  const [isHydrated, setIsHydrated] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
-    setIsHydrated(true);
+    setIsMounted(true);
   }, []);
 
 
   const handleClose = () => {
+    if(isMounted) {
     dispatch(toggleCart());
+    }
   };
 
   const handleClearCart = () => {
@@ -40,9 +42,13 @@ const CartSidebar = () => {
 
   const checkoutUrl = session ? '/checkout' : '/auth/login?returnUrl=/checkout';
 
-  if(!isHydrated) {
+  if(!isMounted) {
     return null;
   }
+
+  const safeItems = items || [];
+  const safeTotalQuantity = totalQuantity || 0;
+  const safeTotalPrice = totalPrice || 0;
   
   return (
     <AnimatePresence>
