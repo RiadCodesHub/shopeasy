@@ -30,7 +30,9 @@ const loadCartFromStorage = () : CartState => {
         if(savedCart) {
             const parsed = JSON.parse(savedCart);
             return {
-                ...parsed,
+                items: parsed.items || [],
+                totalQuantity: parsed.totalQuantity || 0,
+                totalPrice: parsed.totalPrice || 0,
                 isCartOpen : false,
             }
         }
@@ -59,7 +61,7 @@ const initialState: CartState = loadCartFromStorage();
 const saveCartToStorage = (state : CartState) => {
     if(typeof window !== 'undefined') {
         const save = {
-            item : state.items,
+            items : state.items,
             totalQuantity : state.totalQuantity,
             totalPrice: state.totalPrice,
         };
@@ -72,11 +74,12 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addToCart: (state, action: PayloadAction<CartItem>) => {
-        const existingItem = state.items.find((item) => item.id === action.payload.id);
+         const {id, name, price, image, quantity = 1} = action.payload;
+         const existingItem = state.items.find((item) => item.id === action.payload.id);
          if(existingItem) {
-            existingItem.quantity + 1;
+            existingItem.quantity += quantity;
             } else {
-                state.items.push({...action.payload, quantity:1 });
+                state.items.push({id, name, price, image, quantity });
             }
         const {totalQuantity, totalPrice} = calculateTotals(state.items);
 

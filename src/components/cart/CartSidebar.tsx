@@ -17,8 +17,8 @@ import { useState, useEffect } from 'react';
 const CartSidebar = () => {
   const dispatch = useAppDispatch();
   const { items, totalQuantity, totalPrice, isCartOpen } = useAppSelector(
-    (state) => state.cart || {itemsL: [], totalQuantity: 0, totalPrice: 0, isCartOpen: false}
-  );
+    (state) => state.cart || {
+    items: [], totalQuantity: 0, totalPrice: 0, isCartOpen: false});
   const { data: session } = useSession();
   const [isMounted, setIsMounted] = useState(false);
 
@@ -89,7 +89,7 @@ const CartSidebar = () => {
 
             {/* Cart Items */}
             <div className="flex-1 overflow-y-auto p-4 sm:p-6">
-              {items.length === 0 ? (
+              {safeItems.length === 0 ? (
                 <div className="text-center py-12">
                   <ShoppingBag className="h-16 w-16 mx-auto text-gray-300 mb-4" />
                   <p className="text-gray-500 dark:text-gray-400">
@@ -105,7 +105,7 @@ const CartSidebar = () => {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  {items.map((item) => (
+                  {safeItems.map((item) => (
                     <motion.div
                       key={item.id}
                       layout
