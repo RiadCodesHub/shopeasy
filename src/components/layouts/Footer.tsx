@@ -140,12 +140,12 @@ const Footer = () => {
 };
 
 const quickLinks = [
-  { name: 'About Us', href: '/about', icon: null },
-  { name: 'Contact', href: '/contact', icon: null },
-  { name: 'FAQ', href: '/faq', icon: null },
-  { name: 'Shipping Policy', href: '/shipping', icon: null },
-  { name: 'Return Policy', href: '/returns', icon: null },
-  { name: 'Careers', href: '/careers', icon: null },
+  { name: 'About Us', href: '/', icon: null },
+  { name: 'Contact', href: '/', icon: null },
+  { name: 'FAQ', href: '/', icon: null },
+  { name: 'Shipping Policy', href: '/', icon: null },
+  { name: 'Return Policy', href: '/', icon: null },
+  { name: 'Careers', href: '/', icon: null },
 ];
 
 const paymentMethods = [
