@@ -85,7 +85,7 @@ const Header = () => {
     { href: '/profile', icon: <User className="h-4 w-4" />, label: 'My Profile' },
     { href: '/orders', icon: <Package className="h-4 w-4" />, label: 'My Orders' },
     { href: '/wishlist', icon: <Heart className="h-4 w-4" />, label: 'Wishlist' },
-    { href: '/settings', icon: <Settings className="h-4 w-4" />, label: 'Settings' },
+    { href: '/', icon: <Settings className="h-4 w-4" />, label: 'Settings' },
   ];
 
   // Admin only menu item
@@ -122,7 +122,7 @@ const Header = () => {
               <Link href="/categories" className="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
                 Categories
               </Link>
-              <Link href="/deals" className="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
+              <Link href="/" className="text-gray-700 dark:text-gray-300 hover:text-primary transition-colors">
                 Deals
               </Link>
             </nav>
@@ -350,7 +350,7 @@ const Header = () => {
                     Categories
                   </Link>
                   <Link 
-                    href="/deals" 
+                    href="/" 
                     className="py-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors"
                     onClick={() => dispatch(toggleMobileMenu())}
                   >
@@ -371,7 +371,7 @@ const Header = () => {
                           My Profile
                         </Link>
                         <Link 
-                          href="/profile/orders" 
+                          href="/orders" 
                           className="flex items-center gap-2 py-2 text-gray-700 dark:text-gray-300 hover:text-primary transition-colors"
                           onClick={() => dispatch(toggleMobileMenu())}
                         >
