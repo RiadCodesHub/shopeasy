@@ -3,17 +3,26 @@ import CategoryFilter from "../products/CategoryFilter";
 
 export default function ProductPage() {
     return (
-        <div className="container mx-auto px-4">
-            <h1 className="text-3xl font-bold ">Our Products</h1>
-            <p className="text-gray-600 dark:text-gray-400 mb-10">
-                Discover amazing products at great prices
-            </p>
-            <div className="flex flex-col items-center gap-8">
-                <div className="w-full">
-                    <CategoryFilter />
+        <div className="min-h-screen bg-[var(--background)] py-8">
+            <div className="container mx-auto px-4">
+                {/* Header Section */}
+                <div className="mb-8">
+                    <h1 className="text-3xl md:text-4xl font-bold text-[var(--foreground)] mb-3">
+                        Our Products
+                    </h1>
+                    <p className="text-[var(--foreground-secondary)] text-lg">
+                        Discover amazing products at great prices
+                    </p>
                 </div>
-                <div className="w-full">
-                    <ProductGrid />
+                
+                {/* Content Section */}
+                <div className="flex flex-col gap-8">
+                    <div className="w-full">
+                        <CategoryFilter />
+                    </div>
+                    <div className="w-full">
+                        <ProductGrid />
+                    </div>
                 </div>
             </div>
         </div>

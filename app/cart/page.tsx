@@ -33,7 +33,7 @@ import { useSession } from 'next-auth/react';
 const CartPage = () => {
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const {data : session} = useSession();
+  const { data: session } = useSession();
   const { items, totalQuantity, totalPrice } = useAppSelector((state) => state.cart);
   const [showMobileSummary, setShowMobileSummary] = useState(false);
   const [isHydrated, setIsHydrated] = useState(false);
@@ -42,37 +42,37 @@ const CartPage = () => {
     setIsHydrated(true);
   }, []);
 
-  if(!isHydrated) {
+  if (!isHydrated) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="loading-spinner"></div>
       </div>
-    )
+    );
   }
 
   const handleProceedToCheckout = () => {
     if (items.length > 0) {
-     if(session) {
-      router.push('/checkout');
-     } else {
-      router.push('/auth/login?returnUrl=/checkout');
-     }
+      if (session) {
+        router.push('/checkout');
+      } else {
+        router.push('/auth/login?returnUrl=/checkout');
+      }
     }
   };
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen bg-[var(--background)]">
         {/* Mobile Header */}
-        <div className="lg:hidden sticky top-0 z-10 bg-white dark:bg-gray-800 shadow-sm">
+        <div className="lg:hidden sticky top-0 z-10 bg-[var(--background-secondary)] shadow-sm border-b border-[var(--border)]">
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
-              <Link href="/" className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+              <Link href="/" className="flex items-center gap-2 text-[var(--foreground-secondary)]">
                 <ChevronLeft className="h-5 w-5" />
                 <span>Back</span>
               </Link>
-              <h1 className="text-lg font-bold">Cart</h1>
-              <div className="w-10"></div> {/* Spacer for alignment */}
+              <h1 className="text-lg font-bold text-[var(--foreground)]">Cart</h1>
+              <div className="w-10"></div>
             </div>
           </div>
         </div>
@@ -84,22 +84,22 @@ const CartPage = () => {
             transition={{ duration: 0.5 }}
             className="max-w-md mx-auto text-center"
           >
-            <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-blue-100 dark:bg-blue-900/20 flex items-center justify-center">
-              <ShoppingBag className="h-12 w-12 text-blue-600" />
+            <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+              <ShoppingBag className="h-12 w-12 text-primary" />
             </div>
             
-            <h1 className="text-2xl font-bold text-gray-900 dark:text-white mb-3">
+            <h1 className="text-2xl font-bold text-[var(--foreground)] mb-3">
               Your cart is empty
             </h1>
             
-            <p className="text-gray-600 dark:text-gray-400 mb-8 px-4">
+            <p className="text-[var(--foreground-secondary)] mb-8 px-4">
               Looks like you haven't added any items to your cart yet.
             </p>
             
             <div className="flex flex-col gap-3 px-4">
               <Link
                 href="/"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                className="btn-primary inline-flex items-center justify-center gap-2"
               >
                 <Home className="h-5 w-5" />
                 Continue Shopping
@@ -107,7 +107,7 @@ const CartPage = () => {
               
               <Link
                 href="/deals"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium"
+                className="btn-secondary inline-flex items-center justify-center gap-2"
               >
                 <Tag className="h-5 w-5" />
                 View Deals
@@ -124,22 +124,22 @@ const CartPage = () => {
   const orderTotal = totalPrice + shippingCost + tax;
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-[var(--background)]">
       {/* Mobile Header */}
-      <div className="lg:hidden sticky top-0 z-20 bg-white dark:bg-gray-800 shadow-sm border-b">
+      <div className="lg:hidden sticky top-0 z-20 bg-[var(--background-secondary)] shadow-sm border-b border-[var(--border)]">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
+            <Link href="/" className="flex items-center gap-2 text-[var(--foreground-secondary)]">
               <ChevronLeft className="h-5 w-5" />
               <span className="text-sm">Back</span>
             </Link>
             <div className="text-center">
-              <h1 className="text-lg font-bold text-gray-900 dark:text-white">Shopping Cart</h1>
-              <p className="text-xs text-gray-500">{totalQuantity} items</p>
+              <h1 className="text-lg font-bold text-[var(--foreground)]">Shopping Cart</h1>
+              <p className="text-xs text-[var(--foreground-tertiary)]">{totalQuantity} items</p>
             </div>
             <button
               onClick={() => dispatch(clearCart())}
-              className="text-red-600 text-sm font-medium"
+              className="text-error text-sm font-medium"
             >
               Clear
             </button>
@@ -148,25 +148,25 @@ const CartPage = () => {
       </div>
 
       {/* Mobile Order Summary Toggle */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-20 bg-white dark:bg-gray-800 border-t shadow-lg">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-20 bg-[var(--background-secondary)] border-t border-[var(--border)] shadow-lg">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-gray-500">Total</p>
-              <p className="text-xl font-bold text-gray-900 dark:text-white">
+              <p className="text-sm text-[var(--foreground-tertiary)]">Total</p>
+              <p className="text-xl font-bold text-[var(--foreground)]">
                 ${orderTotal.toFixed(2)}
               </p>
             </div>
             <div className="flex gap-3">
               <button
                 onClick={() => setShowMobileSummary(!showMobileSummary)}
-                className="px-4 py-2 border border-gray-300 dark:border-gray-700 rounded-lg text-sm font-medium"
+                className="btn-secondary text-sm py-2"
               >
                 Details
               </button>
               <button
                 onClick={handleProceedToCheckout}
-                className="px-6 py-2 bg-blue-600 text-white rounded-lg font-medium text-sm"
+                className="btn-primary text-sm py-2"
               >
                 Checkout
               </button>
@@ -177,46 +177,45 @@ const CartPage = () => {
 
       {/* Mobile Order Summary Modal */}
       {showMobileSummary && (
-        <div className="lg:hidden fixed inset-0 z-30 bg-black bg-opacity-50">
+        <div className="lg:hidden fixed inset-0 z-30 bg-black/50 backdrop-blur-sm">
           <motion.div
             initial={{ y: '100%' }}
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 25 }}
-            className="absolute bottom-0 left-0 right-0 bg-white dark:bg-gray-800 rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto"
+            className="absolute bottom-0 left-0 right-0 bg-[var(--background-secondary)] rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto border-t border-[var(--border)]"
           >
-            <div className="sticky top-0 bg-white dark:bg-gray-800 border-b px-6 py-4">
+            <div className="sticky top-0 bg-[var(--background-secondary)] border-b border-[var(--border)] px-6 py-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-bold">Order Summary</h3>
+                <h3 className="text-lg font-bold text-[var(--foreground)]">Order Summary</h3>
                 <button
                   onClick={() => setShowMobileSummary(false)}
-                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full"
+                  className="p-2 hover:bg-[var(--background-tertiary)] rounded-full transition-colors"
                 >
-                  <X className="h-5 w-5" />
+                  <X className="h-5 w-5 text-[var(--foreground-secondary)]" />
                 </button>
               </div>
             </div>
             
             <div className="p-6 space-y-4">
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Subtotal</span>
-                <span className="font-medium">${totalPrice.toFixed(2)}</span>
+                <span className="text-[var(--foreground-secondary)]">Subtotal</span>
+                <span className="font-medium text-[var(--foreground)]">${totalPrice.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Shipping</span>
-                <span className="font-medium">
+                <span className="text-[var(--foreground-secondary)]">Shipping</span>
+                <span className="font-medium text-[var(--foreground)]">
                   {shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-gray-600 dark:text-gray-400">Tax</span>
-                <span className="font-medium">${tax.toFixed(2)}</span>
+                <span className="text-[var(--foreground-secondary)]">Tax</span>
+                <span className="font-medium text-[var(--foreground)]">${tax.toFixed(2)}</span>
               </div>
-              <div className="border-t pt-4">
-                <div className="flex justify-between text-lg font-bold">
-                  <span>Total</span>
-                  <span className="text-blue-600 dark:text-blue-400">${orderTotal.toFixed(2)}</span>
-                </div>
+              <div className="divider"></div>
+              <div className="flex justify-between text-lg font-bold">
+                <span className="text-[var(--foreground)]">Total</span>
+                <span className="text-primary">${orderTotal.toFixed(2)}</span>
               </div>
             </div>
           </motion.div>
@@ -232,38 +231,38 @@ const CartPage = () => {
           {/* Desktop Header */}
           <div className="hidden lg:block mb-8">
             <div className="flex items-center gap-4 mb-4">
-              <div className="p-3 bg-blue-600 text-white rounded-xl">
+              <div className="p-3 bg-primary text-white rounded-xl">
                 <ShoppingBag className="h-6 w-6" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+                <h1 className="text-3xl font-bold text-[var(--foreground)]">
                   Shopping Cart
                 </h1>
-                <p className="text-gray-600 dark:text-gray-400">
+                <p className="text-[var(--foreground-secondary)]">
                   {totalQuantity} item{totalQuantity !== 1 ? 's' : ''} in your cart
                 </p>
               </div>
             </div>
 
-            {/* Progress Bar - Desktop Only */}
+            {/* Progress Bar */}
             <div className="hidden lg:flex items-center justify-between mb-8">
               <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2 text-blue-600">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-blue-600 text-white">
+                <div className="flex items-center gap-2 text-primary">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-primary text-white">
                     1
                   </div>
                   <span className="font-medium">Cart</span>
                 </div>
-                <div className="w-12 h-1 bg-gray-300 dark:bg-gray-700"></div>
-                <div className="flex items-center gap-2 text-gray-400">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-200 dark:bg-gray-700">
+                <div className="w-12 h-1 bg-[var(--border)]"></div>
+                <div className="flex items-center gap-2 text-[var(--foreground-tertiary)]">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[var(--background-tertiary)]">
                     2
                   </div>
                   <span className="font-medium">Checkout</span>
                 </div>
-                <div className="w-12 h-1 bg-gray-300 dark:bg-gray-700"></div>
-                <div className="flex items-center gap-2 text-gray-400">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-gray-200 dark:bg-gray-700">
+                <div className="w-12 h-1 bg-[var(--border)]"></div>
+                <div className="flex items-center gap-2 text-[var(--foreground-tertiary)]">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[var(--background-tertiary)]">
                     3
                   </div>
                   <span className="font-medium">Confirmation</span>
@@ -272,7 +271,7 @@ const CartPage = () => {
               
               <button
                 onClick={() => dispatch(clearCart())}
-                className="text-red-600 hover:text-red-700 font-medium flex items-center gap-2"
+                className="text-error hover:text-error/80 font-medium flex items-center gap-2 transition-colors"
               >
                 <Trash2 className="h-4 w-4" />
                 Clear Cart
@@ -283,8 +282,8 @@ const CartPage = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Cart Items */}
             <div className="lg:col-span-2">
-              <div className="bg-white dark:bg-gray-800 rounded-xl lg:rounded-2xl shadow-sm lg:shadow-xl p-4 lg:p-6 mb-6">
-                <h2 className="text-lg lg:text-xl font-bold text-gray-900 dark:text-white mb-4 lg:mb-6">
+              <div className="card mb-6">
+                <h2 className="text-lg lg:text-xl font-bold text-[var(--foreground)] mb-4 lg:mb-6">
                   Cart Items
                 </h2>
 
@@ -296,12 +295,12 @@ const CartPage = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="flex flex-col sm:flex-row gap-4 p-4 border border-gray-200 dark:border-gray-700 rounded-xl"
+                      className="flex flex-col sm:flex-row gap-4 p-4 border border-[var(--border)] rounded-xl"
                     >
-                      {/* Product Image - Mobile Stacked */}
+                      {/* Product Image */}
                       <div className="flex gap-4">
                         <Link href={`/products/${item.id}`} className="shrink-0">
-                          <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-700">
+                          <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-lg overflow-hidden bg-[var(--background-tertiary)]">
                             <img
                               src={item.image}
                               alt={item.name}
@@ -310,21 +309,21 @@ const CartPage = () => {
                           </div>
                         </Link>
 
-                        {/* Product Info - Mobile Stacked */}
+                        {/* Product Info - Mobile */}
                         <div className="flex-1 sm:hidden">
                           <Link 
                             href={`/products/${item.id}`}
-                            className="font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 mb-1 block text-sm"
+                            className="font-semibold text-[var(--foreground)] hover:text-primary mb-1 block text-sm"
                           >
                             {item.name}
                           </Link>
                           <div className="flex items-center justify-between">
-                            <p className="text-lg font-bold text-gray-900 dark:text-white">
+                            <p className="text-lg font-bold text-[var(--foreground)]">
                               ${item.price.toFixed(2)}
                             </p>
                             <button
                               onClick={() => dispatch(removeItemCompletely(item.id))}
-                              className="text-red-600 hover:text-red-700"
+                              className="text-error hover:text-error/80"
                             >
                               <X className="h-5 w-5" />
                             </button>
@@ -339,19 +338,19 @@ const CartPage = () => {
                             <div>
                               <Link 
                                 href={`/products/${item.id}`}
-                                className="font-semibold text-gray-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 mb-1 block"
+                                className="font-semibold text-[var(--foreground)] hover:text-primary mb-1 block"
                               >
                                 {item.name}
                               </Link>
-                              <p className="text-gray-600 dark:text-gray-400 text-sm">
+                              <p className="text-[var(--foreground-secondary)] text-sm">
                                 Item # {item.id}
                               </p>
                             </div>
                             <div className="text-right">
-                              <p className="text-xl font-bold text-gray-900 dark:text-white">
+                              <p className="text-xl font-bold text-[var(--foreground)]">
                                 ${item.price.toFixed(2)}
                               </p>
-                              <p className="text-sm text-gray-500">
+                              <p className="text-sm text-[var(--foreground-tertiary)]">
                                 ${(item.price * item.quantity).toFixed(2)} total
                               </p>
                             </div>
@@ -360,14 +359,14 @@ const CartPage = () => {
                           {/* Quantity Controls */}
                           <div className="flex items-center justify-between mt-4">
                             <div className="flex items-center gap-4">
-                              <div className="flex items-center border border-gray-300 dark:border-gray-700 rounded-lg">
+                              <div className="flex items-center border border-[var(--border)] rounded-lg">
                                 <button
                                   onClick={() => dispatch(removeFromCart(item.id))}
-                                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                                  className="p-2 hover:bg-[var(--background-tertiary)] transition-colors"
                                 >
-                                  <Minus className="h-4 w-4" />
+                                  <Minus className="h-4 w-4 text-[var(--foreground-secondary)]" />
                                 </button>
-                                <span className="w-8 text-center font-medium text-sm lg:text-base">
+                                <span className="w-8 text-center font-medium text-[var(--foreground)]">
                                   {item.quantity}
                                 </span>
                                 <button
@@ -378,14 +377,14 @@ const CartPage = () => {
                                     image: item.image,
                                     quantity: 1
                                   }))}
-                                  className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                                  className="p-2 hover:bg-[var(--background-tertiary)] transition-colors"
                                 >
-                                  <Plus className="h-4 w-4" />
+                                  <Plus className="h-4 w-4 text-[var(--foreground-secondary)]" />
                                 </button>
                               </div>
                               <button
                                 onClick={() => dispatch(removeItemCompletely(item.id))}
-                                className="text-red-600 hover:text-red-700 flex items-center gap-1 text-sm"
+                                className="text-error hover:text-error/80 flex items-center gap-1 text-sm transition-colors"
                               >
                                 <Trash2 className="h-4 w-4" />
                                 <span className="hidden lg:inline">Remove</span>
@@ -397,10 +396,10 @@ const CartPage = () => {
 
                       {/* Quantity Controls - Mobile */}
                       <div className="sm:hidden flex items-center justify-between">
-                        <div className="flex items-center border border-gray-300 dark:border-gray-700 rounded-lg">
+                        <div className="flex items-center border border-[var(--border)] rounded-lg">
                           <button
                             onClick={() => dispatch(removeFromCart(item.id))}
-                            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            className="p-2 hover:bg-[var(--background-tertiary)]"
                           >
                             <Minus className="h-4 w-4" />
                           </button>
@@ -415,12 +414,12 @@ const CartPage = () => {
                               image: item.image,
                               quantity: 1,
                             }))}
-                            className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                            className="p-2 hover:bg-[var(--background-tertiary)]"
                           >
                             <Plus className="h-4 w-4" />
                           </button>
                         </div>
-                        <p className="text-sm text-gray-500">
+                        <p className="text-sm text-[var(--foreground-tertiary)]">
                           ${(item.price * item.quantity).toFixed(2)}
                         </p>
                       </div>
@@ -429,12 +428,12 @@ const CartPage = () => {
                 </div>
               </div>
 
-              {/* Continue Shopping & Promo - Desktop Only */}
-              <div className="hidden lg:block bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6">
+              {/* Continue Shopping - Desktop */}
+              <div className="hidden lg:block card">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     href="/"
-                    className="flex-1 flex items-center justify-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium"
+                    className="flex-1 btn-secondary flex items-center justify-center gap-2"
                   >
                     <ArrowLeft className="h-5 w-5" />
                     Continue Shopping
@@ -445,9 +444,9 @@ const CartPage = () => {
                       <input
                         type="text"
                         placeholder="Promo code"
-                        className="flex-1 px-4 py-3 border border-gray-300 dark:border-gray-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-900"
+                        className="input-field flex-1"
                       />
-                      <button className="px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors font-medium">
+                      <button className="btn-primary">
                         Apply
                       </button>
                     </div>
@@ -455,11 +454,11 @@ const CartPage = () => {
                 </div>
               </div>
 
-              {/* Continue Shopping - Mobile Only */}
+              {/* Continue Shopping - Mobile */}
               <div className="lg:hidden mt-6">
                 <Link
                   href="/"
-                  className="flex items-center justify-center gap-2 w-full py-3 border border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium"
+                  className="btn-secondary w-full flex items-center justify-center gap-2"
                 >
                   <ArrowLeft className="h-5 w-5" />
                   Continue Shopping
@@ -470,22 +469,21 @@ const CartPage = () => {
             {/* Order Summary - Desktop */}
             <div className="hidden lg:block lg:col-span-1">
               <div className="sticky top-8">
-                <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-6 mb-6">
-                  <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-6">
+                <div className="card mb-6">
+                  <h2 className="text-xl font-bold text-[var(--foreground)] mb-6">
                     Order Summary
                   </h2>
 
-                  {/* Summary Details */}
                   <div className="space-y-4 mb-6">
                     <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-400">Subtotal</span>
-                      <span className="font-medium">${totalPrice.toFixed(2)}</span>
+                      <span className="text-[var(--foreground-secondary)]">Subtotal</span>
+                      <span className="font-medium text-[var(--foreground)]">${totalPrice.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-400">Shipping</span>
-                      <span className="font-medium">
+                      <span className="text-[var(--foreground-secondary)]">Shipping</span>
+                      <span className="font-medium text-[var(--foreground)]">
                         {shippingCost === 0 ? (
-                          <span className="text-green-600 flex items-center gap-1">
+                          <span className="text-success flex items-center gap-1">
                             <Truck className="h-4 w-4" />
                             FREE
                           </span>
@@ -495,33 +493,32 @@ const CartPage = () => {
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-gray-600 dark:text-gray-400">Tax</span>
-                      <span className="font-medium">
+                      <span className="text-[var(--foreground-secondary)]">Tax</span>
+                      <span className="font-medium text-[var(--foreground)]">
                         ${tax.toFixed(2)}
                       </span>
                     </div>
-                    <div className="border-t pt-4">
-                      <div className="flex justify-between text-lg font-bold">
-                        <span>Total</span>
-                        <span className="text-blue-600 dark:text-blue-400">
-                          ${orderTotal.toFixed(2)}
-                        </span>
-                      </div>
-                      <p className="text-xs text-gray-500 mt-1">
-                        Including ${tax.toFixed(2)} in taxes
-                      </p>
+                    <div className="divider"></div>
+                    <div className="flex justify-between text-lg font-bold">
+                      <span className="text-[var(--foreground)]">Total</span>
+                      <span className="text-primary">
+                        ${orderTotal.toFixed(2)}
+                      </span>
                     </div>
+                    <p className="text-xs text-[var(--foreground-tertiary)] mt-1">
+                      Including ${tax.toFixed(2)} in taxes
+                    </p>
                   </div>
 
                   {/* Security Info */}
-                  <div className="mb-6 p-4 bg-green-50 dark:bg-green-900/20 rounded-xl">
+                  <div className="mb-6 p-4 bg-success/10 rounded-xl border border-success/20">
                     <div className="flex items-center gap-3">
-                      <Shield className="h-5 w-5 text-green-600" />
+                      <Shield className="h-5 w-5 text-success" />
                       <div>
-                        <p className="font-medium text-green-800 dark:text-green-400">
+                        <p className="font-medium text-success">
                           Secure Checkout
                         </p>
-                        <p className="text-sm text-green-600 dark:text-green-500">
+                        <p className="text-sm text-success/80">
                           Your payment is protected
                         </p>
                       </div>
@@ -529,8 +526,8 @@ const CartPage = () => {
                   </div>
 
                   {!session && (
-                    <div className="mb-4 p-3 bg-amber-50 dark:bg-amber-900/20 rounded-lg">
-                      <p className="text-sm text-amber-800 dark:text-amber-400 text-center">
+                    <div className="mb-4 p-3 bg-warning/10 rounded-lg border border-warning/20">
+                      <p className="text-sm text-warning text-center">
                         🔒 You'll need to login before checkout
                       </p>
                     </div>
@@ -541,7 +538,7 @@ const CartPage = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={handleProceedToCheckout}
-                    className="w-full py-4 bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-xl hover:opacity-90 transition-all font-bold text-lg mb-4 flex items-center justify-center gap-2"
+                    className="btn-primary w-full flex items-center justify-center gap-2 text-lg mb-4"
                   >
                     Proceed to Checkout
                     <ArrowRight className="h-5 w-5" />
@@ -549,14 +546,14 @@ const CartPage = () => {
 
                   {/* Payment Methods */}
                   <div className="text-center">
-                    <p className="text-sm text-gray-500 mb-2">We accept</p>
+                    <p className="text-sm text-[var(--foreground-tertiary)] mb-2">We accept</p>
                     <div className="flex justify-center gap-3">
                       {['Visa', 'MasterCard', 'PayPal', 'Apple Pay'].map((method) => (
                         <div
                           key={method}
-                          className="p-2 bg-gray-100 dark:bg-gray-700 rounded-lg"
+                          className="p-2 bg-[var(--background-tertiary)] rounded-lg"
                         >
-                          <CreditCard className="h-6 w-6 text-gray-600 dark:text-gray-400" />
+                          <CreditCard className="h-6 w-6 text-[var(--foreground-secondary)]" />
                         </div>
                       ))}
                     </div>
@@ -565,27 +562,27 @@ const CartPage = () => {
 
                 {/* Features */}
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-xl shadow">
-                    <Truck className="h-5 w-5 text-blue-500" />
+                  <div className="flex items-center gap-3 p-4 bg-[var(--background-secondary)] rounded-xl shadow-sm border border-[var(--border)]">
+                    <Truck className="h-5 w-5 text-primary" />
                     <div>
-                      <p className="font-medium">Free Shipping</p>
-                      <p className="text-sm text-gray-500">On orders over $50</p>
+                      <p className="font-medium text-[var(--foreground)]">Free Shipping</p>
+                      <p className="text-sm text-[var(--foreground-secondary)]">On orders over $50</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-xl shadow">
-                    <CheckCircle className="h-5 w-5 text-green-500" />
+                  <div className="flex items-center gap-3 p-4 bg-[var(--background-secondary)] rounded-xl shadow-sm border border-[var(--border)]">
+                    <CheckCircle className="h-5 w-5 text-success" />
                     <div>
-                      <p className="font-medium">30-Day Returns</p>
-                      <p className="text-sm text-gray-500">Easy returns policy</p>
+                      <p className="font-medium text-[var(--foreground)]">30-Day Returns</p>
+                      <p className="text-sm text-[var(--foreground-secondary)]">Easy returns policy</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-4 bg-white dark:bg-gray-800 rounded-xl shadow">
-                    <Package className="h-5 w-5 text-purple-500" />
+                  <div className="flex items-center gap-3 p-4 bg-[var(--background-secondary)] rounded-xl shadow-sm border border-[var(--border)]">
+                    <Package className="h-5 w-5 text-accent" />
                     <div>
-                      <p className="font-medium">Secure Packaging</p>
-                      <p className="text-sm text-gray-500">Items arrive safely</p>
+                      <p className="font-medium text-[var(--foreground)]">Secure Packaging</p>
+                      <p className="text-sm text-[var(--foreground-secondary)]">Items arrive safely</p>
                     </div>
                   </div>
                 </div>

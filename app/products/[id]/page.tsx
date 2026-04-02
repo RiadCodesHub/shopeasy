@@ -52,7 +52,6 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
         setProduct(foundProduct);
         setLoading(false);
       } else {
-        // Product not found in Redux, try to fetch directly
         fetchProductDirectly(id);
       }
     } else if (status === 'failed') {
@@ -107,8 +106,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
     const stock = product.stock || 10; 
     
     if (type === 'increase') {
-      setQuantity(
-        prev => Math.min(prev + 1, stock));
+      setQuantity(prev => Math.min(prev + 1, stock));
     } else {
       setQuantity(prev => Math.max(prev - 1, 1));
     }
@@ -117,29 +115,28 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
   // Loading state
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+      <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
+        <div className="loading-spinner"></div>
       </div>
     );
   }
 
-
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center max-w-md p-8">
-          <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-red-100 dark:bg-red-900/20 flex items-center justify-center">
-            <Package className="h-12 w-12 text-red-600" />
+      <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
+        <div className="card text-center max-w-md p-8">
+          <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-error/10 flex items-center justify-center">
+            <Package className="h-12 w-12 text-error" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-2xl font-bold text-[var(--foreground)] mb-4">
             Product Not Found
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 mb-6">
+          <p className="text-[var(--foreground-secondary)] mb-6">
             The product you're looking for doesn't exist or has been removed.
           </p>
           <Link 
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+            className="btn-primary inline-flex items-center gap-2"
           >
             <ArrowLeft className="h-5 w-5" />
             Back to Home
@@ -155,22 +152,23 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
     .slice(0, 4);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[var(--background)]">
+      {/* Breadcrumb */}
       <div className="container mx-auto px-4 py-6">
-        <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
-          <Link href="/" className="hover:text-blue-600 transition-colors">
+        <div className="flex items-center text-sm text-[var(--foreground-secondary)]">
+          <Link href="/" className="hover:text-primary transition-colors">
             Home
           </Link>
           <ChevronRight className="h-4 w-4 mx-2" />
-          <Link href="/products" className="hover:text-blue-600 transition-colors">
+          <Link href="/products" className="hover:text-primary transition-colors">
             Products
           </Link>
           <ChevronRight className="h-4 w-4 mx-2" />
-          <Link href={`/categories/${product.category}`} className="hover:text-blue-600 transition-colors">
+          <Link href={`/categories/${product.category}`} className="hover:text-primary transition-colors">
             {product.category}
           </Link>
           <ChevronRight className="h-4 w-4 mx-2" />
-          <span className="text-gray-900 dark:text-white font-medium truncate max-w-xs">
+          <span className="text-[var(--foreground)] font-medium truncate max-w-xs">
             {product.name}
           </span>
         </div>
@@ -187,19 +185,19 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               transition={{ duration: 0.3 }}
               className="mb-6"
             >
-              <div className="relative h-96 md:h-125 rounded-2xl overflow-hidden bg-gray-100 dark:bg-gray-800">
+              <div className="relative h-96 md:h-125 rounded-2xl overflow-hidden bg-[var(--background-tertiary)]">
                 <img
                   src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />
                 {(product.stock || 10) < 10 && (product.stock || 10) > 0 && (
-                  <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  <div className="absolute top-4 left-4 bg-warning text-white px-3 py-1 rounded-full text-sm font-medium">
                     Only {product.stock} left
                   </div>
                 )}
                 {(product.stock || 0) === 0 && (
-                  <div className="absolute top-4 left-4 bg-gray-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  <div className="absolute top-4 left-4 bg-error text-white px-3 py-1 rounded-full text-sm font-medium">
                     Out of Stock
                   </div>
                 )}
@@ -214,8 +212,8 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   onClick={() => setSelectedImage(index)}
                   className={`shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
                     selectedImage === index
-                      ? 'border-blue-500 ring-2 ring-blue-200 dark:ring-blue-900'
-                      : 'border-gray-300 dark:border-gray-700 hover:border-gray-400'
+                      ? 'border-primary ring-2 ring-primary/20'
+                      : 'border-[var(--border)] hover:border-primary/50'
                   }`}
                 >
                   <img
@@ -238,7 +236,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               {/* Category and Rating */}
               <div className="flex items-center justify-between mb-4">
                 <Link href={`/categories/${product.category}`}>
-                  <span className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm font-medium hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors">
+                  <span className="badge-primary hover:opacity-80 transition-opacity">
                     {product.category}
                   </span>
                 </Link>
@@ -249,43 +247,43 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                         key={i}
                         className={`h-5 w-5 ${
                           i < Math.floor(product.rating || 0)
-                            ? 'text-yellow-400 fill-yellow-400'
-                            : 'text-gray-300'
+                            ? 'text-warning fill-warning'
+                            : 'text-[var(--foreground-tertiary)]'
                         }`}
                       />
                     ))}
                   </div>
-                  <span className="text-gray-600 dark:text-gray-400">
+                  <span className="text-[var(--foreground-secondary)]">
                     ({(product.rating || 0).toFixed(1)}/5)
                   </span>
                 </div>
               </div>
 
               {/* Product Name */}
-              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold text-[var(--foreground)] mb-4">
                 {product.name}
               </h1>
 
               {/* Description */}
-              <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg">
+              <p className="text-[var(--foreground-secondary)] mb-6 text-lg">
                 {product.description || 'No description available'}
               </p>
 
               {/* Price */}
               <div className="mb-8">
                 <div className="flex items-center gap-4 mb-2">
-                  <span className="text-4xl font-bold text-gray-900 dark:text-white">
+                  <span className="text-4xl font-bold text-[var(--foreground)]">
                     ${product.price.toFixed(2)}
                   </span>
                 </div>
-                <p className="text-gray-500 dark:text-gray-400">
+                <p className="text-[var(--foreground-secondary)]">
                   {(product.stock || 0) > 0 ? (
-                    <span className="text-green-600 dark:text-green-400 font-medium">
+                    <span className="text-success font-medium">
                       <CheckCircle className="h-4 w-4 inline mr-1" />
                       In Stock • {product.stock} available
                     </span>
                   ) : (
-                    <span className="text-red-600 dark:text-red-400 font-medium">
+                    <span className="text-error font-medium">
                       Out of Stock
                     </span>
                   )}
@@ -294,28 +292,28 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
 
               {/* Quantity Selector */}
               <div className="mb-8">
-                <p className="text-gray-700 dark:text-gray-300 font-medium mb-3">Quantity</p>
+                <p className="text-[var(--foreground)] font-medium mb-3">Quantity</p>
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center border border-gray-300 dark:border-gray-700 rounded-lg">
+                  <div className="flex items-center border border-[var(--border)] rounded-lg">
                     <button
                       onClick={() => handleQuantityChange('decrease')}
                       disabled={quantity <= 1}
-                      className="p-3 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="p-3 hover:bg-[var(--background-tertiary)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
-                      <Minus className="h-4 w-4" />
+                      <Minus className="h-4 w-4 text-[var(--foreground-secondary)]" />
                     </button>
-                    <span className="w-12 text-center text-lg font-semibold">
+                    <span className="w-12 text-center text-lg font-semibold text-[var(--foreground)]">
                       {quantity}
                     </span>
                     <button
                       onClick={() => handleQuantityChange('increase')}
                       disabled={quantity >= (product.stock || 10)}
-                      className="p-3 hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="p-3 hover:bg-[var(--background-tertiary)] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
-                      <Plus className="h-4 w-4" />
+                      <Plus className="h-4 w-4 text-[var(--foreground-secondary)]" />
                     </button>
                   </div>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-[var(--foreground-tertiary)]">
                     {product.stock || 10} units available
                   </p>
                 </div>
@@ -330,29 +328,27 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   disabled={(product.stock || 0) === 0}
                   className={`flex-1 flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all ${
                     (product.stock || 0) === 0
-                      ? 'bg-gray-300 dark:bg-gray-700 cursor-not-allowed'
-                      : 'bg-blue-600 hover:bg-blue-700 text-white'
+                      ? 'bg-[var(--background-tertiary)] text-[var(--foreground-tertiary)] cursor-not-allowed'
+                      : 'btn-primary'
                   }`}
                 >
                   <ShoppingCart className="h-6 w-6" />
-                  {(product.stock || 0) === 0 ? 'Out of Stock' : `Add to Cart
-                  (${quantity})`
-                  }
+                  {(product.stock || 0) === 0 ? 'Out of Stock' : `Add to Cart (${quantity})`}
                 </motion.button>
 
-               <motion.button
+                <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleBuyNow}
                   disabled={(product.stock || 0) === 0}
                   className={`flex-1 flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all ${
                     (product.stock || 0) === 0
-                      ? 'bg-gray-300 dark:bg-gray-700 cursor-not-allowed'
-                      : ''
+                      ? 'bg-[var(--background-tertiary)] text-[var(--foreground-tertiary)] cursor-not-allowed'
+                      : 'btn-secondary'
                   }`}
                 >
-                Buy Now
-                <ArrowLeft className='h-6 w-6 rotate-180' />
+                  Buy Now
+                  <ArrowLeft className="h-6 w-6 rotate-180" />
                 </motion.button>
               </div>
 
@@ -364,45 +360,45 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   onClick={() => setIsFavorite(!isFavorite)}
                   className={`w-full flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-lg border-2 transition-all ${
                     isFavorite
-                      ? 'border-red-500 text-red-500 bg-red-50 dark:bg-red-900/20'
-                      : 'border-gray-300 dark:border-gray-700 hover:border-gray-400'
+                      ? 'border-error text-error bg-error/10'
+                      : 'border-[var(--border)] text-[var(--foreground-secondary)] hover:border-error/50 hover:text-error'
                   }`}
                 >
-                  <Heart className={`h-6 w-6 ${isFavorite ? 'fill-red-500' : ''}`} />
+                  <Heart className={`h-6 w-6 ${isFavorite ? 'fill-error' : ''}`} />
                   {isFavorite ? 'Added to Wishlist' : 'Add to Wishlist'}
                 </motion.button>
               </div>
 
               {/* Features */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <Truck className="h-6 w-6 text-blue-500" />
+                <div className="flex items-center gap-3 p-4 bg-[var(--background-secondary)] rounded-lg border border-[var(--border)]">
+                  <Truck className="h-6 w-6 text-primary" />
                   <div>
-                    <p className="font-semibold">Free Shipping</p>
-                    <p className="text-sm text-gray-500">Orders over $50</p>
+                    <p className="font-semibold text-[var(--foreground)]">Free Shipping</p>
+                    <p className="text-sm text-[var(--foreground-tertiary)]">Orders over $50</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <RotateCcw className="h-6 w-6 text-green-500" />
+                <div className="flex items-center gap-3 p-4 bg-[var(--background-secondary)] rounded-lg border border-[var(--border)]">
+                  <RotateCcw className="h-6 w-6 text-success" />
                   <div>
-                    <p className="font-semibold">30-Day Returns</p>
-                    <p className="text-sm text-gray-500">Easy returns</p>
+                    <p className="font-semibold text-[var(--foreground)]">30-Day Returns</p>
+                    <p className="text-sm text-[var(--foreground-tertiary)]">Easy returns</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
-                  <Shield className="h-6 w-6 text-purple-500" />
+                <div className="flex items-center gap-3 p-4 bg-[var(--background-secondary)] rounded-lg border border-[var(--border)]">
+                  <Shield className="h-6 w-6 text-accent" />
                   <div>
-                    <p className="font-semibold">Secure Payment</p>
-                    <p className="text-sm text-gray-500">100% secure</p>
+                    <p className="font-semibold text-[var(--foreground)]">Secure Payment</p>
+                    <p className="text-sm text-[var(--foreground-tertiary)]">100% secure</p>
                   </div>
                 </div>
               </div>
 
               {/* Share */}
               <div className="flex items-center gap-4">
-                <p className="text-gray-700 dark:text-gray-300">Share:</p>
-                <button className="p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg">
-                  <Share2 className="h-5 w-5" />
+                <p className="text-[var(--foreground-secondary)]">Share:</p>
+                <button className="p-2 hover:bg-[var(--background-tertiary)] rounded-lg transition-colors">
+                  <Share2 className="h-5 w-5 text-[var(--foreground-secondary)]" />
                 </button>
               </div>
             </motion.div>
@@ -418,12 +414,12 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
             className="mt-16"
           >
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+              <h2 className="text-2xl font-bold text-[var(--foreground)]">
                 Related Products
               </h2>
               <Link
                 href={`/categories/${product.category}`}
-                className="text-blue-600 hover:text-blue-700 font-medium flex items-center gap-2"
+                className="text-primary hover:text-primary-dark font-medium flex items-center gap-2 transition-colors"
               >
                 View All
                 <ChevronRight className="h-4 w-4" />
@@ -434,7 +430,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               {relatedProducts.map((relatedProduct) => (
                 <div
                   key={relatedProduct.id}
-                  className="group bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow"
+                  className="group card-hover overflow-hidden"
                 >
                   <Link href={`/products/${relatedProduct.id}`}>
                     <div className="relative h-48 overflow-hidden">
@@ -445,14 +441,14 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                       />
                     </div>
                     <div className="p-4">
-                      <h3 className="font-semibold text-lg mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      <h3 className="font-semibold text-lg mb-2 text-[var(--foreground)] group-hover:text-primary transition-colors">
                         {relatedProduct.name}
                       </h3>
                       <div className="flex items-center justify-between">
-                        <span className="text-xl font-bold text-blue-600 dark:text-blue-400">
+                        <span className="text-xl font-bold text-primary">
                           ${relatedProduct.price.toFixed(2)}
                         </span>
-                        <span className="text-sm px-2 py-1 bg-gray-100 dark:bg-gray-700 rounded">
+                        <span className="badge-primary text-sm">
                           {relatedProduct.category}
                         </span>
                       </div>

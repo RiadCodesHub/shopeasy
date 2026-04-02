@@ -16,9 +16,13 @@ import { useState, useEffect } from 'react';
 
 const CartSidebar = () => {
   const dispatch = useAppDispatch();
-  const { items, totalQuantity, totalPrice, isCartOpen } = useAppSelector(
-    (state) => state.cart || {
-    items: [], totalQuantity: 0, totalPrice: 0, isCartOpen: false});
+  const cart = useAppSelector((state) => state.cart);
+  const { items, totalQuantity, totalPrice, isCartOpen } = cart || {
+    items: [], 
+    totalQuantity: 0, 
+    totalPrice: 0, 
+    isCartOpen: false
+  };
   const { data: session } = useSession();
   const [isMounted, setIsMounted] = useState(false);
 
@@ -26,10 +30,9 @@ const CartSidebar = () => {
     setIsMounted(true);
   }, []);
 
-
   const handleClose = () => {
-    if(isMounted) {
-    dispatch(toggleCart());
+    if (isMounted) {
+      dispatch(toggleCart());
     }
   };
 
@@ -42,14 +45,14 @@ const CartSidebar = () => {
 
   const checkoutUrl = session ? '/checkout' : '/auth/login?returnUrl=/checkout';
 
-  if(!isMounted) {
+  if (!isMounted) {
     return null;
   }
 
   const safeItems = items || [];
   const safeTotalQuantity = totalQuantity || 0;
   const safeTotalPrice = totalPrice || 0;
-  
+
   return (
     <AnimatePresence>
       {isCartOpen && (
@@ -60,7 +63,7 @@ const CartSidebar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={handleClose}
-            className="fixed inset-0 bg-black bg-opacity-50 z-50"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
           />
 
           {/* Sidebar */}
@@ -69,21 +72,23 @@ const CartSidebar = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 20 }}
-            className="fixed right-0 top-0 h-full w-full max-w-md bg-white dark:bg-gray-900 shadow-xl z-50 flex flex-col"
+            className="fixed right-0 top-0 h-full w-full max-w-md bg-[var(--background-secondary)] shadow-2xl z-50 flex flex-col border-l border-[var(--border)]"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b dark:border-gray-800">
+            <div className="flex items-center justify-between p-6 border-b border-[var(--border)]">
               <div className="flex items-center gap-3">
-                <ShoppingBag className="h-6 w-6" />
-                <h2 className="text-xl font-semibold">
-                  Shopping Cart ({totalQuantity})
+                <div className="p-2 bg-gradient-to-r from-primary to-accent rounded-lg">
+                  <ShoppingBag className="h-5 w-5 text-white" />
+                </div>
+                <h2 className="text-xl font-semibold text-[var(--foreground)]">
+                  Shopping Cart ({safeTotalQuantity})
                 </h2>
               </div>
               <button
                 onClick={handleClose}
-                className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="p-2 rounded-full hover:bg-[var(--background-tertiary)] transition-colors"
               >
-                <X className="h-6 w-6" />
+                <X className="h-6 w-6 text-[var(--foreground-secondary)]" />
               </button>
             </div>
 
@@ -91,14 +96,16 @@ const CartSidebar = () => {
             <div className="flex-1 overflow-y-auto p-4 sm:p-6">
               {safeItems.length === 0 ? (
                 <div className="text-center py-12">
-                  <ShoppingBag className="h-16 w-16 mx-auto text-gray-300 mb-4" />
-                  <p className="text-gray-500 dark:text-gray-400">
+                  <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-[var(--background-tertiary)] flex items-center justify-center">
+                    <ShoppingBag className="h-12 w-12 text-[var(--foreground-tertiary)]" />
+                  </div>
+                  <p className="text-[var(--foreground-secondary)] mb-4">
                     Your cart is empty
                   </p>
                   <Link
                     href="/"
                     onClick={handleClose}
-                    className="inline-block mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                    className="btn-primary inline-block"
                   >
                     Start Shopping
                   </Link>
@@ -112,19 +119,21 @@ const CartSidebar = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="relative flex items-center gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg"
+                      className="relative flex items-center gap-4 p-4 bg-[var(--background-tertiary)] rounded-lg border border-[var(--border)]"
                     >
-                      {/* Product Image - Link */}
+                      {/* Product Image */}
                       <Link 
                         href={`/products/${item.id}`}
                         onClick={handleClose}
                         className="shrink-0"
                       >
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="h-16 w-16 object-cover rounded"
-                        />
+                        <div className="w-16 h-16 rounded-lg overflow-hidden bg-[var(--background-secondary)]">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                          />
+                        </div>
                       </Link>
                       
                       {/* Product Details */}
@@ -132,11 +141,11 @@ const CartSidebar = () => {
                         <Link 
                           href={`/products/${item.id}`}
                           onClick={handleClose}
-                          className="font-medium hover:text-blue-600 dark:hover:text-blue-400 transition-colors line-clamp-1"
+                          className="font-medium text-[var(--foreground)] hover:text-primary transition-colors line-clamp-1"
                         >
                           {item.name}
                         </Link>
-                        <p className="text-blue-600 dark:text-blue-400 font-semibold mt-1">
+                        <p className="text-primary font-semibold mt-1">
                           ${item.price.toFixed(2)}
                         </p>
                       </div>
@@ -145,12 +154,12 @@ const CartSidebar = () => {
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => dispatch(removeFromCart(item.id))}
-                          className="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
+                          className="p-1.5 rounded hover:bg-[var(--background-secondary)] transition-colors"
                         >
-                          <Minus className="h-4 w-4" />
+                          <Minus className="h-4 w-4 text-[var(--foreground-secondary)]" />
                         </button>
                         
-                        <span className="w-8 text-center font-medium">
+                        <span className="w-8 text-center font-medium text-[var(--foreground)]">
                           {item.quantity}
                         </span>
                         
@@ -162,16 +171,16 @@ const CartSidebar = () => {
                             image: item.image,
                             quantity: 1
                           }))}
-                          className="p-1.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700"
+                          className="p-1.5 rounded hover:bg-[var(--background-secondary)] transition-colors"
                         >
-                          <Plus className="h-4 w-4" />
+                          <Plus className="h-4 w-4 text-[var(--foreground-secondary)]" />
                         </button>
                       </div>
 
                       {/* Remove Button */}
                       <button
                         onClick={() => dispatch(removeItemCompletely(item.id))}
-                        className="p-2 text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded"
+                        className="p-2 text-error hover:bg-error/10 rounded-lg transition-colors"
                       >
                         <Trash2 className="h-5 w-5" />
                       </button>
@@ -182,25 +191,38 @@ const CartSidebar = () => {
             </div>
 
             {/* Footer */}
-            {items.length > 0 && (
+            {safeItems.length > 0 && (
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="border-t dark:border-gray-800 p-6 space-y-4"
+                className="border-t border-[var(--border)] p-6 space-y-4 bg-[var(--background-secondary)]"
               >
                 {/* Total */}
-                <div className="flex justify-between text-lg">
-                  <span>Total:</span>
-                  <span className="font-bold text-2xl text-blue-600 dark:text-blue-400">
-                    ${totalPrice.toFixed(2)}
-                  </span>
+                <div className="space-y-2">
+                  <div className="flex justify-between text-sm text-[var(--foreground-secondary)]">
+                    <span>Subtotal</span>
+                    <span>${safeTotalPrice.toFixed(2)}</span>
+                  </div>
+                  <div className="flex justify-between text-sm text-[var(--foreground-secondary)]">
+                    <span>Shipping</span>
+                    <span>Calculated at checkout</span>
+                  </div>
+                  <div className="divider"></div>
+                  <div className="flex justify-between text-lg">
+                    <span className="font-semibold text-[var(--foreground)]">Total:</span>
+                    <span className="font-bold text-2xl text-primary">
+                      ${safeTotalPrice.toFixed(2)}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Auth Status Message */}
                 {!session && (
-                  <p className="text-xs text-center text-amber-600 dark:text-amber-400">
-                    ⚠️ You'll need to login before checkout
-                  </p>
+                  <div className="p-3 bg-warning/10 rounded-lg border border-warning/20">
+                    <p className="text-xs text-center text-warning">
+                      ⚠️ You'll need to login before checkout
+                    </p>
+                  </div>
                 )}
 
                 {/* Action Buttons */}
@@ -208,7 +230,7 @@ const CartSidebar = () => {
                   <Link
                     href="/cart"
                     onClick={handleClose}
-                    className="flex-1 px-4 py-3 border-2 border-gray-300 dark:border-gray-700 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors text-center font-medium"
+                    className="flex-1 btn-secondary text-center"
                   >
                     View Cart
                   </Link>
@@ -216,7 +238,7 @@ const CartSidebar = () => {
                   <Link
                     href={checkoutUrl}
                     onClick={handleClose}
-                    className="flex-1 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors text-center font-medium flex items-center justify-center gap-2"
+                    className="flex-1 btn-primary flex items-center justify-center gap-2"
                   >
                     Checkout
                     <ArrowRight className="h-5 w-5" />
@@ -226,7 +248,7 @@ const CartSidebar = () => {
                 {/* Clear Cart */}
                 <button
                   onClick={handleClearCart}
-                  className="w-full text-center text-red-600 hover:text-red-700 text-sm font-medium"
+                  className="w-full text-center text-error hover:text-error/80 text-sm font-medium transition-colors"
                 >
                   Clear Cart
                 </button>

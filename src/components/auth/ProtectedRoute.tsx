@@ -11,35 +11,38 @@ interface ProtectedRouteProps {
 export default function ProtectedRoute({
     children,
     adminOnly = false
-} : ProtectedRouteProps ) {
-    const { data: session, status} = useSession();
+}: ProtectedRouteProps) {
+    const { data: session, status } = useSession();
     const router = useRouter();
 
     useEffect(() => {
-        if(status === 'loading') return;
+        if (status === 'loading') return;
     
-        if(!session) {
+        if (!session) {
             router.push('/auth/login');
             return;
         }
 
-        if(adminOnly && session.user?.role !== 'admin') {
+        if (adminOnly && session.user?.role !== 'admin') {
             router.push('/unauthorized');
-            return
+            return;
         }
-    },  [session, status, router, adminOnly]);
+    }, [session, status, router, adminOnly]);
 
-    if(status === 'loading') {
+    if (status === 'loading') {
         return (
-                  <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-      </div>
+            <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
+                <div className="text-center">
+                    <div className="loading-spinner mx-auto mb-4"></div>
+                    <p className="text-[var(--foreground-secondary)]">Verifying access...</p>
+                </div>
+            </div>
         );
     }
 
-    if(!session) {
-            return null;
-        }
-    return <>{children}</>
-
-    }  
+    if (!session) {
+        return null;
+    }
+    
+    return <>{children}</>;
+}

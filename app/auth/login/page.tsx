@@ -42,16 +42,20 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-50 to-purple-50 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+      <div className="card max-w-md w-full">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
-          <p className="text-gray-600">Sign in to your ShopEasy account</p>
+          <h1 className="text-3xl font-bold text-[var(--foreground)] mb-2">
+            Welcome Back
+          </h1>
+          <p className="text-[var(--foreground-secondary)]">
+            Sign in to your ShopEasy account
+          </p>
         </div>
 
         {error && (
-          <div className="mb-6 p-4 bg-red-50 rounded-lg flex items-center gap-2 text-red-600">
-            <AlertCircle className="h-5 w-5" />
+          <div className="alert-error mb-6 flex items-center gap-2">
+            <AlertCircle className="h-5 w-5 flex-shrink-0" />
             <p className="text-sm font-medium">{error}</p>
           </div>
         )}
@@ -59,16 +63,16 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email Field */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-[var(--foreground-secondary)] mb-2">
               Email Address
             </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[var(--foreground-tertiary)]" />
               <input
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="input-field pl-10"
                 placeholder="you@example.com"
                 required
               />
@@ -77,29 +81,32 @@ export default function LoginPage() {
 
           {/* Password Field */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-[var(--foreground-secondary)] mb-2">
               Password
             </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[var(--foreground-tertiary)]" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="input-field pl-10 pr-12"
                 placeholder="••••••••"
                 required
               />
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[var(--foreground-tertiary)] hover:text-[var(--foreground-secondary)] transition-colors"
               >
                 {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
               </button>
             </div>
             <div className="mt-2 text-right">
-              <Link href="/auth/forgot-password" className="text-sm text-blue-600 hover:text-blue-700">
+              <Link 
+                href="/auth/forgot-password" 
+                className="text-sm text-primary hover:text-primary-dark transition-colors"
+              >
                 Forgot password?
               </Link>
             </div>
@@ -109,7 +116,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full py-3 px-4 bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-medium flex items-center justify-center gap-2"
+            className="btn-primary w-full flex items-center justify-center gap-2"
           >
             {isLoading ? (
               <>
@@ -122,9 +129,12 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <p className="mt-8 text-center text-sm text-gray-600">
+        <p className="mt-8 text-center text-sm text-[var(--foreground-secondary)]">
           Don't have an account?{' '}
-          <Link href="/auth/signup" className="text-blue-600 hover:text-blue-700 font-medium">
+          <Link 
+            href="/auth/signup" 
+            className="text-primary hover:text-primary-dark font-medium transition-colors"
+          >
             Sign up
           </Link>
         </p>

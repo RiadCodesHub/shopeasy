@@ -102,7 +102,7 @@ const Header = () => {
               transition={{ duration: 0.5 }}
             >
               <Link href="/" className="text-2xl font-bold">
-                Shop<span className="text-primary">Easy</span>
+                Shop<span className="text-[var(--primary)]">Easy</span>
               </Link>
             </motion.div>
 
@@ -151,7 +151,7 @@ const Header = () => {
                   type="submit"
                   className="absolute right-3 top-1/2 -translate-y-1/2"
                 >
-                  <Search className="h-5 w-5 text-[var(--foreground-tertiary)] hover:text-primary transition-colors" />
+                  <Search className="h-5 w-5 text-[var(--foreground-tertiary)] hover:text-[var(--primary)] transition-colors" />
                 </motion.button>
                 
                 {searchQuery && (
@@ -215,7 +215,7 @@ const Header = () => {
                       className="absolute right-0 mt-2 w-64 bg-[var(--background-secondary)] rounded-xl shadow-xl border border-[var(--border)] overflow-hidden z-50"
                     >
                       {/* User Info Header */}
-                      <div className="px-4 py-3 bg-gradient-to-r from-primary/10 to-accent/10 border-b border-[var(--border)]">
+                      <div className="px-4 py-3 bg-[linear-gradient(to_right,var(--primary)/0.1,var(--accent)/0.1)] border-b border-[var(--border)]">
                         <p className="font-semibold text-[var(--foreground)]">
                           {session.user?.name}
                         </p>
@@ -246,7 +246,7 @@ const Header = () => {
                           <Link
                             href={adminMenuItem.href}
                             onClick={() => setIsProfileMenuOpen(false)}
-                            className="flex items-center gap-3 px-4 py-2 text-primary hover:bg-primary/10 rounded-lg transition-colors mt-1"
+                            className="flex items-center gap-3 px-4 py-2 text-[var(--primary)] hover:bg-primary/10 rounded-lg transition-colors mt-1"
                           >
                             {adminMenuItem.icon}
                             <span className="font-medium">{adminMenuItem.label}</span>
@@ -256,7 +256,7 @@ const Header = () => {
                         {/* Sign Out */}
                         <button
                           onClick={handleSignOut}
-                          className="w-full flex items-center gap-3 px-4 py-2 text-error hover:bg-error/10 rounded-lg transition-colors mt-2 border-t border-[var(--border)] pt-2"
+                          className="w-full flex items-center gap-3 px-4 py-2 text-error hover:bg-[var(--error)]/10 rounded-lg transition-colors mt-2 border-t border-[var(--border)] pt-2"
                         >
                           <LogOut className="h-4 w-4" />
                           <span>Sign Out</span>
@@ -371,7 +371,7 @@ const Header = () => {
                       <p className="text-xs text-[var(--foreground-tertiary)] mb-1">Account</p>
                       <Link 
                         href="/profile" 
-                        className="flex items-center gap-3 py-2 text-[var(--foreground-secondary)] hover:text-primary transition-colors"
+                        className="flex items-center gap-3 py-2 text-[var(--foreground-secondary)] hover:text-[var(--primary)] transition-colors"
                         onClick={() => dispatch(toggleMobileMenu())}
                       >
                         <User className="h-5 w-5" />
@@ -379,7 +379,7 @@ const Header = () => {
                       </Link>
                       <Link 
                         href="/orders" 
-                        className="flex items-center gap-3 py-2 text-[var(--foreground-secondary)] hover:text-primary transition-colors"
+                        className="flex items-center gap-3 py-2 text-[var(--foreground-secondary)] hover:text-[var(--primary)] transition-colors"
                         onClick={() => dispatch(toggleMobileMenu())}
                       >
                         <Package className="h-5 w-5" />
@@ -399,7 +399,7 @@ const Header = () => {
                   ) : (
                     <Link 
                       href="/auth/login" 
-                      className="flex items-center gap-3 py-2 text-primary hover:text-primary/80 transition-colors"
+                      className="flex items-center gap-3 py-2 text-[var(--primary)] hover:text-[var(--primary)]/80 transition-colors"
                       onClick={() => dispatch(toggleMobileMenu())}
                     >
                       <User className="h-5 w-5" />
