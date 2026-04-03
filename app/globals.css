@@ -1,35 +1,24 @@
 @import "tailwindcss";
 
-/* Theme variables for Tailwind utilities */
+/* Define theme variables for Tailwind to generate utilities */
 @theme {
   --color-primary: #3b82f6;
   --color-primary-dark: #2563eb;
   --color-accent: #8b5cf6;
-  --color-background: #ffffff;
-  --color-background-secondary: #f9fafb;
-  --color-background-tertiary: #f3f4f6;
-  --color-foreground: #111827;
-  --color-foreground-secondary: #6b7280;
-  --color-foreground-tertiary: #9ca3af;
-  --color-border: #e5e7eb;
-  --color-border-dark: #d1d5db;
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-info: #3b82f6;
-  --color-success-bg: #dcfce7;
-  --color-warning-bg: #fef9c3;
-  --color-error-bg: #fee2e2;
-  --color-info-bg: #dbeafe;
   
-  /* Dark mode colors */
-  --color-background-dark: #0a0a0f;
-  --color-background-secondary-dark: #111114;
-  --color-foreground-dark: #ffffff;
-  /* etc... */
+  /* Spacing */
+  --spacing: 0.25rem;
+  
+  /* Border radius */
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  
+  /* Shadows */
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 }
 
-/* Base layer for CSS custom properties */
+/* CSS custom properties for dynamic theming */
 @layer base {
   :root {
     --primary: #3b82f6;
@@ -82,11 +71,15 @@
   }
 }
 
+/* Components - Write plain CSS, NO @apply inside @layer components */
 @layer components {
-  /* Buttons */
   .btn-primary {
-    @apply px-6 py-3 rounded-lg font-semibold text-white;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
     background-color: var(--primary);
+    color: white;
+    border-radius: 0.5rem;
+    font-weight: 600;
     transition-property: background-color;
     transition-duration: 150ms;
   }
@@ -94,61 +87,87 @@
     background-color: var(--primary-dark);
   }
   .btn-primary:disabled {
-    @apply opacity-50 cursor-not-allowed;
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   .btn-secondary {
-    @apply px-6 py-3 rounded-lg font-semibold transition-colors;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
     border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    font-weight: 600;
     color: var(--foreground);
     background-color: var(--background-secondary);
+    transition-property: background-color;
+    transition-duration: 150ms;
   }
   .btn-secondary:hover {
     background-color: var(--background-tertiary);
   }
 
   .btn-outline {
-    @apply px-6 py-3 rounded-lg font-semibold transition-colors;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
     border: 2px solid var(--primary);
+    border-radius: 0.5rem;
+    font-weight: 600;
     color: var(--primary);
+    background-color: transparent;
+    transition-property: all;
+    transition-duration: 150ms;
   }
   .btn-outline:hover {
-    @apply bg-primary text-white;
+    background-color: var(--primary);
+    color: white;
   }
 
   .btn-danger {
-    @apply px-6 py-3 rounded-lg font-semibold text-white transition-colors;
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
     background-color: var(--error);
+    color: white;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition-property: background-color;
+    transition-duration: 150ms;
   }
   .btn-danger:hover {
     background-color: #b91c1c;
   }
 
-  /* Cards */
   .card {
-    @apply rounded-xl shadow-lg p-6;
     background-color: var(--background-secondary);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
     border: 1px solid var(--border);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
   }
 
   .card-hover {
-    @apply card transition-shadow cursor-pointer;
+    transition-property: box-shadow, border-color;
+    transition-duration: 150ms;
+    cursor: pointer;
   }
   .card-hover:hover {
-    @apply shadow-xl;
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
     border-color: color-mix(in srgb, var(--primary) 50%, transparent);
   }
 
-  /* Input Fields */
   .input-field {
-    @apply w-full px-4 py-3 rounded-lg transition-all;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
     border: 1px solid var(--border);
     background-color: var(--background);
     color: var(--foreground);
+    transition-property: all;
+    transition-duration: 150ms;
   }
   .input-field:focus {
-    @apply outline-none ring-2 ring-primary;
-    border-color: transparent;
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 20%, transparent);
   }
   .input-field::placeholder {
     color: var(--foreground-tertiary);
@@ -158,12 +177,17 @@
     border-color: var(--error);
   }
   .input-error:focus {
-    @apply ring-error;
+    border-color: var(--error);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--error) 20%, transparent);
   }
 
-  /* Badges */
   .badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
   }
 
   .badge-primary {
@@ -186,90 +210,114 @@
     color: var(--error);
   }
 
-  /* Navigation */
   .nav-link {
-    @apply transition-colors font-medium;
     color: var(--foreground-secondary);
+    transition-property: color;
+    transition-duration: 150ms;
+    font-weight: 500;
+    text-decoration: none;
   }
   .nav-link:hover {
     color: var(--primary);
   }
 
   .nav-link-active {
-    @apply font-semibold;
     color: var(--primary);
+    font-weight: 600;
   }
 
-  /* Dividers */
   .divider {
-    @apply my-4;
     border-top: 1px solid var(--border);
+    margin: 1rem 0;
   }
 
-  /* Loading */
   .loading-spinner {
-    @apply rounded-full h-12 w-12;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
     border-bottom: 2px solid var(--primary);
     animation: spin 1s linear infinite;
   }
-  
+
   @keyframes spin {
     to {
       transform: rotate(360deg);
     }
   }
 
-  /* Alerts */
   .alert-success {
-    @apply p-4 rounded-lg;
     background-color: var(--success-bg);
     color: var(--success);
+    padding: 1rem;
+    border-radius: 0.5rem;
     border: 1px solid color-mix(in srgb, var(--success) 20%, transparent);
   }
 
   .alert-error {
-    @apply p-4 rounded-lg;
     background-color: var(--error-bg);
     color: var(--error);
+    padding: 1rem;
+    border-radius: 0.5rem;
     border: 1px solid color-mix(in srgb, var(--error) 20%, transparent);
   }
 
   .alert-warning {
-    @apply p-4 rounded-lg;
     background-color: var(--warning-bg);
     color: var(--warning);
+    padding: 1rem;
+    border-radius: 0.5rem;
     border: 1px solid color-mix(in srgb, var(--warning) 20%, transparent);
   }
 
   .alert-info {
-    @apply p-4 rounded-lg;
     background-color: var(--info-bg);
     color: var(--info);
+    padding: 1rem;
+    border-radius: 0.5rem;
     border: 1px solid color-mix(in srgb, var(--info) 20%, transparent);
   }
 
-  /* Modal */
   .modal-overlay {
-    @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50;
+    position: fixed;
+    inset: 0;
+    background-color: rgb(0 0 0 / 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 50;
   }
 
   .modal-content {
-    @apply fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-           rounded-xl shadow-2xl p-6 z-50 w-full max-w-md;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     background-color: var(--background-secondary);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
     border: 1px solid var(--border);
+    z-index: 50;
+    width: 100%;
+    max-width: 28rem;
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   }
 
-  /* Dropdown */
   .dropdown {
-    @apply absolute mt-2 rounded-lg shadow-lg py-2 z-50 min-w-[200px];
+    position: absolute;
+    margin-top: 0.5rem;
     background-color: var(--background-secondary);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
     border: 1px solid var(--border);
+    z-index: 50;
+    min-width: 200px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1);
   }
 
   .dropdown-item {
-    @apply px-4 py-2 transition-colors cursor-pointer;
+    padding: 0.5rem 1rem;
     color: var(--foreground-secondary);
+    transition-property: background-color, color;
+    transition-duration: 150ms;
+    cursor: pointer;
   }
   .dropdown-item:hover {
     background-color: var(--background-tertiary);
@@ -277,8 +325,8 @@
   }
 }
 
+/* Utilities - These can use @apply if needed */
 @layer utilities {
-  /* Line Clamp */
   .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
@@ -300,7 +348,6 @@
     -webkit-line-clamp: 3;
   }
 
-  /* Scrollbar Hide */
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -310,7 +357,6 @@
     display: none;
   }
 
-  /* Animations */
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
@@ -365,17 +411,19 @@
     }
   }
 
-  /* Text Gradient */
   .text-gradient {
-    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    background-clip: text;
+    color: transparent;
   }
 
-  /* Glass Morphism */
   .glass {
-    @apply bg-white/10 dark:bg-black/10 backdrop-blur-md;
+    background-color: color-mix(in srgb, white 10%, transparent);
+    backdrop-filter: blur(12px);
     border: 1px solid color-mix(in srgb, white 20%, transparent);
   }
   .dark .glass {
+    background-color: color-mix(in srgb, black 10%, transparent);
     border-color: color-mix(in srgb, white 10%, transparent);
   }
 }
