@@ -92,7 +92,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-[var(--background)] border-b border-[var(--border)] shadow-sm">
+      <header className="sticky top-0 z-50 bg-(--background) border-b border-(--border) shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -102,7 +102,7 @@ const Header = () => {
               transition={{ duration: 0.5 }}
             >
               <Link href="/" className="text-2xl font-bold">
-                Shop<span className="text-[var(--primary)]">Easy</span>
+                Shop<span className="text-(--primary)">Easy</span>
               </Link>
             </motion.div>
 
@@ -151,7 +151,7 @@ const Header = () => {
                   type="submit"
                   className="absolute right-3 top-1/2 -translate-y-1/2"
                 >
-                  <Search className="h-5 w-5 text-[var(--foreground-tertiary)] hover:text-[var(--primary)] transition-colors" />
+                  <Search className="h-5 w-5 text-(--foreground-tertiary) hover:text-(--primary) transition-colors" />
                 </motion.button>
                 
                 {searchQuery && (
@@ -160,7 +160,7 @@ const Header = () => {
                     onClick={removeQuery}
                     className="absolute right-10 top-1/2 -translate-y-1/2"
                   >
-                    <X className="h-4 w-4 text-[var(--foreground-tertiary)] hover:text-error transition-colors" />
+                    <X className="h-4 w-4 text-(--foreground-tertiary) hover:text-error transition-colors" />
                   </button>
                 )}
               </form>
@@ -174,7 +174,7 @@ const Header = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleProfileClick}
-                  className="flex items-center gap-2 p-2 rounded-lg hover:bg-[var(--background-tertiary)] transition-colors"
+                  className="flex items-center gap-2 p-2 rounded-lg hover:bg-(--background-tertiary) transition-colors"
                 >
                   {session?.user?.image ? (
                     <div className="relative w-8 h-8 rounded-full overflow-hidden">
@@ -187,19 +187,19 @@ const Header = () => {
                     </div>
                   ) : (
                     <div className="relative">
-                      <User className="h-6 w-6 text-[var(--foreground-secondary)]" />
+                      <User className="h-6 w-6 text-(--foreground-secondary)" />
                       {status === 'authenticated' && (
-                        <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-success rounded-full border-2 border-[var(--background)]"></span>
+                        <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-success rounded-full border-2 border-(--background)"></span>
                       )}
                     </div>
                   )}
                   
                   {session && (
                     <>
-                      <span className="hidden md:block text-sm font-medium text-[var(--foreground)] max-w-25 truncate">
+                      <span className="hidden md:block text-sm font-medium text-(--foreground) max-w-25 truncate">
                         {session.user?.name?.split(' ')[0]}
                       </span>
-                      <ChevronDown className={`hidden md:block h-4 w-4 text-[var(--foreground-secondary)] transition-transform duration-200 ${isProfileMenuOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`hidden md:block h-4 w-4 text-(--foreground-secondary) transition-transform duration-200 ${isProfileMenuOpen ? 'rotate-180' : ''}`} />
                     </>
                   )}
                 </motion.button>
@@ -212,17 +212,17 @@ const Header = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute right-0 mt-2 w-64 bg-[var(--background-secondary)] rounded-xl shadow-xl border border-[var(--border)] overflow-hidden z-50"
+                      className="absolute right-0 mt-2 w-64 bg-(--background-secondary) rounded-xl shadow-xl border border-(--border) overflow-hidden z-50"
                     >
                       {/* User Info Header */}
-                      <div className="px-4 py-3 bg-[linear-gradient(to_right,var(--primary)/0.1,var(--accent)/0.1)] border-b border-[var(--border)]">
-                        <p className="font-semibold text-[var(--foreground)]">
+                      <div className="px-4 py-3 bg-[linear-gradient(to_right,var(--primary)/0.1,var(--accent)/0.1) border-b border-(--border)">
+                        <p className="font-semibold text-(--foreground)">
                           {session.user?.name}
                         </p>
-                        <p className="text-sm text-[var(--foreground-secondary)] truncate">
+                        <p className="text-sm text-(--foreground-secondary) truncate">
                           {session.user?.email}
                         </p>
-                        <p className="text-xs text-[var(--foreground-tertiary)] mt-1">
+                        <p className="text-xs text-(--foreground-tertiary) mt-1">
                           Role: {session.user?.role}
                         </p>
                       </div>
@@ -234,7 +234,7 @@ const Header = () => {
                             key={item.href}
                             href={item.href}
                             onClick={() => setIsProfileMenuOpen(false)}
-                            className="flex items-center gap-3 px-4 py-2 text-[var(--foreground-secondary)] hover:text-[var(--foreground)] hover:bg-[var(--background-tertiary)] rounded-lg transition-colors"
+                            className="flex items-center gap-3 px-4 py-2 text-(--foreground-secondary) hover:text-(--foreground) hover:bg-(--background-tertiary) rounded-lg transition-colors"
                           >
                             {item.icon}
                             <span>{item.label}</span>
@@ -246,7 +246,7 @@ const Header = () => {
                           <Link
                             href={adminMenuItem.href}
                             onClick={() => setIsProfileMenuOpen(false)}
-                            className="flex items-center gap-3 px-4 py-2 text-[var(--primary)] hover:bg-primary/10 rounded-lg transition-colors mt-1"
+                            className="flex items-center gap-3 px-4 py-2 text-(--primary) hover:bg-primary/10 rounded-lg transition-colors mt-1"
                           >
                             {adminMenuItem.icon}
                             <span className="font-medium">{adminMenuItem.label}</span>
@@ -256,7 +256,7 @@ const Header = () => {
                         {/* Sign Out */}
                         <button
                           onClick={handleSignOut}
-                          className="w-full flex items-center gap-3 px-4 py-2 text-error hover:bg-[var(--error)]/10 rounded-lg transition-colors mt-2 border-t border-[var(--border)] pt-2"
+                          className="w-full flex items-center gap-3 px-4 py-2 text-error hover:bg-(--error)/10 rounded-lg transition-colors mt-2 border-t border-(--border) pt-2"
                         >
                           <LogOut className="h-4 w-4" />
                           <span>Sign Out</span>
@@ -272,9 +272,9 @@ const Header = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => dispatch(toggleCart())}
-                className="relative p-2 rounded-full hover:bg-[var(--background-tertiary)] transition-colors"
+                className="relative p-2 rounded-full hover:bg-(--background-tertiary) transition-colors"
               >
-                <ShoppingCart className="h-6 w-6 text-[var(--foreground-secondary)]" />
+                <ShoppingCart className="h-6 w-6 text-(--foreground-secondary)" />
                 {totalQuantity > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
@@ -289,12 +289,12 @@ const Header = () => {
               {/* Mobile Menu Button */}
               <button
                 onClick={() => dispatch(toggleMobileMenu())}
-                className="md:hidden p-2 rounded-lg hover:bg-[var(--background-tertiary)] transition-colors"
+                className="md:hidden p-2 rounded-lg hover:bg-(--background-tertiary) transition-colors"
               >
                 {isMobileMenuOpen ? (
-                  <X className="h-6 w-6 text-[var(--foreground-secondary)]" />
+                  <X className="h-6 w-6 text-(--foreground-secondary)" />
                 ) : (
-                  <Menu className="h-6 w-6 text-[var(--foreground-secondary)]" />
+                  <Menu className="h-6 w-6 text-(--foreground-secondary)" />
                 )}
               </button>
             </div>
@@ -310,14 +310,14 @@ const Header = () => {
                 placeholder="Search products..."
                 className="input-field pl-10 pr-10"
               />
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[var(--foreground-tertiary)]" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={removeQuery}
                   className="absolute right-3 top-1/2 -translate-y-1/2"
                 >
-                  <X className="h-4 w-4 text-[var(--foreground-tertiary)] hover:text-error transition-colors" />
+                  <X className="h-4 w-4 text-(--foreground-tertiary) hover:text-error transition-colors" />
                 </button>
               )}
             </form>
@@ -331,7 +331,7 @@ const Header = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-[var(--background)] border-t border-[var(--border)]"
+              className="md:hidden bg-(--background) border-t border-(--border)"
             >
               <div className="container mx-auto px-4 py-4">
                 <nav className="flex flex-col space-y-3">
@@ -368,10 +368,10 @@ const Header = () => {
                   {session ? (
                     <>
                       <div className="divider my-2"></div>
-                      <p className="text-xs text-[var(--foreground-tertiary)] mb-1">Account</p>
+                      <p className="text-xs text-(--foreground-tertiary) mb-1">Account</p>
                       <Link 
                         href="/profile" 
-                        className="flex items-center gap-3 py-2 text-[var(--foreground-secondary)] hover:text-[var(--primary)] transition-colors"
+                        className="flex items-center gap-3 py-2 text-(--foreground-secondary) hover:text-(--primary) transition-colors"
                         onClick={() => dispatch(toggleMobileMenu())}
                       >
                         <User className="h-5 w-5" />
@@ -379,7 +379,7 @@ const Header = () => {
                       </Link>
                       <Link 
                         href="/orders" 
-                        className="flex items-center gap-3 py-2 text-[var(--foreground-secondary)] hover:text-[var(--primary)] transition-colors"
+                        className="flex items-center gap-3 py-2 text-(--foreground-secondary) hover:text-(--primary) transition-colors"
                         onClick={() => dispatch(toggleMobileMenu())}
                       >
                         <Package className="h-5 w-5" />
@@ -399,7 +399,7 @@ const Header = () => {
                   ) : (
                     <Link 
                       href="/auth/login" 
-                      className="flex items-center gap-3 py-2 text-[var(--primary)] hover:text-[var(--primary)]/80 transition-colors"
+                      className="flex items-center gap-3 py-2 text-(--primary) hover:text-(--primary)/80 transition-colors"
                       onClick={() => dispatch(toggleMobileMenu())}
                     >
                       <User className="h-5 w-5" />

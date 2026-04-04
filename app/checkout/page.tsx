@@ -31,7 +31,7 @@ const CheckoutProgress = ({ steps, currentStep, onStepClick }: CheckoutProgressP
               {index < steps.length - 1 && (
                 <div 
                   className={`absolute top-5 left-1/2 w-full h-0.5 -translate-y-1/2 transition-colors ${
-                    isCompleted ? 'bg-primary' : 'bg-[var(--border)]'
+                    isCompleted ? 'bg-primary' : 'bg-(--border)'
                   }`}
                   style={{ width: 'calc(100% - 2rem)', left: 'calc(50% + 1rem)' }}
                 />
@@ -56,7 +56,7 @@ const CheckoutProgress = ({ steps, currentStep, onStepClick }: CheckoutProgressP
                       ? 'bg-primary text-white' 
                       : isCurrent 
                         ? 'bg-primary text-white ring-4 ring-primary/20' 
-                        : 'bg-[var(--background-tertiary)] text-[var(--foreground-tertiary)]'
+                        : 'bg-(--background-tertiary) text-(--foreground-tertiary)'
                     }
                   `}
                 >
@@ -70,13 +70,13 @@ const CheckoutProgress = ({ steps, currentStep, onStepClick }: CheckoutProgressP
                 {/* Title */}
                 <span className={`
                   text-sm font-medium mb-1
-                  ${isCurrent ? 'text-primary' : 'text-[var(--foreground-secondary)]'}
+                  ${isCurrent ? 'text-primary' : 'text-(--foreground-secondary)'}
                 `}>
                   {step.title}
                 </span>
                 
                 {/* Description */}
-                <span className="text-xs text-[var(--foreground-tertiary)] hidden sm:block">
+                <span className="text-xs text-(--foreground-tertiary) hidden sm:block">
                   {step.description}
                 </span>
               </button>

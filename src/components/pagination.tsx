@@ -76,11 +76,11 @@ const Pagination = () => {
       <div className="flex flex-col md:flex-row items-center justify-between mb-6">
         <div className="flex items-center gap-3">
 
-          <span className="text-sm text-[var(--foreground-secondary)]">
+          <span className="text-sm text-(--foreground-secondary)">
             Items per page:
           </span>
 
-          <div className="flex rounded-lg p-1 bg-[var(--background-tertiary)] border border-[var(--border)]">
+          <div className="flex rounded-lg p-1 bg-(--background-tertiary) border border-(--border)">
             {[10, 20, 30].map((num) => (
               <button
                 key={num}
@@ -89,8 +89,8 @@ const Pagination = () => {
                   px-3 py-1 rounded-md text-sm font-medium transition-all
                   ${
                     productPerPage === num
-                      ? 'bg-[var(--background)] shadow text-[var(--foreground)]'
-                      : 'text-[var(--foreground-secondary)] hover:bg-[var(--background)]/50'
+                      ? 'bg-(--background) shadow text-(--foreground)'
+                      : 'text-(--foreground-secondary) hover:bg-(--background)/50'
                   }
                 `}
               >
@@ -115,8 +115,8 @@ const Pagination = () => {
             p-2 rounded-lg transition-all
             ${
               currentPage === 1
-                ? 'text-[var(--foreground-tertiary)] cursor-not-allowed'
-                : 'nav-link hover:bg-[var(--background-tertiary)]'
+                ? 'text-(--foreground-tertiary) cursor-not-allowed'
+                : 'nav-link hover:bg-(--background-tertiary)'
             }
           `}
         >
@@ -138,8 +138,8 @@ const Pagination = () => {
                   page === currentPage
                     ? 'bg-primary text-white shadow'
                     : page === '...'
-                    ? 'text-[var(--foreground-tertiary)] cursor-default'
-                    : 'nav-link hover:bg-[var(--background-tertiary)]'
+                    ? 'text-(--foreground-tertiary) cursor-default'
+                    : 'nav-link hover:bg-(--background-tertiary)'
                 }
               `}
             >
@@ -158,8 +158,8 @@ const Pagination = () => {
             p-2 rounded-lg transition-all
             ${
               currentPage === totalPages
-                ? 'text-[var(--foreground-tertiary)] cursor-not-allowed'
-                : 'nav-link hover:bg-[var(--background-tertiary)]'
+                ? 'text-(--foreground-tertiary) cursor-not-allowed'
+                : 'nav-link hover:bg-(--background-tertiary)'
             }
           `}
         >
@@ -169,9 +169,9 @@ const Pagination = () => {
       </div>
 
       {/* Page Info */}
-      <div className="text-center mt-4 text-[var(--foreground-secondary)]">
-        Page <span className="font-semibold text-[var(--foreground)]">{currentPage}</span> of{' '}
-        <span className="font-semibold text-[var(--foreground)]">{totalPages}</span>
+      <div className="text-center mt-4 text-(--foreground-secondary)">
+        Page <span className="font-semibold text-(--foreground)">{currentPage}</span> of{' '}
+        <span className="font-semibold text-(--foreground)">{totalPages}</span>
       </div>
 
     </div>

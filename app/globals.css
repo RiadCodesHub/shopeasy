@@ -1,24 +1,10 @@
 @import "tailwindcss";
 
 /* Define theme variables for Tailwind to generate utilities */
-@theme {
-  --color-primary: #3b82f6;
-  --color-primary-dark: #2563eb;
-  --color-accent: #8b5cf6;
-  
-  /* Spacing */
-  --spacing: 0.25rem;
-  
-  /* Border radius */
-  --radius-lg: 0.5rem;
-  --radius-xl: 0.75rem;
-  
-  /* Shadows */
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-}
+
 
 /* CSS custom properties for dynamic theming */
+
 @layer base {
   :root {
     --primary: #3b82f6;
@@ -325,13 +311,13 @@
   }
 }
 
-/* Utilities - These can use @apply if needed */
 @layer utilities {
   .line-clamp-1 {
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
+    line-clamp: 1;
   }
 
   .line-clamp-2 {
@@ -339,6 +325,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
+    line-clamp: 2;
   }
 
   .line-clamp-3 {
@@ -346,6 +333,7 @@
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
   }
 
   .scrollbar-hide {

@@ -20,7 +20,7 @@ const statusColors = {
   shipped: 'badge-primary',
   delivered: 'badge-success',
   cancelled: 'badge-error',
-  refunded: 'bg-[var(--background-tertiary)] text-[var(--foreground-secondary)]'
+  refunded: 'bg-(--background-tertiary) text-(--foreground-secondary)'
 }
 
 const statusIcons = {
@@ -67,10 +67,10 @@ const OrderPage = () => {
 
   if (status === 'loading' || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
+      <div className="min-h-screen flex items-center justify-center bg-(--background)">
         <div className="text-center">
           <div className="loading-spinner mx-auto mb-4"></div>
-          <p className="text-[var(--foreground-secondary)]">
+          <p className="text-(--foreground-secondary)">
             Loading your orders...
           </p>
         </div>
@@ -83,14 +83,14 @@ const OrderPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--background)] py-8">
+    <div className="min-h-screen bg-(--background) py-8">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-[var(--foreground)] mb-2">
+          <h1 className="text-3xl font-bold text-(--foreground) mb-2">
             My Orders
           </h1>
-          <p className="text-[var(--foreground-secondary)]">
+          <p className="text-(--foreground-secondary)">
             View and track your orders
           </p>
         </div>
@@ -101,7 +101,7 @@ const OrderPage = () => {
             {/* Search Input */}
             <div className="flex-1 w-full">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[var(--foreground-tertiary)]" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
                 <input
                   type="text"
                   placeholder="Search by order ID or product name..."
@@ -115,7 +115,7 @@ const OrderPage = () => {
             {/* Filter Dropdown */}
             <div className="w-full md:w-auto">
               <div className="relative">
-                <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[var(--foreground-tertiary)]" />
+                <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value)}
@@ -131,7 +131,7 @@ const OrderPage = () => {
                 </select>
                 {/* Custom dropdown arrow */}
                 <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <svg className="h-4 w-4 text-[var(--foreground-tertiary)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="h-4 w-4 text-(--foreground-tertiary)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -143,13 +143,13 @@ const OrderPage = () => {
         {/* Orders List */}
         {filteredOrders.length === 0 ? (
           <div className="card text-center p-12">
-            <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-[var(--background-tertiary)] flex items-center justify-center">
-              <Package className="h-12 w-12 text-[var(--foreground-tertiary)]" />
+            <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-(--background-tertiary) flex items-center justify-center">
+              <Package className="h-12 w-12 text-(--foreground-tertiary)" />
             </div>
-            <h2 className="text-2xl font-bold text-[var(--foreground)] mb-2">
+            <h2 className="text-2xl font-bold text-(--foreground) mb-2">
               No orders found
             </h2>
-            <p className="text-[var(--foreground-secondary)] mb-6">
+            <p className="text-(--foreground-secondary) mb-6">
               {searchTerm || filterStatus !== 'all'
                 ? 'Try adjusting your filters'
                 : "You haven't placed any orders yet"}
@@ -182,7 +182,7 @@ const OrderPage = () => {
                           <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                             <div>
                               <div className="flex items-center gap-3 mb-2">
-                                <span className="text-sm font-mono text-[var(--foreground-secondary)]">
+                                <span className="text-sm font-mono text-(--foreground-secondary)">
                                   #{order.orderId}
                                 </span>
                                 <span className={`badge ${statusColors[order.status]}`}>
@@ -192,7 +192,7 @@ const OrderPage = () => {
                                   </span>
                                 </span>
                               </div>
-                              <div className="flex items-center gap-2 text-sm text-[var(--foreground-secondary)]">
+                              <div className="flex items-center gap-2 text-sm text-(--foreground-secondary)">
                                 <Calendar className="h-4 w-4" />
                                 {new Date(order.createdAt).toLocaleDateString('en-US', {
                                   year: 'numeric',
@@ -203,7 +203,7 @@ const OrderPage = () => {
                             </div>
 
                             <div className="mt-2 md:mt-0">
-                              <span className="text-2xl font-bold text-[var(--foreground)]">
+                              <span className="text-2xl font-bold text-(--foreground)">
                                 ${order.total.toFixed(2)}
                               </span>
                             </div>
@@ -213,7 +213,7 @@ const OrderPage = () => {
                           <div className="flex items-center gap-4 overflow-x-auto pb-2">
                             {order.items.slice(0, 3).map((item, idx) => (
                               <div key={idx} className="flex items-center gap-2 shrink-0">
-                                <div className="w-12 h-12 bg-[var(--background-tertiary)] rounded-lg overflow-hidden">
+                                <div className="w-12 h-12 bg-(--background-tertiary) rounded-lg overflow-hidden">
                                   {item.image ? (
                                     <img
                                       src={item.image}
@@ -222,22 +222,22 @@ const OrderPage = () => {
                                     />
                                   ) : (
                                     <div className="w-full h-full flex items-center justify-center">
-                                      <Package className="h-6 w-6 text-[var(--foreground-tertiary)]" />
+                                      <Package className="h-6 w-6 text-(--foreground-tertiary)" />
                                     </div>
                                   )}
                                 </div>
                                 <div>
-                                  <p className="text-sm font-medium text-[var(--foreground)]">
+                                  <p className="text-sm font-medium text-(--foreground)">
                                     {item.name}
                                   </p>
-                                  <p className="text-xs text-[var(--foreground-tertiary)]">
+                                  <p className="text-xs text-(--foreground-tertiary)">
                                     Qty: {item.quantity}
                                   </p>
                                 </div>
                               </div>
                             ))}
                             {order.items.length > 3 && (
-                              <div className="text-sm text-[var(--foreground-tertiary)]">
+                              <div className="text-sm text-(--foreground-tertiary)">
                                 +{order.items.length - 3} more
                               </div>
                             )}
@@ -245,11 +245,11 @@ const OrderPage = () => {
 
                           {/* Estimated Delivery */}
                           {order.estimatedDelivery && (
-                            <div className="mt-4 pt-4 border-t border-[var(--border)]">
+                            <div className="mt-4 pt-4 border-t border-(--border)">
                               <div className="flex items-center gap-2 text-sm">
                                 <Truck className="h-4 w-4 text-primary" />
-                                <span className="text-[var(--foreground-secondary)]">Estimated delivery:</span>
-                                <span className="font-medium text-[var(--foreground)]">
+                                <span className="text-(--foreground-secondary)">Estimated delivery:</span>
+                                <span className="font-medium text-(--foreground)">
                                   {new Date(order.estimatedDelivery).toLocaleDateString('en-US', {
                                     year: 'numeric',
                                     month: 'long',

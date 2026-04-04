@@ -31,10 +31,10 @@ export default function ProtectedRoute({
 
     if (status === 'loading') {
         return (
-            <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
+            <div className="min-h-screen flex items-center justify-center bg-(--background)">
                 <div className="text-center">
                     <div className="loading-spinner mx-auto mb-4"></div>
-                    <p className="text-[var(--foreground-secondary)]">Verifying access...</p>
+                    <p className="text-(--foreground-secondary)">Verifying access...</p>
                 </div>
             </div>
         );

@@ -151,10 +151,10 @@ const CategoryFilter = () => {
     <div className="mb-8">
       {/* Mobile Filter Header */}
       <div className="md:hidden">
-        <div className="flex items-center justify-between p-4 bg-[var(--background-secondary)] rounded-xl shadow-lg mb-4 border border-[var(--border)]">
+        <div className="flex items-center justify-between p-4 bg-(--background-secondary) rounded-xl shadow-lg mb-4 border border-(--border)">
           <div className="flex items-center gap-3">
             <div className="relative">
-              <div className="p-2 bg-gradient-to-r from-primary to-accent rounded-lg">
+              <div className="p-2 bg-linear-to-r from-primary to-accent rounded-lg">
                 <Filter className="h-5 w-5 text-white" />
               </div>
               {activeFiltersCount > 0 && (
@@ -168,8 +168,8 @@ const CategoryFilter = () => {
               )}
             </div>
             <div>
-              <p className="font-bold text-lg text-[var(--foreground)]">{filteredProducts.length} Products</p>
-              <p className="text-sm text-[var(--foreground-tertiary)]">
+              <p className="font-bold text-lg text-(--foreground)">{filteredProducts.length} Products</p>
+              <p className="text-sm text-(--foreground-tertiary)">
                 {activeCategory !== 'all' ? `${activeCategory}` : 'All Categories'}
                 {selectedSort !== 'default' && ` • ${selectedSort}`}
               </p>
@@ -180,7 +180,7 @@ const CategoryFilter = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => dispatch(toggleFilterMenu())}
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary to-accent text-white rounded-lg hover:opacity-90 transition-all"
+            className="flex items-center gap-2 px-4 py-2 bg-linear-to-r from-primary to-accent text-white rounded-lg hover:opacity-90 transition-all"
           >
             <SlidersHorizontal className="h-4 w-4" />
             {isFilterMenuOpen ? 'Close' : 'Filter'}
@@ -204,27 +204,27 @@ const CategoryFilter = () => {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="fixed right-0 top-0 h-full w-full max-w-sm bg-[var(--background-secondary)] shadow-2xl z-50 overflow-y-auto"
+                className="fixed right-0 top-0 h-full w-full max-w-sm bg-(--background-secondary) shadow-2xl z-50 overflow-y-auto"
               >
                 {/* Filter Header */}
-                <div className="sticky top-0 bg-[var(--background-secondary)] border-b border-[var(--border)] p-6">
+                <div className="sticky top-0 bg-(--background-secondary) border-b border-(--border) p-6">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
-                      <div className="p-2 bg-gradient-to-r from-primary to-accent rounded-lg">
+                      <div className="p-2 bg-linear-to-r from-primary to-accent rounded-lg">
                         <ShoppingBag className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-[var(--foreground)]">
+                        <h3 className="text-xl font-bold text-(--foreground)">
                           ShopEasy Filters
                         </h3>
-                        <p className="text-sm text-[var(--foreground-tertiary)]">Browse by categories</p>
+                        <p className="text-sm text-(--foreground-tertiary)">Browse by categories</p>
                       </div>
                     </div>
                     <button
                       onClick={() => dispatch(toggleFilterMenu())}
-                      className="p-2 hover:bg-[var(--background-tertiary)] rounded-lg transition-colors"
+                      className="p-2 hover:bg-(--background-tertiary) rounded-lg transition-colors"
                     >
-                      <X className="h-5 w-5 text-[var(--foreground-secondary)]" />
+                      <X className="h-5 w-5 text-(--foreground-secondary)" />
                     </button>
                   </div>
                 </div>
@@ -233,7 +233,7 @@ const CategoryFilter = () => {
                 <div className="p-6 space-y-8">
                   {/* Featured Categories */}
                   <div>
-                    <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-[var(--foreground)]">
+                    <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-(--foreground)">
                       <Sparkles className="h-5 w-5 text-accent" />
                       Featured Collections
                     </h4>
@@ -244,7 +244,7 @@ const CategoryFilter = () => {
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                           onClick={() => handleCategoryClick(cat.name)}
-                          className={`p-4 rounded-xl bg-gradient-to-br ${cat.color} text-white text-left transition-all ${
+                          className={`p-4 rounded-xl bg-linear-to-br ${cat.color} text-white text-left transition-all ${
                             activeCategory === cat.name ? 'ring-4 ring-white/30 shadow-2xl' : ''
                           }`}
                         >
@@ -261,11 +261,11 @@ const CategoryFilter = () => {
                   {/* All Categories */}
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <h4 className="font-bold text-lg flex items-center gap-2 text-[var(--foreground)]">
+                      <h4 className="font-bold text-lg flex items-center gap-2 text-(--foreground)">
                         <Filter className="h-5 w-5 text-primary" />
                         All Categories
                       </h4>
-                      <span className="text-sm text-[var(--foreground-tertiary)]">
+                      <span className="text-sm text-(--foreground-tertiary)">
                         {categories.length} categories
                       </span>
                     </div>
@@ -278,8 +278,8 @@ const CategoryFilter = () => {
                           onClick={() => handleCategoryClick(category)}
                           className={`px-4 py-3 rounded-xl text-center transition-all ${
                             activeCategory === category
-                              ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg font-semibold'
-                              : 'bg-[var(--background-tertiary)] hover:bg-[var(--background-tertiary)]/80 text-[var(--foreground-secondary)]'
+                              ? 'bg-linear-to-r from-primary to-accent text-white shadow-lg font-semibold'
+                              : 'bg-(--background-tertiary) hover:bg-(--background-tertiary)/80 text-(--foreground-secondary)'
                           }`}
                         >
                           {category === 'all' ? 'All Products' : category}
@@ -290,7 +290,7 @@ const CategoryFilter = () => {
 
                   {/* Sort Options */}
                   <div>
-                    <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-[var(--foreground)]">
+                    <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-(--foreground)">
                       <SortAsc className="h-5 w-5 text-primary" />
                       Sort By
                     </h4>
@@ -303,8 +303,8 @@ const CategoryFilter = () => {
                           onClick={() => handleSortChange(option.value)}
                           className={`px-4 py-3 rounded-xl text-center transition-all flex items-center justify-center gap-2 ${
                             selectedSort === option.value
-                              ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg'
-                              : 'bg-[var(--background-tertiary)] hover:bg-[var(--background-tertiary)]/80 text-[var(--foreground-secondary)]'
+                              ? 'bg-linear-to-r from-primary to-accent text-white shadow-lg'
+                              : 'bg-(--background-tertiary) hover:bg-(--background-tertiary)/80 text-(--foreground-secondary)'
                           }`}
                         >
                           {option.icon}
@@ -315,13 +315,13 @@ const CategoryFilter = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="sticky bottom-0 bg-[var(--background-secondary)] pt-6 border-t border-[var(--border)]">
+                  <div className="sticky bottom-0 bg-(--background-secondary) pt-6 border-t border-(--border)">
                     <div className="flex gap-3">
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={clearAllFilters}
-                        className="flex-1 px-4 py-3 border-2 border-[var(--border)] rounded-xl hover:bg-[var(--background-tertiary)] transition-colors font-medium text-[var(--foreground-secondary)]"
+                        className="flex-1 px-4 py-3 border-2 border-(--border) rounded-xl hover:bg-(--background-tertiary) transition-colors font-medium text-(--foreground-secondary)"
                       >
                         Clear All
                       </motion.button>
@@ -329,7 +329,7 @@ const CategoryFilter = () => {
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={() => dispatch(toggleFilterMenu())}
-                        className="flex-1 px-4 py-3 bg-gradient-to-r from-primary to-accent text-white rounded-xl hover:opacity-90 transition-all font-medium"
+                        className="flex-1 px-4 py-3 bg-linear-to-r from-primary to-accent text-white rounded-xl hover:opacity-90 transition-all font-medium"
                       >
                         Show {filteredProducts.length} Products
                       </motion.button>
@@ -349,31 +349,31 @@ const CategoryFilter = () => {
           {/* Title and Sort Row */}
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-bold text-[var(--foreground)]">
+              <h2 className="text-2xl font-bold text-(--foreground)">
                 Browse Products
               </h2>
-              <p className="text-[var(--foreground-secondary)]">
+              <p className="text-(--foreground-secondary)">
                 Find exactly what you're looking for
               </p>
             </div>
         
             {/* Sort Dropdown */}
             <div className="relative group">
-              <button className="flex items-center gap-2 px-4 py-3.5 bg-[var(--background-tertiary)] rounded-xl hover:bg-[var(--background-tertiary)]/80 transition-colors font-medium text-[var(--foreground-secondary)]">
+              <button className="flex items-center gap-2 px-4 py-3.5 bg-(--background-tertiary) rounded-xl hover:bg-(--background-tertiary)/80 transition-colors font-medium text-(--foreground-secondary)">
                 <SortAsc className="h-4 w-4" />
                 <span>{sortOptions.find(o => o.value === selectedSort)?.label}</span>
                 <ChevronDown className="h-4 w-4" />
               </button>
               
-              <div className="absolute right-0 top-full mt-2 w-56 bg-[var(--background-secondary)] rounded-xl shadow-2xl border border-[var(--border)] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+              <div className="absolute right-0 top-full mt-2 w-56 bg-(--background-secondary) rounded-xl shadow-2xl border border-(--border) opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
                 {sortOptions.map((option) => (
                   <button
                     key={option.value}
                     onClick={() => handleSortChange(option.value)}
-                    className={`w-full px-4 py-3 text-left hover:bg-[var(--background-tertiary)] transition-colors first:rounded-t-xl last:rounded-b-xl flex items-center gap-3 ${
+                    className={`w-full px-4 py-3 text-left hover:bg-(--background-tertiary) transition-colors first:rounded-t-xl last:rounded-b-xl flex items-center gap-3 ${
                       selectedSort === option.value
                         ? 'bg-primary/10 text-primary'
-                        : 'text-[var(--foreground-secondary)]'
+                        : 'text-(--foreground-secondary)'
                     }`}
                   >
                     {option.icon}
@@ -388,7 +388,7 @@ const CategoryFilter = () => {
           <div className="space-y-6">
             {/* Featured Categories */}
             <div>
-              <h3 className="font-bold text-lg mb-4 text-[var(--foreground)]">
+              <h3 className="font-bold text-lg mb-4 text-(--foreground)">
                 Shop by Collection
               </h3>
               <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
@@ -398,7 +398,7 @@ const CategoryFilter = () => {
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => handleCategoryClick(cat.name)}
-                    className={`shrink-0 w-48 p-4 rounded-xl bg-gradient-to-br ${cat.color} text-white transition-all text-left ${
+                    className={`shrink-0 w-48 p-4 rounded-xl bg-linear-to-br ${cat.color} text-white transition-all text-left ${
                       activeCategory === cat.name ? 'ring-4 ring-white/30 shadow-2xl' : 'shadow-lg'
                     }`}
                   >
@@ -420,10 +420,10 @@ const CategoryFilter = () => {
             {/* All Categories */}
             <div>
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-lg text-[var(--foreground)]">
+                <h3 className="font-bold text-lg text-(--foreground)">
                   Browse All Categories
                 </h3>
-                <span className="text-sm text-[var(--foreground-tertiary)]">
+                <span className="text-sm text-(--foreground-tertiary)">
                   {activeCategory !== 'all' ? `${activeCategory} selected` : `${categories.length} categories`}
                 </span>
               </div>
@@ -436,8 +436,8 @@ const CategoryFilter = () => {
                     onClick={() => handleCategoryClick(category)}
                     className={`px-5 py-2.5 rounded-full font-medium transition-all ${
                       activeCategory === category
-                        ? 'bg-gradient-to-r from-primary to-accent text-white shadow-lg'
-                        : 'bg-[var(--background-tertiary)] hover:bg-[var(--background-tertiary)]/80 text-[var(--foreground-secondary)]'
+                        ? 'bg-linear-to-r from-primary to-accent text-white shadow-lg'
+                        : 'bg-(--background-tertiary) hover:bg-(--background-tertiary)/80 text-(--foreground-secondary)'
                     }`}
                   >
                     {category === 'all' ? 'All Products' : category}
@@ -453,16 +453,16 @@ const CategoryFilter = () => {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl p-4 mb-6 border border-primary/20"
+            className="bg-linear-to-r from-primary/10 to-accent/10 rounded-xl p-4 mb-6 border border-primary/20"
           >
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-4">
-                <div className="p-2 bg-[var(--background-secondary)] rounded-lg shadow border border-[var(--border)]">
+                <div className="p-2 bg-(--background-secondary) rounded-lg shadow border border-(--border)">
                   <Filter className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-[var(--foreground)]">Active Filters</h4>
-                  <p className="text-sm text-[var(--foreground-secondary)]">
+                  <h4 className="font-bold text-(--foreground)">Active Filters</h4>
+                  <p className="text-sm text-(--foreground-secondary)">
                     {filteredProducts.length} products match your criteria
                   </p>
                 </div>
@@ -470,29 +470,29 @@ const CategoryFilter = () => {
               
               <div className="flex flex-wrap gap-2">
                 {activeCategory !== 'all' && (
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[var(--background-secondary)] rounded-full text-sm shadow border border-[var(--border)]">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-(--background-secondary) rounded-full text-sm shadow border border-(--border)">
                     <Tag className="h-3 w-3 text-primary" />
-                    <span className="font-medium text-[var(--foreground)]">{activeCategory}</span>
+                    <span className="font-medium text-(--foreground)">{activeCategory}</span>
                     <button
                       onClick={() => handleCategoryClick('all')}
-                      className="p-1 hover:bg-[var(--background-tertiary)] rounded-full"
+                      className="p-1 hover:bg-(--background-tertiary) rounded-full"
                     >
-                      <X className="h-3 w-3 text-[var(--foreground-tertiary)]" />
+                      <X className="h-3 w-3 text-(--foreground-tertiary)" />
                     </button>
                   </span>
                 )}
             
                 {selectedSort !== 'default' && (
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-[var(--background-secondary)] rounded-full text-sm shadow border border-[var(--border)]">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-(--background-secondary) rounded-full text-sm shadow border border-(--border)">
                     <SortAsc className="h-3 w-3 text-primary" />
-                    <span className="font-medium text-[var(--foreground)]">
+                    <span className="font-medium text-(--foreground)">
                       {sortOptions.find(o => o.value === selectedSort)?.label}
                     </span>
                     <button
                       onClick={() => handleSortChange('default')}
-                      className="p-1 hover:bg-[var(--background-tertiary)] rounded-full"
+                      className="p-1 hover:bg-(--background-tertiary) rounded-full"
                     >
-                      <X className="h-3 w-3 text-[var(--foreground-tertiary)]" />
+                      <X className="h-3 w-3 text-(--foreground-tertiary)" />
                     </button>
                   </span>
                 )}
@@ -511,9 +511,9 @@ const CategoryFilter = () => {
 
         {/* Results Summary */}
         <div className="text-center py-4">
-          <p className="text-[var(--foreground-secondary)]">
+          <p className="text-(--foreground-secondary)">
             Showing <span className="font-bold text-primary">{filteredProducts.length}</span> of{' '}
-            <span className="font-bold text-[var(--foreground)]">{products.length}</span> products
+            <span className="font-bold text-(--foreground)">{products.length}</span> products
             {activeCategory !== 'all' && (
               <> in <span className="font-bold text-accent">{activeCategory}</span></>
             )}

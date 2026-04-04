@@ -63,20 +63,20 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
       <div className="card max-w-md w-full">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-[var(--foreground)] mb-2">
+          <h1 className="text-3xl font-bold text-(--foreground) mb-2">
             Create Account
           </h1>
-          <p className="text-[var(--foreground-secondary)]">
+          <p className="text-(--foreground-secondary)">
             Join ShopEasy for exclusive deals
           </p>
         </div>
 
         {error && (
           <div className="alert-error mb-6 flex items-center gap-2">
-            <AlertCircle className="h-5 w-5 flex-shrink-0" />
+            <AlertCircle className="h-5 w-5 shrink-0" />
             <p className="text-sm font-medium">{error}</p>
           </div>
         )}
@@ -84,11 +84,11 @@ export default function SignupPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Full Name */}
           <div>
-            <label className="block text-sm font-medium text-[var(--foreground-secondary)] mb-2">
+            <label className="block text-sm font-medium text-(--foreground-secondary) mb-2">
               Full Name *
             </label>
             <div className="relative">
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[var(--foreground-tertiary)]" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
               <input
                 type="text"
                 value={formData.name}
@@ -102,11 +102,11 @@ export default function SignupPage() {
 
           {/* Email Address */}
           <div>
-            <label className="block text-sm font-medium text-[var(--foreground-secondary)] mb-2">
+            <label className="block text-sm font-medium text-(--foreground-secondary) mb-2">
               Email Address *
             </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[var(--foreground-tertiary)]" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
               <input
                 type="email"
                 value={formData.email}
@@ -120,11 +120,11 @@ export default function SignupPage() {
 
           {/* Phone Number */}
           <div>
-            <label className="block text-sm font-medium text-[var(--foreground-secondary)] mb-2">
+            <label className="block text-sm font-medium text-(--foreground-secondary) mb-2">
               Phone Number
             </label>
             <div className="relative">
-              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[var(--foreground-tertiary)]" />
+              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
               <input
                 type="tel"
                 value={formData.phone}
@@ -137,11 +137,11 @@ export default function SignupPage() {
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-medium text-[var(--foreground-secondary)] mb-2">
+            <label className="block text-sm font-medium text-(--foreground-secondary) mb-2">
               Password *
             </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[var(--foreground-tertiary)]" />
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={formData.password}
@@ -156,11 +156,11 @@ export default function SignupPage() {
 
           {/* Confirm Password */}
           <div>
-            <label className="block text-sm font-medium text-[var(--foreground-secondary)] mb-2">
+            <label className="block text-sm font-medium text-(--foreground-secondary) mb-2">
               Confirm Password *
             </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[var(--foreground-tertiary)]" />
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={formData.confirmPassword}
@@ -172,12 +172,12 @@ export default function SignupPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[var(--foreground-tertiary)] hover:text-[var(--foreground-secondary)] transition-colors"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-(--foreground-tertiary) hover:text-(--foreground-secondary) transition-colors"
               >
                 {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
               </button>
             </div>
-            <p className="mt-1 text-xs text-[var(--foreground-tertiary)]">
+            <p className="mt-1 text-xs text-(--foreground-tertiary)">
               Password must be at least 6 characters
             </p>
           </div>
@@ -199,7 +199,7 @@ export default function SignupPage() {
           </button>
         </form>
 
-        <p className="mt-8 text-center text-sm text-[var(--foreground-secondary)]">
+        <p className="mt-8 text-center text-sm text-(--foreground-secondary)">
           Already have an account?{' '}
           <Link 
             href="/auth/login" 

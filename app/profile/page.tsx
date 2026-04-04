@@ -34,7 +34,7 @@ export default function ProfilePage() {
 
   if (!session || isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
+      <div className="min-h-screen flex items-center justify-center bg-(--background)">
         <div className="loading-spinner"></div>
       </div>
     );
@@ -42,15 +42,15 @@ export default function ProfilePage() {
 
   if (!user) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
+      <div className="min-h-screen flex items-center justify-center bg-(--background)">
         <div className="card text-center max-w-md p-8">
           <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-error/10 flex items-center justify-center">
             <User className="h-12 w-12 text-error" />
           </div>
-          <h2 className="text-2xl font-bold text-[var(--foreground)] mb-4">
+          <h2 className="text-2xl font-bold text-(--foreground) mb-4">
             User Not Found
           </h2>
-          <p className="text-[var(--foreground-secondary)] mb-6">
+          <p className="text-(--foreground-secondary) mb-6">
             Unable to load user profile. Please try again later.
           </p>
           <button
@@ -73,9 +73,9 @@ export default function ProfilePage() {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-[var(--background)]">
+      <div className="min-h-screen bg-(--background)">
         {/* Hero Header */}
-        <div className="bg-gradient-to-r from-primary to-accent">
+        <div className="bg-linear-to-r from-primary to-accent">
           <div className="container mx-auto px-4 py-12">
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:justify-between">
               {/* User Info */}
@@ -138,7 +138,7 @@ export default function ProfilePage() {
                       className={`flex items-center justify-between px-4 py-3 rounded-lg transition-all duration-200 ${
                         item.active
                           ? 'bg-primary/10 text-primary font-medium'
-                          : 'text-[var(--foreground-secondary)] hover:bg-[var(--background-tertiary)] hover:text-[var(--foreground)]'
+                          : 'text-(--foreground-secondary) hover:bg-(--background-tertiary) hover:text-(--foreground)'
                       }`}
                     >
                       <div className="flex items-center gap-3">
@@ -153,21 +153,21 @@ export default function ProfilePage() {
 
               {/* Account Stats */}
               <div className="card mt-6 p-4">
-                <h3 className="font-semibold text-[var(--foreground)] mb-3">Account Stats</h3>
+                <h3 className="font-semibold text-(--foreground) mb-3">Account Stats</h3>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-[var(--foreground-secondary)]">Member Since</span>
-                    <span className="text-[var(--foreground)] font-medium">
+                    <span className="text-(--foreground-secondary)">Member Since</span>
+                    <span className="text-(--foreground) font-medium">
                       {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-[var(--foreground-secondary)]">Orders</span>
-                    <span className="text-[var(--foreground)] font-medium">0</span>
+                    <span className="text-(--foreground-secondary)">Orders</span>
+                    <span className="text-(--foreground) font-medium">0</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-[var(--foreground-secondary)]">Wishlist Items</span>
-                    <span className="text-[var(--foreground)] font-medium">0</span>
+                    <span className="text-(--foreground-secondary)">Wishlist Items</span>
+                    <span className="text-(--foreground) font-medium">0</span>
                   </div>
                 </div>
               </div>
@@ -176,27 +176,27 @@ export default function ProfilePage() {
             {/* Main Content - Profile Information */}
             <div className="md:col-span-2">
               <div className="card p-6">
-                <h2 className="text-xl font-bold text-[var(--foreground)] mb-6">
+                <h2 className="text-xl font-bold text-(--foreground) mb-6">
                   Profile Information
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   {/* Full Name */}
                   <div>
-                    <label className="block text-sm text-[var(--foreground-secondary)] mb-2">
+                    <label className="block text-sm text-(--foreground-secondary) mb-2">
                       Full Name
                     </label>
-                    <p className="text-[var(--foreground)] font-medium p-3 bg-[var(--background-tertiary)] rounded-lg">
+                    <p className="text-(--foreground) font-medium p-3 bg-(--background-tertiary) rounded-lg">
                       {session?.user?.name || user?.name || 'Not provided'}
                     </p>
                   </div>
 
                   {/* Email */}
                   <div>
-                    <label className="block text-sm text-[var(--foreground-secondary)] mb-2">
+                    <label className="block text-sm text-(--foreground-secondary) mb-2">
                       Email Address
                     </label>
-                    <p className="text-[var(--foreground)] font-medium p-3 bg-[var(--background-tertiary)] rounded-lg">
+                    <p className="text-(--foreground) font-medium p-3 bg-(--background-tertiary) rounded-lg">
                       {session?.user?.email || user?.email || 'Not provided'}
                     </p>
                   </div>
@@ -204,10 +204,10 @@ export default function ProfilePage() {
                   {/* Phone (if available) */}
                   {user?.phone && (
                     <div>
-                      <label className="block text-sm text-[var(--foreground-secondary)] mb-2">
+                      <label className="block text-sm text-(--foreground-secondary) mb-2">
                         Phone Number
                       </label>
-                      <p className="text-[var(--foreground)] font-medium p-3 bg-[var(--background-tertiary)] rounded-lg">
+                      <p className="text-(--foreground) font-medium p-3 bg-(--background-tertiary) rounded-lg">
                         {user.phone}
                       </p>
                     </div>
@@ -215,17 +215,17 @@ export default function ProfilePage() {
 
                   {/* Role */}
                   <div>
-                    <label className="block text-sm text-[var(--foreground-secondary)] mb-2">
+                    <label className="block text-sm text-(--foreground-secondary) mb-2">
                       Account Type
                     </label>
-                    <p className="text-[var(--foreground)] font-medium p-3 bg-[var(--background-tertiary)] rounded-lg capitalize">
+                    <p className="text-(--foreground) font-medium p-3 bg-(--background-tertiary) rounded-lg capitalize">
                       {user?.role || 'Customer'}
                     </p>
                   </div>
                 </div>
 
                 {/* Edit Profile Button */}
-                <div className="mt-8 pt-6 border-t border-[var(--border)]">
+                <div className="mt-8 pt-6 border-t border-(--border)">
                   <button className="btn-secondary flex items-center gap-2">
                     <Settings className="h-4 w-4" />
                     Edit Profile
@@ -235,14 +235,14 @@ export default function ProfilePage() {
 
               {/* Recent Activity (Optional) */}
               <div className="card mt-6 p-6">
-                <h2 className="text-xl font-bold text-[var(--foreground)] mb-4">
+                <h2 className="text-xl font-bold text-(--foreground) mb-4">
                   Recent Activity
                 </h2>
                 <div className="text-center py-8">
-                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[var(--background-tertiary)] flex items-center justify-center">
-                    <Package className="h-8 w-8 text-[var(--foreground-tertiary)]" />
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-(--background-tertiary) flex items-center justify-center">
+                    <Package className="h-8 w-8 text-(--foreground-tertiary)" />
                   </div>
-                  <p className="text-[var(--foreground-secondary)]">
+                  <p className="text-(--foreground-secondary)">
                     No recent orders yet
                   </p>
                   <Link href="/products" className="btn-primary inline-flex items-center gap-2 mt-4">

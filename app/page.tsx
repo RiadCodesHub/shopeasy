@@ -23,7 +23,7 @@ export default function HomePage() {
   }, [status, dispatch]);
 
   return (
-    <div className="min-h-screen bg-[var(--background)]">
+    <div className="min-h-screen bg-(--background)">
       <div className="space-y-12 pb-12">
         {/* Hero Section */}
         <HeroSection />
@@ -48,11 +48,11 @@ export default function HomePage() {
             >
               <div className="flex items-center gap-2 mb-2">
                 <Sparkles className="h-6 w-6 text-primary" />
-                <h2 className="text-3xl font-bold text-[var(--foreground)]">
+                <h2 className="text-3xl font-bold text-(--foreground)">
                   Featured Products
                 </h2>
               </div>
-              <p className="text-[var(--foreground-secondary)]">
+              <p className="text-(--foreground-secondary)">
                 Discover our most popular items
               </p>
             </motion.div>
@@ -69,12 +69,12 @@ export default function HomePage() {
           {/* Loading State */}
           {status === 'loading' ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[...Array(4)].map((_, i) => (
+              {[...Array(4).map((_, i) => (
                 <div
                   key={i}
-                  className="h-80 bg-[var(--background-tertiary)] rounded-xl animate-pulse"
+                  className="h-80 bg-(--background-tertiary) rounded-xl animate-pulse"
                 />
-              ))}
+              ))]}
             </div>
           ) : status === 'failed' ? (
             <div className="text-center py-12">
@@ -84,7 +84,7 @@ export default function HomePage() {
                 </svg>
               </div>
               <p className="text-error font-medium mb-2">Failed to load products</p>
-              <p className="text-[var(--foreground-secondary)] mb-4">Please try again later</p>
+              <p className="text-(--foreground-secondary) mb-4">Please try again later</p>
               <button 
                 onClick={() => dispatch(fetchProducts())}
                 className="btn-primary"
@@ -104,7 +104,7 @@ export default function HomePage() {
           transition={{ duration: 0.5 }}
           className="container mx-auto px-4"
         >
-          <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-primary to-accent shadow-xl">
+          <div className="relative rounded-2xl overflow-hidden bg-linear-to-r from-primary to-accent shadow-xl">
             <div className="relative z-10 p-8 md:p-12">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-4">
@@ -129,7 +129,7 @@ export default function HomePage() {
             </div>
             
             {/* Decorative Elements */}
-            <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-white/20 to-transparent" />
+            <div className="absolute right-0 top-0 bottom-0 w-1/3 bg-linear-to-l from-white/20 to-transparent" />
             <div className="absolute -right-10 -top-10 w-40 h-40 rounded-full bg-white/10 blur-3xl" />
             <div className="absolute -left-10 -bottom-10 w-40 h-40 rounded-full bg-white/10 blur-3xl" />
             
