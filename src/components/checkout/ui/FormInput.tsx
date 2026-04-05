@@ -28,7 +28,7 @@ const FormInput: React.FC<FormInputProps> = ({
   return (
     <div className="mb-4">
       {/* Label */}
-      <label className="block text-sm font-medium mb-2 text-[var(--foreground-secondary)]">
+      <label className="block text-sm font-medium mb-2 text-(--foreground-secondary)">
         {label} {required && <span className="text-error">*</span>}
       </label>
 

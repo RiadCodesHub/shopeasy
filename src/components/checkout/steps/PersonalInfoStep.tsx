@@ -9,7 +9,7 @@ const PersonalInfoStep = () => {
   
   return (
     <div className="card p-6 mb-6">
-      <h3 className="text-xl font-bold text-[var(--foreground)] mb-6 flex items-center gap-3">
+      <h3 className="text-xl font-bold text-(--foreground) mb-6 flex items-center gap-3">
         <div className="p-2.5 bg-primary/10 rounded-xl">
           <User className="h-5 w-5 text-primary" />
         </div>

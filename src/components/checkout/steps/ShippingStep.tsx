@@ -51,7 +51,7 @@ const ShippingStep = ({ shippingCost = 5.99 }: { shippingCost?: number }) => {
       exit={{ opacity: 0, x: 20 }}
       className="card p-6"
     >
-      <h2 className="text-2xl font-bold text-[var(--foreground)] mb-6 flex items-center gap-3">
+      <h2 className="text-2xl font-bold text-(--foreground) mb-6 flex items-center gap-3">
         <div className="p-3 bg-primary/10 rounded-xl">
           <Truck className="h-6 w-6 text-primary" />
         </div>
@@ -62,7 +62,7 @@ const ShippingStep = ({ shippingCost = 5.99 }: { shippingCost?: number }) => {
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-4">
           <MapPin className="h-5 w-5 text-primary" />
-          <h3 className="text-lg font-semibold text-[var(--foreground)]">Delivery Address</h3>
+          <h3 className="text-lg font-semibold text-(--foreground)">Delivery Address</h3>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <FormInput
@@ -116,7 +116,7 @@ const ShippingStep = ({ shippingCost = 5.99 }: { shippingCost?: number }) => {
       <div className="mb-6">
         <div className="flex items-center gap-2 mb-4">
           <Truck className="h-5 w-5 text-primary" />
-          <h3 className="text-lg font-semibold text-[var(--foreground)]">Shipping Method</h3>
+          <h3 className="text-lg font-semibold text-(--foreground)">Shipping Method</h3>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
@@ -126,7 +126,7 @@ const ShippingStep = ({ shippingCost = 5.99 }: { shippingCost?: number }) => {
               className={`relative flex cursor-pointer rounded-lg border-2 p-4 transition-all ${
                 selectedShippingMethod === method.value
                   ? 'border-primary bg-primary/5'
-                  : 'border-[var(--border)] bg-[var(--background-secondary)] hover:border-primary/50'
+                  : 'border-(--border) bg-(--background-secondary) hover:border-primary/50'
               }`}
             >
               <input
@@ -139,7 +139,7 @@ const ShippingStep = ({ shippingCost = 5.99 }: { shippingCost?: number }) => {
                 <div className={`p-2 rounded-lg ${
                   selectedShippingMethod === method.value
                     ? 'bg-primary text-white'
-                    : 'bg-[var(--background-tertiary)] text-[var(--foreground-secondary)]'
+                    : 'bg-(--background-tertiary) text-(--foreground-secondary)'
                 }`}>
                   {method.icon}
                 </div>
@@ -148,7 +148,7 @@ const ShippingStep = ({ shippingCost = 5.99 }: { shippingCost?: number }) => {
                     <p className={`font-medium ${
                       selectedShippingMethod === method.value
                         ? 'text-primary'
-                        : 'text-[var(--foreground)]'
+                        : 'text-(--foreground)'
                     }`}>
                       {method.label}
                     </p>
@@ -156,7 +156,7 @@ const ShippingStep = ({ shippingCost = 5.99 }: { shippingCost?: number }) => {
                       {method.price}
                     </p>
                   </div>
-                  <p className="text-sm text-[var(--foreground-tertiary)]">
+                  <p className="text-sm text-(--foreground-tertiary)">
                     {method.description}
                   </p>
                 </div>
@@ -169,7 +169,7 @@ const ShippingStep = ({ shippingCost = 5.99 }: { shippingCost?: number }) => {
           <div className="mt-3 p-3 bg-primary/5 rounded-lg border border-primary/20">
             <div className="flex items-center gap-2">
               <Clock className="h-4 w-4 text-primary" />
-              <p className="text-sm text-[var(--foreground-secondary)]">
+              <p className="text-sm text-(--foreground-secondary)">
                 {selectedMethod.description}
               </p>
             </div>
@@ -179,7 +179,7 @@ const ShippingStep = ({ shippingCost = 5.99 }: { shippingCost?: number }) => {
       
       {/* Delivery Instructions */}
       <div className="mb-6">
-        <label className="block text-sm font-medium text-[var(--foreground-secondary)] mb-2">
+        <label className="block text-sm font-medium text-(--foreground-secondary) mb-2">
           Delivery Instructions (Optional)
         </label>
         <textarea
@@ -188,7 +188,7 @@ const ShippingStep = ({ shippingCost = 5.99 }: { shippingCost?: number }) => {
           rows={3}
           placeholder="Leave at the door, call before delivery, gate code, etc."
         />
-        <p className="mt-1 text-xs text-[var(--foreground-tertiary)]">
+        <p className="mt-1 text-xs text-(--foreground-tertiary)">
           Special instructions for the delivery driver
         </p>
       </div>
