@@ -17,10 +17,8 @@ interface CheckoutProgressProps {
   onStepClick: (step: number) => void;
 }
 
-const CheckoutProgress = ({ steps, currentStep, onStepClick }: CheckoutProgressProps) => {
+const CheckoutProgress = ({ steps = [], currentStep, onStepClick }: CheckoutProgressProps) => {
 
-  if (!steps.length) return null;
-  
   return (
     <div className="mb-8">
       <div className="flex items-center justify-between">
