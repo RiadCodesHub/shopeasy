@@ -92,7 +92,7 @@ const Header = () => {
 
   return (
     <>
-      <header className="sticky top-0 z-50 bg-(--background) border-b border-(--border) shadow-sm">
+      <header className="sticky top-0 z-50 bg-[var(--color-bg)] border-b border-(--border) shadow-sm">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -102,7 +102,7 @@ const Header = () => {
               transition={{ duration: 0.5 }}
             >
               <Link href="/" className="text-2xl font-bold">
-                Shop<span className="text-(--primary)">Easy</span>
+                Shop<span className="text-[var(--color-primary)]">Easy</span>
               </Link>
             </motion.div>
 
@@ -151,7 +151,7 @@ const Header = () => {
                   type="submit"
                   className="absolute right-3 top-1/2 -translate-y-1/2"
                 >
-                  <Search className="h-5 w-5 text-(--foreground-tertiary) hover:text-(--primary) transition-colors" />
+                  <Search className="h-5 w-5 text-[var(--color-bg-tertiary)] hover:text-(--primary) transition-colors" />
                 </motion.button>
                 
                 {searchQuery && (

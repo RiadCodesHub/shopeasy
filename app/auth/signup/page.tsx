@@ -63,7 +63,7 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-linear-to-br from-blue-500 to-purple-500 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
       <div className="card max-w-md w-full">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-(--foreground) mb-2">
@@ -93,7 +93,7 @@ export default function SignupPage() {
                 type="text"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="input-field pl-10"
+                className="input pl-10"
                 placeholder="John Doe"
                 required
               />
@@ -111,7 +111,7 @@ export default function SignupPage() {
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                className="input-field pl-10"
+                className="input pl-10"
                 placeholder="you@example.com"
                 required
               />
@@ -129,7 +129,7 @@ export default function SignupPage() {
                 type="tel"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                className="input-field pl-10"
+                className="input pl-10"
                 placeholder="+8801XXXXXXXXX"
               />
             </div>
@@ -146,7 +146,7 @@ export default function SignupPage() {
                 type={showPassword ? 'text' : 'password'}
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="input-field pl-10 pr-12"
+                className="input pl-10 pr-12"
                 placeholder="••••••••"
                 minLength={6}
                 required
@@ -165,7 +165,7 @@ export default function SignupPage() {
                 type={showPassword ? 'text' : 'password'}
                 value={formData.confirmPassword}
                 onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                className="input-field pl-10 pr-12"
+                className="input pl-10 pr-12"
                 placeholder="••••••••"
                 required
               />
