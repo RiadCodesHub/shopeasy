@@ -154,7 +154,7 @@ const CategoryFilter = () => {
         <div className="flex items-center justify-between p-4 bg-(--background-secondary) rounded-xl shadow-lg mb-4 border border-(--border)">
           <div className="flex items-center gap-3">
             <div className="relative">
-              <div className="p-2 bg-linear-to-r from-primary to-accent rounded-lg">
+              <div className="p-2 bg-2-to-r from-primary to-accent rounded-lg">
                 <Filter className="h-5 w-5 text-white" />
               </div>
               {activeFiltersCount > 0 && (

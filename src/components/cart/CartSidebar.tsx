@@ -72,7 +72,7 @@ const CartSidebar = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 20 }}
-            className="fixed right-0 top-0 h-full w-full max-w-md bg-(--background-secondary) shadow-2xl z-50 flex flex-col border-l border-(--border)"
+            className="fixed right-0 top-0 h-full w-full max-w-md bg-[var(--bg-secondary)] shadow-2xl z-50 flex flex-col border-l border-(--border)"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-(--border)">

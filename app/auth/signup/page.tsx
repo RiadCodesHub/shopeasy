@@ -146,7 +146,7 @@ export default function SignupPage() {
                 type={showPassword ? 'text' : 'password'}
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="input pl-10 pr-12"
+                className="input pl-20 pr-12"
                 placeholder="••••••••"
                 minLength={6}
                 required
@@ -165,7 +165,7 @@ export default function SignupPage() {
                 type={showPassword ? 'text' : 'password'}
                 value={formData.confirmPassword}
                 onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                className="input pl-10 pr-12"
+                className="input pl-20 pr-12"
                 placeholder="••••••••"
                 required
               />

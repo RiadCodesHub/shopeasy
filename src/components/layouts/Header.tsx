@@ -142,7 +142,7 @@ const Header = () => {
                   value={searchQuery}
                   onChange={handleSearchChange}
                   placeholder="Search products..."
-                  className="input-field pr-12"
+                  className="input pr-12 w-full"
                 />
                 <motion.button
                   initial={{ scale: 1 }}

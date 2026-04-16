@@ -90,7 +90,7 @@ export default function LoginPage() {
                 type={showPassword ? 'text' : 'password'}
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="input pl-10 pr-12"
+                className="input pl-20 pr-12"
                 placeholder="••••••••"
                 required
               />
