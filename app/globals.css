@@ -1,117 +1,136 @@
 @import "tailwindcss";
 
+@layer base {
+  :root {
+    --primary : #3b82f6;
+    --primary-dark : #2563eb;
+    --accent : #8b5cf6;
+
+    --success : #22c55e;
+    --success-bg: #dcfce7;
+
+    --warning : #f59e0b;
+
+    --error : #ef4444;
+    --error-bg: #fee2e2;
+
+    --background : #ffffff;
+    --background-secondary : #f9fafb;
+    --background-tertiary : #f3f4f6;
+
+    --text: #111827;
+    --text-secondary: #6b7280;
+
+    --border: #e5e7eb;
+    --card: #ffffff;
+  }
+
+  .dark {
+    --background: #0f172a;
+    --background-secondary: #1e293b;
+    --background-tertiary: #334155;
+
+    --text: #f9fafb;
+    --text-secondary: #cbd5f5;
+
+    --border: #334155;
+    --card: #1e293b;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--text);
+  }
+}
+
 @theme {
-  --color-primary: #3b82f6;
-  --color-primary-dark: #2563eb;
-  --color-accent: #8b5cf6;
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
 
-  --color-bg: #ffffff;
-  --color-bg-secondary: #f9fafb;
-  --color-bg-tertiary: #f3f4f6;
+  --color-bg: var(--background);
+  --color-bg-secondary: var(--background-secondary);
+  --color-bg-tertiary: var(--background-tertiary);
 
-  --color-text: #111827;
-  --color-text-secondary: #6b7280;
-  --color-text-tertiary: #9ca3af;
+  --color-text: var(--text);
+  --color-text-secondary: var(--text-secondary);
 
-  --color-border: #e5e7eb;
-  --color-border-dark: #d1d5db;
+  --color-border: var(--border);
+  --color-card: var(--card);
 
-  --color-success: #22c55e;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-info: #3b82f6;
+  --color-success: var(--success);
+  --color-success-bg: var(--success-bg);
 
-  --color-success-bg: #dcfce7;
-  --color-warning-bg: #fef9c3;
-  --color-error-bg: #fee2e2;
-  --color-info-bg: #dbeafe;
+  --color-warning: var(--warning);
+
+  --color-error: var(--error);
+  --color-error-bg: var(--error-bg);
 }
 
-/* Dark mode */
-.dark {
-  --color-primary: #60a5fa;
-  --color-primary-dark: #3b82f6;
-  --color-accent: #a78bfa;
-
-  --color-bg: #0a0a0f;
-  --color-bg-secondary: #111114;
-  --color-bg-tertiary: #1a1a1f;
-
-  --color-text: #ffffff;
-  --color-text-secondary: #a1a1aa;
-  --color-text-tertiary: #71717a;
-
-  --color-border: #27272a;
-  --color-border-dark: #3f3f46;
-
-  --color-success: #4ade80;
-  --color-warning: #fbbf24;
-  --color-error: #f87171;
-  --color-info: #60a5fa;
-
-  --color-success-bg: #14532d;
-  --color-warning-bg: #78350f;
-  --color-error-bg: #991b1b;
-  --color-info-bg: #1e3a8a;
-}
-
-body {
+* {
   @apply transition-colors duration-300;
-  background: var(--color-bg);
-  color: var(--color-text);
 }
+
+@layer components {
 
 .btn {
   @apply px-6 py-3 rounded-lg font-semibold transition;
 }
 
 .btn-primary {
-  background: var(--color-primary);
+  background: var(--primary);
   color: white;
 }
 .btn-primary:hover {
-  background: var(--color-primary-dark);
+  background: var(--primary-dark);
 }
 
 .btn-secondary {
   @apply border rounded-lg font-semibold;
-  background: var(--color-bg-secondary);
-  border-color: var(--color-border);
-  color: var(--color-text);
+  background: var(--background-secondary);
+  border-color: var(--border);
+  color: var(--text);
 }
 
 .btn-outline {
   @apply border-2 rounded-lg font-semibold;
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 .btn-outline:hover {
-  background: var(--color-primary);
+  background: var(--primary);
   color: white;
 }
 
 .btn-danger {
-  background: var(--color-error);
+  background: var(--error);
   color: white;
 }
 
 /* Card */
 .card {
   @apply p-6 rounded-xl shadow-sm border;
-  background: var(--color-bg-secondary);
-  border-color: var(--color-border);
+  background: var(--card);
+  border-color: var(--border);
 }
 
 /* Input */
 .input {
   @apply w-full px-4 py-3 rounded-lg border transition;
-  background: var(--color-bg);
-  border-color: var(--color-border);
-  color: var(--color-text);
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--text);
 }
 .input:focus {
   outline: none;
-  border-color: var(--color-primary);
+  border-color: var(--primary);
+}
+
+.nav-link {
+  @apply text-sm text-text;
+}
+.nav-link:hover {
+  @apply text-semibold text-primary;
 }
 
 /* Badge */
@@ -119,24 +138,26 @@ body {
   @apply px-3 py-1 text-sm rounded-full font-medium;
 }
 .badge-success {
-  background: var(--color-success-bg);
-  color: var(--color-success);
+  background: var(--success-bg);
+  color: var(--success);
 }
 .badge-error {
-  background: var(--color-error-bg);
-  color: var(--color-error);
+  background: var(--error-bg);
+  color: var(--error);
 }
 
 .text-gradient {
-  background: linear-gradient(to right, var(--color-primary), var(--color-accent));
+  background: linear-gradient(to right, var(--primary), var(--accent));
   -webkit-background-clip: text;
   color: transparent;
 }
 
 .glass {
   backdrop-filter: blur(12px);
-  background: color-mix(in srgb, white 10%, transparent);
+  background: rgba(255, 255, 255, 0.1);
 }
 .dark .glass {
-  background: color-mix(in srgb, black 10%, transparent);
+  background: rgba(0, 0, 0, 0.2);
+}
+
 }

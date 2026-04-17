@@ -7,7 +7,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-(--background-secondary) text-(--foreground) mt-16 border-t border-(--border)">
+    <footer className="bg-bg-secondary) text-text mt-16 border-t border-border">
       <div className="container mx-auto px-4 py-12">
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -20,10 +20,10 @@ const Footer = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-bold mb-4">
-              Shop<span className="text-gradient">Easy</span>
+              Shop<span className="text-primery">Easy</span>
             </h3>
 
-            <p className="text-(--foreground-secondary) mb-6">
+            <p className="text-text mb-6">
               Your trusted online shopping destination offering premium products
               with exceptional service and fast delivery.
             </p>
@@ -34,7 +34,7 @@ const Footer = () => {
                   key={index}
                   whileHover={{ scale: 1.1, y: -3 }}
                   href="#"
-                  className="p-2 rounded-lg bg-(--background-tertiary) hover:bg-primary text-(--foreground-secondary) hover:text-white transition-colors"
+                  className="p-2 rounded-lg bg-bg-tertiary hover:bg-primary text-text hover:text-white"
                 >
                   <Icon className="h-5 w-5" />
                 </motion.a>
@@ -73,17 +73,17 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-6">Contact Us</h4>
 
             <ul className="space-y-4">
-              <li className="flex items-center gap-3 text-(--foreground-secondary)">
+              <li className="flex items-center gap-3 text-text">
                 <Phone className="h-5 w-5 text-primary" />
                 <span>017-780-017-982</span>
               </li>
 
-              <li className="flex items-center gap-3 text-(--foreground-secondary)">
+              <li className="flex items-center gap-3 text-text">
                 <Mail className="h-5 w-5 text-primary" />
                 <span>support@shopeasy.com</span>
               </li>
 
-              <li className="flex items-center gap-3 text-(--foreground-secondary)">
+              <li className="flex items-center gap-3 text-text">
                 <MapPin className="h-5 w-5 text-primary" />
                 <span>123 Shopping St, New York</span>
               </li>
@@ -104,18 +104,18 @@ const Footer = () => {
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.05 }}
-                  className="p-3 rounded-lg bg-(--background-tertiary) flex items-center justify-center border border-(--border)"
+                  className="p-3 rounded-lg bg-bgtertiary flex items-center justify-center border border-border"
                 >
                   <CreditCard className="h-8 w-8 text-primary" />
                 </motion.div>
               ))}
             </div>
 
-            <div className="mt-8 p-4 rounded-lg bg-(--background-tertiary) border border-(--border)">
+            <div className="mt-8 p-4 rounded-lg bg-bg-tertiary border border-border">
               <p className="text-sm text-(--foreground-secondary) mb-2">
                 Secure & Encrypted
               </p>
-              <p className="text-xs text-(--foreground-tertiary)">
+              <p className="text-xs text-text">
                 All transactions are secured with 256-bit SSL encryption
               </p>
             </div>
@@ -128,7 +128,7 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <p className="text-(--foreground-secondary) text-sm">
+          <p className="text-text text-sm">
             © {currentYear} ShopEasy. All rights reserved.
           </p>
 
