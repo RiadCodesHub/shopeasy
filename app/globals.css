@@ -130,7 +130,7 @@
   @apply text-sm text-text;
 }
 .nav-link:hover {
-  @apply text-semibold text-primary;
+  @apply font-semibold text-primary;
 }
 
 /* Badge */
