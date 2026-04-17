@@ -20,7 +20,7 @@ const Footer = () => {
             viewport={{ once: true }}
           >
             <h3 className="text-2xl font-bold mb-4">
-              Shop<span className="text-primery">Easy</span>
+              Shop<span className="text-primary">Easy</span>
             </h3>
 
             <p className="text-text mb-6">
@@ -124,10 +124,10 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="divider"></div>
+        <div className="w-full h-[2px] bg-bg-secondary mb-4"></div>
 
         {/* Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center justify-center">
           <p className="text-text text-sm">
             © {currentYear} ShopEasy. All rights reserved.
           </p>

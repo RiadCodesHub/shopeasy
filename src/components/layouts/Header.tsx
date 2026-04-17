@@ -174,7 +174,7 @@ const Header = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={handleProfileClick}
-                  className="flex items-center gap-2 p-2 rounded-lg hover:bg-bg-tertiary"
+                  className="flex items-center gap-2 p-2 rounded-lg hover:bg-bg-tertiary text-primary"
                 >
                   {session?.user?.image ? (
                     <div className="relative w-8 h-8 rounded-full overflow-hidden">
@@ -196,10 +196,10 @@ const Header = () => {
                   
                   {session && (
                     <>
-                      <span className="hidden md:block text-sm font-medium text-bg-secondary max-w-25 truncate">
+                      <span className="hidden md:block text-sm font-medium text-text max-w-25 truncate">
                         {session.user?.name?.split(' ')[0]}
                       </span>
-                      <ChevronDown className={`hidden md:block h-4 w-4 text-bg-secondary transition-transform duration-200 ${isProfileMenuOpen ? 'rotate-180' : ''}`} />
+                      <ChevronDown className={`hidden md:block h-4 w-4 text-text transition-transform duration-200 ${isProfileMenuOpen ? 'rotate-180' : ''}`} />
                     </>
                   )}
                 </motion.button>

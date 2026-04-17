@@ -127,10 +127,10 @@
 }
 
 .nav-link {
-  @apply text-sm text-text;
+  @apply text-[16px] text-text;
 }
 .nav-link:hover {
-  @apply font-semibold text-primary;
+  @apply text-primary;
 }
 
 /* Badge */
