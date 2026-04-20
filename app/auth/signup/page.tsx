@@ -165,7 +165,7 @@ export default function SignupPage() {
                 type={showPassword ? 'text' : 'password'}
                 value={formData.confirmPassword}
                 onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                className="input pl-20 pr-12"
+                className="input pl-10 pr-12"
                 placeholder="••••••••"
                 required
               />

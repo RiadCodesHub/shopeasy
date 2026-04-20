@@ -146,7 +146,7 @@
   color: var(--error);
 }
 
-.text-gradient {
+.gradient {
   background: linear-gradient(to right, var(--primary), var(--accent));
   -webkit-background-clip: text;
   color: transparent;
