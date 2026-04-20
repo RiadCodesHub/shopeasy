@@ -66,7 +66,7 @@ export default function ProductGrid() {
   if (filteredProducts.length === 0) {
     return (
       <div className="text-center py-12">
-        <div className="mb-4 text-(--foreground-tertiary)">
+        <div className="mb-4 text-text">
           <svg
             className="w-16 h-16 mx-auto"
             fill="none"
@@ -82,11 +82,11 @@ export default function ProductGrid() {
           </svg>
         </div>
 
-        <h3 className="text-xl font-semibold mb-2 text-(--foreground)">
+        <h3 className="text-xl font-semibold mb-2 text-text">
           No products found
         </h3>
 
-        <p className="text-(--foreground-secondary)">
+        <p className="text-text">
           Try adjusting your filters or search terms
         </p>
       </div>

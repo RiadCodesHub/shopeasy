@@ -63,11 +63,11 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Email Field */}
           <div>
-            <label className="block text-sm font-medium text-(--foreground-secondary) mb-2">
+            <label className="block text-sm font-medium text-text-secondary mb-2">
               Email Address
             </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text-secondary" />
               <input
                 type="email"
                 value={formData.email}
@@ -81,11 +81,11 @@ export default function LoginPage() {
 
           {/* Password Field */}
           <div>
-            <label className="block text-sm font-medium text-(--foreground-secondary) mb-2">
+            <label className="block text-sm font-medium text-text-secondary mb-2">
               Password
             </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text-secondary" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={formData.password}
@@ -97,7 +97,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-(--foreground-tertiary) hover:text-(--foreground-secondary)] transition-colors"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary hover:text-text"
               >
                 {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
               </button>
@@ -129,7 +129,7 @@ export default function LoginPage() {
           </button>
         </form>
 
-        <p className="mt-8 text-center text-sm text-(--foreground-secondary)">
+        <p className="mt-8 text-center text-sm text-text-secondary">
           Don't have an account?{' '}
           <Link 
             href="/auth/signup" 

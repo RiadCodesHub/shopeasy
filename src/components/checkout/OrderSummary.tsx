@@ -17,15 +17,15 @@ const OrderSummary = () => {
   const total = subTotal + shippingCost + tax;
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 sticky top-6">
-      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+    <div className="bg-bg rounded-xl shadow-lg p-6 sticky top-6">
+      <h3 className="text-xl font-bold text-text mb-6 flex items-center gap-2">
         <ShoppingBag className='h-5 w-5' />
         Order Summary
       </h3>
 
       {/* Cart Items */}
       <div className="mb-6">
-        <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-3">
+        <h4 className="font-semibold text-text mb-3">
           Items ({items.length})
         </h4>
         <div className="space-y-3 max-h-64 overflow-y-auto">

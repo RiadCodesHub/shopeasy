@@ -71,7 +71,7 @@ const CartPage = () => {
                 <ChevronLeft className="h-5 w-5" />
                 <span>Back</span>
               </Link>
-              <h1 className="text-lg font-bold text-(--foreground)">Cart</h1>
+              <h1 className="text-lg font-bold text-text">Cart</h1>
               <div className="w-10"></div>
             </div>
           </div>
@@ -88,7 +88,7 @@ const CartPage = () => {
               <ShoppingBag className="h-12 w-12 text-primary" />
             </div>
             
-            <h1 className="text-2xl font-bold text-(--foreground) mb-3">
+            <h1 className="text-2xl font-bold text-text mb-3">
               Your cart is empty
             </h1>
             
@@ -134,7 +134,7 @@ const CartPage = () => {
               <span className="text-sm">Back</span>
             </Link>
             <div className="text-center">
-              <h1 className="text-lg font-bold text-(--foreground)">Shopping Cart</h1>
+              <h1 className="text-lg font-bold text-text">Shopping Cart</h1>
               <p className="text-xs text- (--foreground-tertiary)">{totalQuantity} items</p>
             </div>
             <button
@@ -153,7 +153,7 @@ const CartPage = () => {
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text- (--foreground-tertiary)">Total</p>
-              <p className="text-xl font-bold text-(--foreground)">
+              <p className="text-xl font-bold text-text">
                 ${orderTotal.toFixed(2)}
               </p>
             </div>
@@ -187,7 +187,7 @@ const CartPage = () => {
           >
             <div className="sticky top-0 bg-(--background-secondary)border-b border-(--border) px-6 py-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-bold text-(--foreground)">Order Summary</h3>
+                <h3 className="text-lg font-bold text-text">Order Summary</h3>
                 <button
                   onClick={() => setShowMobileSummary(false)}
                   className="p-2 hover:bg-(--background-tertiary) rounded-full transition-colors"
@@ -200,21 +200,21 @@ const CartPage = () => {
             <div className="p-6 space-y-4">
               <div className="flex justify-between">
                 <span className="text-(--foreground-secondary)">Subtotal</span>
-                <span className="font-medium text-(--foreground)">${totalPrice.toFixed(2)}</span>
+                <span className="font-medium text-text">${totalPrice.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-(--foreground-secondary)">Shipping</span>
-                <span className="font-medium text-(--foreground)">
+                <span className="font-medium text-text">
                   {shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`}
                 </span>
               </div>
               <div className="flex justify-between">
                 <span className="text-(--foreground-secondary)">Tax</span>
-                <span className="font-medium text-(--foreground)">${tax.toFixed(2)}</span>
+                <span className="font-medium text-text">${tax.toFixed(2)}</span>
               </div>
               <div className="divider"></div>
               <div className="flex justify-between text-lg font-bold">
-                <span className="text-(--foreground)">Total</span>
+                <span className="text-text">Total</span>
                 <span className="text-primary">${orderTotal.toFixed(2)}</span>
               </div>
             </div>
@@ -235,10 +235,10 @@ const CartPage = () => {
                 <ShoppingBag className="h-6 w-6" />
               </div>
               <div>
-                <h1 className="text-3xl font-bold text-(--foreground)">
+                <h1 className="text-3xl font-bold text-text">
                   Shopping Cart
                 </h1>
-                <p className="text-(--foreground-secondary)">
+                <p className="text-text">
                   {totalQuantity} item{totalQuantity !== 1 ? 's' : ''} in your cart
                 </p>
               </div>
@@ -253,16 +253,16 @@ const CartPage = () => {
                   </div>
                   <span className="font-medium">Cart</span>
                 </div>
-                <div className="w-12 h-1 bg-(--border)"></div>
-                <div className="flex items-center gap-2 text- (--foreground-tertiary)">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-(--background-tertiary)">
+                <div className="w-12 h-1 bg-bg"></div>
+                <div className="flex items-center gap-2 text-text">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-bg-tertiary">
                     2
                   </div>
                   <span className="font-medium">Checkout</span>
                 </div>
                 <div className="w-12 h-1 bg-(--border)"></div>
-                <div className="flex items-center gap-2 text- (--foreground-tertiary)">
-                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-(--background-tertiary)">
+                <div className="flex items-center gap-2 text-text">
+                  <div className="w-8 h-8 rounded-full flex items-center justify-center bg-bg-tertiary">
                     3
                   </div>
                   <span className="font-medium">Confirmation</span>
@@ -283,7 +283,7 @@ const CartPage = () => {
             {/* Cart Items */}
             <div className="lg:col-span-2">
               <div className="card mb-6">
-                <h2 className="text-lg lg:text-xl font-bold text-(--foreground) mb-4 lg:mb-6">
+                <h2 className="text-lg lg:text-xl font-bold text-text mb-4 lg:mb-6">
                   Cart Items
                 </h2>
 
@@ -295,12 +295,12 @@ const CartPage = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="flex flex-col sm:flex-row gap-4 p-4 border border-(--border) rounded-xl"
+                      className="flex flex-col sm:flex-row gap-4 p-4 border border-border rounded-xl"
                     >
                       {/* Product Image */}
                       <div className="flex gap-4">
                         <Link href={`/products/${item.id}`} className="shrink-0">
-                          <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-lg overflow-hidden bg-(--background-tertiary)">
+                          <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-lg overflow-hidden bg-bg-tertiary">
                             <img
                               src={item.image}
                               alt={item.name}
@@ -313,12 +313,12 @@ const CartPage = () => {
                         <div className="flex-1 sm:hidden">
                           <Link 
                             href={`/products/${item.id}`}
-                            className="font-semibold text-(--foreground) hover:text-primary mb-1 block text-sm"
+                            className="font-semibold text-text hover:text-primary mb-1 block text-sm"
                           >
                             {item.name}
                           </Link>
                           <div className="flex items-center justify-between">
-                            <p className="text-lg font-bold text-(--foreground)">
+                            <p className="text-lg font-bold text-text">
                               ${item.price.toFixed(2)}
                             </p>
                             <button
@@ -338,19 +338,19 @@ const CartPage = () => {
                             <div>
                               <Link 
                                 href={`/products/${item.id}`}
-                                className="font-semibold text-(--foreground) hover:text-primary mb-1 block"
+                                className="font-semibold text-text hover:text-primary mb-1 block"
                               >
                                 {item.name}
                               </Link>
-                              <p className="text-(--foreground-secondary) text-sm">
+                              <p className="text- text-sm">
                                 Item # {item.id}
                               </p>
                             </div>
                             <div className="text-right">
-                              <p className="text-xl font-bold text-(--foreground)">
+                              <p className="text-xl font-bold text-text">
                                 ${item.price.toFixed(2)}
                               </p>
-                              <p className="text-sm text- (--foreground-tertiary)">
+                              <p className="text-sm text-text-secondary">
                                 ${(item.price * item.quantity).toFixed(2)} total
                               </p>
                             </div>
@@ -359,14 +359,14 @@ const CartPage = () => {
                           {/* Quantity Controls */}
                           <div className="flex items-center justify-between mt-4">
                             <div className="flex items-center gap-4">
-                              <div className="flex items-center border border-(--border) rounded-lg">
+                              <div className="flex items-center border border-border rounded-lg">
                                 <button
                                   onClick={() => dispatch(removeFromCart(item.id))}
-                                  className="p-2 hover:bg-(--background-tertiary) transition-colors"
+                                  className="p-2 hover:bg-bg-secondary transition-colors"
                                 >
-                                  <Minus className="h-4 w-4 text-(--foreground-secondary)" />
+                                  <Minus className="h-4 w-4 text-text-secondary" />
                                 </button>
-                                <span className="w-8 text-center font-medium text-(--foreground)">
+                                <span className="w-8 text-center font-medium text-text">
                                   {item.quantity}
                                 </span>
                                 <button
@@ -377,9 +377,9 @@ const CartPage = () => {
                                     image: item.image,
                                     quantity: 1
                                   }))}
-                                  className="p-2 hover:bg-(--background-tertiary) transition-colors"
+                                  className="p-2 hover:bg-bg-tertiary transition-colors"
                                 >
-                                  <Plus className="h-4 w-4 text-(--foreground-secondary)" />
+                                  <Plus className="h-4 w-4 text-text-secondary" />
                                 </button>
                               </div>
                               <button
@@ -396,10 +396,10 @@ const CartPage = () => {
 
                       {/* Quantity Controls - Mobile */}
                       <div className="sm:hidden flex items-center justify-between">
-                        <div className="flex items-center border border-(--border) rounded-lg">
+                        <div className="flex items-center border border-border rounded-lg">
                           <button
                             onClick={() => dispatch(removeFromCart(item.id))}
-                            className="p-2 hover:bg-(--background-tertiary)"
+                            className="p-2 hover:bg-bg-tertiary"
                           >
                             <Minus className="h-4 w-4" />
                           </button>
@@ -414,12 +414,12 @@ const CartPage = () => {
                               image: item.image,
                               quantity: 1,
                             }))}
-                            className="p-2 hover:bg-(--background-tertiary)"
+                            className="p-2 hover:bg-bg-tertiary"
                           >
                             <Plus className="h-4 w-4" />
                           </button>
                         </div>
-                        <p className="text-sm text- (--foreground-tertiary)">
+                        <p className="text-sm text-text-secondary">
                           ${(item.price * item.quantity).toFixed(2)}
                         </p>
                       </div>
@@ -470,18 +470,18 @@ const CartPage = () => {
             <div className="hidden lg:block lg:col-span-1">
               <div className="sticky top-8">
                 <div className="card mb-6">
-                  <h2 className="text-xl font-bold text-(--foreground) mb-6">
+                  <h2 className="text-xl font-bold text-text mb-6">
                     Order Summary
                   </h2>
 
                   <div className="space-y-4 mb-6">
                     <div className="flex justify-between">
-                      <span className="text-(--foreground-secondary)">Subtotal</span>
-                      <span className="font-medium text-(--foreground)">${totalPrice.toFixed(2)}</span>
+                      <span className="text-text-secondary">Subtotal</span>
+                      <span className="font-medium text-text">${totalPrice.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-(--foreground-secondary)">Shipping</span>
-                      <span className="font-medium text-(--foreground)">
+                      <span className="text-text-secondary">Shipping</span>
+                      <span className="font-medium text-text">
                         {shippingCost === 0 ? (
                           <span className="text-success flex items-center gap-1">
                             <Truck className="h-4 w-4" />
@@ -493,19 +493,19 @@ const CartPage = () => {
                       </span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-(--foreground-secondary)">Tax</span>
-                      <span className="font-medium text-(--foreground)">
+                      <span className="text-text-secondary">Tax</span>
+                      <span className="font-medium text-text">
                         ${tax.toFixed(2)}
                       </span>
                     </div>
                     <div className="divider"></div>
                     <div className="flex justify-between text-lg font-bold">
-                      <span className="text-(--foreground)">Total</span>
+                      <span className="text-text">Total</span>
                       <span className="text-primary">
                         ${orderTotal.toFixed(2)}
                       </span>
                     </div>
-                    <p className="text-xs text- (--foreground-tertiary) mt-1">
+                    <p className="text-xs text-text-secondary mt-1">
                       Including ${tax.toFixed(2)} in taxes
                     </p>
                   </div>
@@ -546,14 +546,14 @@ const CartPage = () => {
 
                   {/* Payment Methods */}
                   <div className="text-center">
-                    <p className="text-sm text- (--foreground-tertiary) mb-2">We accept</p>
+                    <p className="text-sm text-text-secondary mb-2">We accept</p>
                     <div className="flex justify-center gap-3">
                       {['Visa', 'MasterCard', 'PayPal', 'Apple Pay'].map((method) => (
                         <div
                           key={method}
                           className="p-2 bg-(--background-tertiary) rounded-lg"
                         >
-                          <CreditCard className="h-6 w-6 text-(--foreground-secondary)" />
+                          <CreditCard className="h-6 w-6 text-text-secondary" />
                         </div>
                       ))}
                     </div>
@@ -562,27 +562,27 @@ const CartPage = () => {
 
                 {/* Features */}
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 p-4 bg-(--background-secondary)rounded-xl shadow-sm border border-(--border)">
+                  <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-xl shadow-sm border border-(--border)">
                     <Truck className="h-5 w-5 text-primary" />
                     <div>
-                      <p className="font-medium text-(--foreground)">Free Shipping</p>
-                      <p className="text-sm text-(--foreground-secondary)">On orders over $50</p>
+                      <p className="font-medium text-text">Free Shipping</p>
+                      <p className="text-sm text-text-secondary">On orders over $50</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-4 bg-(--background-secondary)rounded-xl shadow-sm border border-(--border)">
+                  <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-xl shadow-sm border border-(--border)">
                     <CheckCircle className="h-5 w-5 text-success" />
                     <div>
-                      <p className="font-medium text-(--foreground)">30-Day Returns</p>
-                      <p className="text-sm text-(--foreground-secondary)">Easy returns policy</p>
+                      <p className="font-medium text-text">30-Day Returns</p>
+                      <p className="text-sm text-text-secondary">Easy returns policy</p>
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-4 bg-(--background-secondary)rounded-xl shadow-sm border border-(--border)">
+                  <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-xl shadow-sm border border-(--border)">
                     <Package className="h-5 w-5 text-accent" />
                     <div>
-                      <p className="font-medium text-(--foreground)">Secure Packaging</p>
-                      <p className="text-sm text-(--foreground-secondary)">Items arrive safely</p>
+                      <p className="font-medium text-text">Secure Packaging</p>
+                      <p className="text-sm text-text-secondary">Items arrive safely</p>
                     </div>
                   </div>
                 </div>

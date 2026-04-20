@@ -50,7 +50,7 @@ const CheckoutNavigation: React.FC<CheckoutNavigationProps> = ({
           onClick={onNext}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="flex items-center justify-center gap-2 px-8 py-3 bg-linear-to-r from-blue-600 to-purple-600 text-white rounded-lg hover:opacity-90 transition-all font-bold"
+          className="flex items-center justify-center gap-2 px-8 py-3 gradient text-white rounded-lg hover:opacity-90 transition-all font-bold"
         >
           Continue
           <ChevronRight className="h-5 w-5" />

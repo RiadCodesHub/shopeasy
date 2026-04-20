@@ -44,7 +44,7 @@ const CheckoutProgress: React.FC<CheckoutProgressProps> = ({
                     ${
                       isActive
                         ? 'bg-primary border-primary text-white'
-                        : 'border-(--border) text-(--foreground-tertiary) bg-(--background-secondary)'
+                        : 'border-border text-text bg-bg-secondary'
                     }
                   `}
                 >
@@ -58,7 +58,7 @@ const CheckoutProgress: React.FC<CheckoutProgressProps> = ({
                     ${
                       isActive
                         ? 'text-primary'
-                        : 'text-(--foreground-tertiary)'
+                        : 'text-text'
                     }
                   `}
                 >
@@ -70,11 +70,11 @@ const CheckoutProgress: React.FC<CheckoutProgressProps> = ({
               {index < steps.length - 1 && (
                 <div
                   className={`
-                    w-6 sm:w-24 h-1 mx-2 sm:mx-4 rounded transition-colors
+                    w-6 sm:w-24 h-1 mx-2 sm:mx-4 rounded 
                     ${
                       isCompleted
                         ? 'bg-primary'
-                        : 'bg-(--border)'
+                        : 'bg-border'
                     }
                   `}
                 />

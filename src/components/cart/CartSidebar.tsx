@@ -72,23 +72,23 @@ const CartSidebar = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 20 }}
-            className="fixed right-0 top-0 h-full w-full max-w-md bg-[var(--bg-secondary)] shadow-2xl z-50 flex flex-col border-l border-(--border)"
+            className="fixed right-0 top-0 h-full w-full max-w-md bg-bg-secondary shadow-2xl z-50 flex flex-col border-l border-(--border)"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-6 border-b border-(--border)">
+            <div className="flex items-center justify-between p-6 border-b border-border">
               <div className="flex items-center gap-3">
                 <div className="p-2 bg-linear-to-r from-primary to-accent rounded-lg">
                   <ShoppingBag className="h-5 w-5 text-white" />
                 </div>
-                <h2 className="text-xl font-semibold text-(--foreground)">
+                <h2 className="text-xl font-semibold text-text">
                   Shopping Cart ({safeTotalQuantity})
                 </h2>
               </div>
               <button
                 onClick={handleClose}
-                className="p-2 rounded-full hover:bg-(--background-tertiary) transition-colors"
+                className="p-2 rounded-full hover:bg-bg-tertiary transition-colors"
               >
-                <X className="h-6 w-6 text-(--foreground-secondary)" />
+                <X className="h-6 w-6 text-text-secondary" />
               </button>
             </div>
 
@@ -96,10 +96,10 @@ const CartSidebar = () => {
             <div className="flex-1 overflow-y-auto p-4 sm:p-6">
               {safeItems.length === 0 ? (
                 <div className="text-center py-12">
-                  <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-(--background-tertiary) flex items-center justify-center">
-                    <ShoppingBag className="h-12 w-12 text-(--foreground-tertiary)" />
+                  <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-bg-tertiary flex items-center justify-center">
+                    <ShoppingBag className="h-12 w-12 text-text" />
                   </div>
-                  <p className="text-(--foreground-secondary) mb-4">
+                  <p className="text-text mb-4">
                     Your cart is empty
                   </p>
                   <Link
@@ -119,7 +119,7 @@ const CartSidebar = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="relative flex items-center gap-4 p-4 bg-(--background-tertiary) rounded-lg border border-(--border)"
+                      className="relative flex items-center gap-4 p-4 bg-bg-tertiary rounded-lg border border-(--border)"
                     >
                       {/* Product Image */}
                       <Link 
@@ -127,7 +127,7 @@ const CartSidebar = () => {
                         onClick={handleClose}
                         className="shrink-0"
                       >
-                        <div className="w-16 h-16 rounded-lg overflow-hidden bg-(--background-secondary)">
+                        <div className="w-16 h-16 rounded-lg overflow-hidden bg-bg-secondary">
                           <img
                             src={item.image}
                             alt={item.name}
@@ -141,7 +141,7 @@ const CartSidebar = () => {
                         <Link 
                           href={`/products/${item.id}`}
                           onClick={handleClose}
-                          className="font-medium text-(--foreground) hover:text-primary transition-colors line-clamp-1"
+                          className="font-medium text-text hover:text-primary transition-colors line-clamp-1"
                         >
                           {item.name}
                         </Link>
@@ -154,12 +154,12 @@ const CartSidebar = () => {
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => dispatch(removeFromCart(item.id))}
-                          className="p-1.5 rounded hover:bg-(--background-secondary) transition-colors"
+                          className="p-1.5 rounded hover:bg-bg-secondary transition-colors"
                         >
-                          <Minus className="h-4 w-4 text-(--foreground-secondary)" />
+                          <Minus className="h-4 w-4 text-text" />
                         </button>
                         
-                        <span className="w-8 text-center font-medium text-(--foreground)">
+                        <span className="w-8 text-center font-medium text-text">
                           {item.quantity}
                         </span>
                         
@@ -171,9 +171,9 @@ const CartSidebar = () => {
                             image: item.image,
                             quantity: 1
                           }))}
-                          className="p-1.5 rounded hover:bg-(--background-secondary) transition-colors"
+                          className="p-1.5 rounded hover:bg-bg-secondary"
                         >
-                          <Plus className="h-4 w-4 text-(--foreground-secondary)" />
+                          <Plus className="h-4 w-4 text-text" />
                         </button>
                       </div>
 
@@ -195,21 +195,21 @@ const CartSidebar = () => {
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="border-t border-(--border) p-6 space-y-4 bg-(--background-secondary)"
+                className="border-t border-(--border) p-6 space-y-4 bg-bg-secondary"
               >
                 {/* Total */}
                 <div className="space-y-2">
-                  <div className="flex justify-between text-sm text-(--foreground-secondary)">
+                  <div className="flex justify-between text-sm text-text">
                     <span>Subtotal</span>
                     <span>${safeTotalPrice.toFixed(2)}</span>
                   </div>
-                  <div className="flex justify-between text-sm text-(--foreground-secondary)">
+                  <div className="flex justify-between text-sm text-text">
                     <span>Shipping</span>
                     <span>Calculated at checkout</span>
                   </div>
                   <div className="divider"></div>
                   <div className="flex justify-between text-lg">
-                    <span className="font-semibold text-(--foreground)">Total:</span>
+                    <span className="font-semibold text-text">Total:</span>
                     <span className="font-bold text-2xl text-primary">
                       ${safeTotalPrice.toFixed(2)}
                     </span>

@@ -124,10 +124,10 @@ const Footer = () => {
         </div>
 
         {/* Divider */}
-        <div className="w-full h-[2px] bg-bg-secondary mb-4"></div>
+        <div className="w-full h-0.5 bg-text-secondary mb-4"></div>
 
         {/* Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center justify-center">
+        <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-text text-sm">
             © {currentYear} ShopEasy. All rights reserved.
           </p>

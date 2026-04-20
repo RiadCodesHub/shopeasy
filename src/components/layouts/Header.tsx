@@ -187,7 +187,7 @@ const Header = () => {
                     </div>
                   ) : (
                     <div className="relative">
-                      <User className="h-6 w-6 text-bg-tertiary" />
+                      <User className="h-6 w-6 text-text" />
                       {status === 'authenticated' && (
                         <span className="absolute -bottom-1 -right-1 w-3 h-3 bg-success rounded-full border-2 border-border"></span>
                       )}
@@ -272,14 +272,14 @@ const Header = () => {
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => dispatch(toggleCart())}
-                className="relative p-2 rounded-full hover:bg-bg-tertiary transition-colors"
+                className="relative p-2 rounded-full hover:bg-bg-tertiary"
               >
-                <ShoppingCart className="h-6 w-6 text-bg-secondary" />
+                <ShoppingCart className="h-6 w-6 text-text" />
                 {totalQuantity > 0 && (
                   <motion.span
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute -top-1 -right-1 bg-primary text-white text-xs rounded-full h-5 w-5 flex items-center justify-center"
+                    className="absolute -top-1 -right-1 bg-primary text-text text-xs rounded-full h-5 w-5 flex items-center justify-center"
                   >
                     {totalQuantity}
                   </motion.span>
@@ -367,11 +367,10 @@ const Header = () => {
                   {/* Mobile Profile Links */}
                   {session ? (
                     <>
-                      <div className="divider my-2"></div>
-                      <p className="text-xs text-bg-tertiary mb-1">Account</p>
+                      <p className="text-xs text-text mb-1">Account</p>
                       <Link 
                         href="/profile" 
-                        className="flex items-center gap-3 py-2 text-bg-secondary hover:text-primary"
+                        className="flex items-center gap-3 py-2 text-text hover:text-primary"
                         onClick={() => dispatch(toggleMobileMenu())}
                       >
                         <User className="h-5 w-5" />
@@ -379,7 +378,7 @@ const Header = () => {
                       </Link>
                       <Link 
                         href="/orders" 
-                        className="flex items-center gap-3 py-2 text-bg-secondary hover:text-primary"
+                        className="flex items-center gap-3 py-2 text-text hover:text-primary"
                         onClick={() => dispatch(toggleMobileMenu())}
                       >
                         <Package className="h-5 w-5" />
@@ -402,7 +401,7 @@ const Header = () => {
                       className="flex items-center gap-3 py-2 text-primary hover:text-primary/80"
                       onClick={() => dispatch(toggleMobileMenu())}
                     >
-                      <User className="h-5 w-5" />
+                      <User className="h-5 w-5 text-text" />
                       Sign In / Register
                     </Link>
                   )}

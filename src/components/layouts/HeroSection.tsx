@@ -5,7 +5,7 @@ import { ArrowRight, Shield, Truck, Clock, Tag } from 'lucide-react';
 
 const HeroSection = () => {
     return (
-        <section className="relative overflow-hidden rounded-2xl bg-linear-to-r from-blue-600 to-purple-600 dark:from-blue-800 dark:to-purple-800 p-8 md:p-12">
+        <section className="relative overflow-hidden rounded-2xl gradient p-8 md:p-12">
             <div className="relative z-10 max-w-2xl">
                 <motion.div
                 initial={{ opacity: 0, y: 20}}
