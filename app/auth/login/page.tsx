@@ -45,10 +45,10 @@ export default function LoginPage() {
     <div className="min-h-screen bg-linear-to-br from-blue-50 to-purple-50 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
       <div className="card max-w-md w-full">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-(--foreground) mb-2">
+          <h1 className="text-3xl font-bold text-text mb-2">
             Welcome Back
           </h1>
-          <p className="text-(--foreground-secondary)">
+          <p className="text-text-secondary">
             Sign in to your ShopEasy account
           </p>
         </div>
@@ -70,7 +70,7 @@ export default function LoginPage() {
               <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text-secondary" />
               <input
                 type="email"
-                value={formData.email}
+                value="riad75599@gmail.com"
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="input pl-10"
                 placeholder="you@example.com"
@@ -88,7 +88,7 @@ export default function LoginPage() {
               <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text-secondary" />
               <input
                 type={showPassword ? 'text' : 'password'}
-                value={formData.password}
+                value="riad1122"
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 className="input pl-20 pr-12"
                 placeholder="••••••••"
@@ -97,7 +97,7 @@ export default function LoginPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary hover:text-text"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text-secondary hover:text-text btn"
               >
                 {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
               </button>
@@ -116,7 +116,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="btn-primary w-full flex items-center justify-center gap-2"
+            className="btn btn-primary w-full flex items-center justify-center gap-2"
           >
             {isLoading ? (
               <>

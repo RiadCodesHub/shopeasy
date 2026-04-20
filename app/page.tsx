@@ -104,7 +104,7 @@ export default function HomePage() {
           transition={{ duration: 0.5 }}
           className="container mx-auto px-4"
         >
-          <div className="relative rounded-2xl overflow-hidden gradient shadow-xl">
+          <div className="relative rounded-2xl overflow-hidden bg-gradient shadow-xl">
             <div className="relative z-10 p-8 md:p-12">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-4">

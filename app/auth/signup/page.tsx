@@ -172,7 +172,7 @@ export default function SignupPage() {
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-text hover:text-text-secondary transition-colors"
+                className="absolute btn right-3 top-1/2 transform -translate-y-1/2 text-text hover:text-text-secondary transition-colors"
               >
                 {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
               </button>
@@ -186,7 +186,7 @@ export default function SignupPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="btn-primary w-full flex items-center justify-center gap-2"
+            className="btn-primary btn w-full flex items-center justify-center gap-2"
           >
             {isLoading ? (
               <>
