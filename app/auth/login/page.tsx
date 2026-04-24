@@ -12,8 +12,8 @@ export default function LoginPage() {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
+    email: 'riad75599@gmail.com',
+    password: 'riad1122',
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -70,7 +70,7 @@ export default function LoginPage() {
               <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text-secondary" />
               <input
                 type="email"
-                value="riad75599@gmail.com"
+                value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 className="input pl-10"
                 placeholder="you@example.com"
@@ -88,7 +88,7 @@ export default function LoginPage() {
               <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text-secondary" />
               <input
                 type={showPassword ? 'text' : 'password'}
-                value="riad1122"
+                value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 className="input pl-20 pr-12"
                 placeholder="••••••••"

@@ -72,7 +72,7 @@ const CartSidebar = () => {
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'spring', damping: 20 }}
-            className="fixed right-0 top-0 h-full w-full max-w-md bg-bg-secondary shadow-2xl z-50 flex flex-col border-l border-(--border)"
+            className="fixed right-0 top-0 h-full w-full max-w-md bg-bg-secondary shadow-2xl z-50 flex flex-col border-l border-border"
           >
             {/* Header */}
             <div className="flex items-center justify-between p-6 border-b border-border">
@@ -86,7 +86,7 @@ const CartSidebar = () => {
               </div>
               <button
                 onClick={handleClose}
-                className="p-2 rounded-full hover:bg-bg-tertiary transition-colors btn"
+                className=" hover:bg-bg-tertiary transition-colors btn"
               >
                 <X className="h-6 w-6 text-text-secondary" />
               </button>
@@ -119,7 +119,7 @@ const CartSidebar = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="relative flex items-center gap-4 p-4 bg-bg-tertiary rounded-lg border border-(--border)"
+                      className="relative flex items-center gap-4 p-4 bg-bg-tertiary rounded-lg border border-border"
                     >
                       {/* Product Image */}
                       <Link 
@@ -154,7 +154,7 @@ const CartSidebar = () => {
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => dispatch(removeFromCart(item.id))}
-                          className="p-1.5 rounded hover:bg-bg-secondary transition-colors btn"
+                          className="hover:bg-bg-secondary transition-colors btn"
                         >
                           <Minus className="h-4 w-4 text-text" />
                         </button>
@@ -171,7 +171,7 @@ const CartSidebar = () => {
                             image: item.image,
                             quantity: 1
                           }))}
-                          className="p-1.5 rounded hover:bg-bg-secondary btn"
+                          className=" hover:bg-bg-secondary btn"
                         >
                           <Plus className="h-4 w-4 text-text" />
                         </button>
@@ -180,7 +180,7 @@ const CartSidebar = () => {
                       {/* Remove Button */}
                       <button
                         onClick={() => dispatch(removeItemCompletely(item.id))}
-                        className="p-2 text-error hover:bg-error/10 rounded-lg transition-colors btn"
+                        className="text-error hover:bg-error/10 transition-colors btn"
                       >
                         <Trash2 className="h-5 w-5" />
                       </button>
@@ -195,7 +195,7 @@ const CartSidebar = () => {
               <motion.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                className="border-t border-(--border) p-6 space-y-4 bg-bg-secondary"
+                className="border-t border-border p-6 space-y-4 bg-bg-secondary"
               >
                 {/* Total */}
                 <div className="space-y-2">
@@ -248,7 +248,7 @@ const CartSidebar = () => {
                 {/* Clear Cart */}
                 <button
                   onClick={handleClearCart}
-                  className="btn w-full text-center text-error hover:text-error/80 text-sm font-medium transition-colors"
+                  className="btn w-full text-center text-error hover:text-error/80 text-sm transition-colors"
                 >
                   Clear Cart
                 </button>
