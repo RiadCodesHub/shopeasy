@@ -42,7 +42,7 @@ const CheckoutProgress = ({ steps = [], currentStep, onStepClick }: CheckoutProg
               <button
                 onClick={() => step.number <= currentStep && onStepClick(step.number)}
                 disabled={step.number > currentStep}
-                className="relative flex flex-col items-center group w-full"
+                className="relative flex flex-col items-center group w-full btn"
               >
                 {/* Icon Circle */}
                 <motion.div

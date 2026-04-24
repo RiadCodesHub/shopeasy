@@ -86,7 +86,7 @@ const CartSidebar = () => {
               </div>
               <button
                 onClick={handleClose}
-                className="p-2 rounded-full hover:bg-bg-tertiary transition-colors"
+                className="p-2 rounded-full hover:bg-bg-tertiary transition-colors btn"
               >
                 <X className="h-6 w-6 text-text-secondary" />
               </button>
@@ -154,7 +154,7 @@ const CartSidebar = () => {
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => dispatch(removeFromCart(item.id))}
-                          className="p-1.5 rounded hover:bg-bg-secondary transition-colors"
+                          className="p-1.5 rounded hover:bg-bg-secondary transition-colors btn"
                         >
                           <Minus className="h-4 w-4 text-text" />
                         </button>
@@ -171,7 +171,7 @@ const CartSidebar = () => {
                             image: item.image,
                             quantity: 1
                           }))}
-                          className="p-1.5 rounded hover:bg-bg-secondary"
+                          className="p-1.5 rounded hover:bg-bg-secondary btn"
                         >
                           <Plus className="h-4 w-4 text-text" />
                         </button>
@@ -180,7 +180,7 @@ const CartSidebar = () => {
                       {/* Remove Button */}
                       <button
                         onClick={() => dispatch(removeItemCompletely(item.id))}
-                        className="p-2 text-error hover:bg-error/10 rounded-lg transition-colors"
+                        className="p-2 text-error hover:bg-error/10 rounded-lg transition-colors btn"
                       >
                         <Trash2 className="h-5 w-5" />
                       </button>
@@ -248,7 +248,7 @@ const CartSidebar = () => {
                 {/* Clear Cart */}
                 <button
                   onClick={handleClearCart}
-                  className="w-full text-center text-error hover:text-error/80 text-sm font-medium transition-colors"
+                  className="btn w-full text-center text-error hover:text-error/80 text-sm font-medium transition-colors"
                 >
                   Clear Cart
                 </button>

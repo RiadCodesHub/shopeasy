@@ -98,13 +98,13 @@ export default function HomePage() {
         </section>
 
         {/* Summer Sale Banner */}
-        <motion.div
+        <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="container mx-auto px-4"
+          className="container mx-auto px-4 bg-gradient"
         >
-          <div className="relative rounded-2xl overflow-hidden bg-gradient shadow-xl">
+          <div className="relative rounded-2xl overflow-hidden  shadow-xl">
             <div className="relative z-10 p-8 md:p-12">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white text-sm font-medium mb-4">

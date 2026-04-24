@@ -213,7 +213,7 @@ const OrderPage = () => {
                           <div className="flex items-center gap-4 overflow-x-auto pb-2">
                             {order.items.slice(0, 3).map((item, idx) => (
                               <div key={idx} className="flex items-center gap-2 shrink-0">
-                                <div className="w-12 h-12 bg-(--background-tertiary) rounded-lg overflow-hidden">
+                                <div className="w-12 h-12 bg-bg-tertiary rounded-lg overflow-hidden">
                                   {item.image ? (
                                     <img
                                       src={item.image}
@@ -222,22 +222,22 @@ const OrderPage = () => {
                                     />
                                   ) : (
                                     <div className="w-full h-full flex items-center justify-center">
-                                      <Package className="h-6 w-6 text-(--foreground-tertiary)" />
+                                      <Package className="h-6 w-6 text-text-secondary" />
                                     </div>
                                   )}
                                 </div>
                                 <div>
-                                  <p className="text-sm font-medium text-(--foreground)">
+                                  <p className="text-sm font-medium text-text">
                                     {item.name}
                                   </p>
-                                  <p className="text-xs text-(--foreground-tertiary)">
+                                  <p className="text-xs text-text-secondary">
                                     Qty: {item.quantity}
                                   </p>
                                 </div>
                               </div>
                             ))}
                             {order.items.length > 3 && (
-                              <div className="text-sm text-(--foreground-tertiary)">
+                              <div className="text-sm text-text-secondary">
                                 +{order.items.length - 3} more
                               </div>
                             )}
@@ -245,11 +245,11 @@ const OrderPage = () => {
 
                           {/* Estimated Delivery */}
                           {order.estimatedDelivery && (
-                            <div className="mt-4 pt-4 border-t border-(--border)">
+                            <div className="mt-4 pt-4 border-t border-border">
                               <div className="flex items-center gap-2 text-sm">
                                 <Truck className="h-4 w-4 text-primary" />
-                                <span className="text-(--foreground-secondary)">Estimated delivery:</span>
-                                <span className="font-medium text-(--foreground)">
+                                <span className="text-text-secondary">Estimated delivery:</span>
+                                <span className="font-medium text-text">
                                   {new Date(order.estimatedDelivery).toLocaleDateString('en-US', {
                                     year: 'numeric',
                                     month: 'long',
