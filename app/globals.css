@@ -74,7 +74,7 @@ button, a {
 @layer components {
 
 .btn {
-  @apply px-6 py-3 rounded-lg font-semibold transition;
+  @apply inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold transition;
 }
 
 .btn-primary {
@@ -146,12 +146,9 @@ button, a {
   color: var(--error);
 }
  
-.gradient {
-  background: linear-gradient(to right, var(--primary), var(--accent));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+.bg-gradient{
+    background: linear-gradient(to right, var(--primary), var(--accent));
+  }
 
 .glass {
   backdrop-filter: blur(12px);

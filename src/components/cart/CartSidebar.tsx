@@ -13,6 +13,7 @@ import {
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const CartSidebar = () => {
   const dispatch = useAppDispatch();
@@ -25,6 +26,8 @@ const CartSidebar = () => {
   };
   const { data: session } = useSession();
   const [isMounted, setIsMounted] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     setIsMounted(true);
@@ -43,7 +46,15 @@ const CartSidebar = () => {
     }
   };
 
-  const checkoutUrl = session ? '/checkout' : '/auth/login?returnUrl=/checkout';
+   const handleCheckout = () => {
+    handleClose();
+    if (session) {
+      router.push('/checkout');
+    } else {
+      router.push('/auth/login?returnUrl=/checkout');
+    }
+  };
+
 
   if (!isMounted) {
     return null;
@@ -86,7 +97,7 @@ const CartSidebar = () => {
               </div>
               <button
                 onClick={handleClose}
-                className=" hover:bg-bg-tertiary transition-colors btn"
+                className=" btn hover:btn-primary"
               >
                 <X className="h-6 w-6 text-text-secondary" />
               </button>
@@ -105,7 +116,7 @@ const CartSidebar = () => {
                   <Link
                     href="/"
                     onClick={handleClose}
-                    className="btn-primary inline-block"
+                    className="btn-primary inline-block btn"
                   >
                     Start Shopping
                   </Link>
@@ -154,7 +165,7 @@ const CartSidebar = () => {
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => dispatch(removeFromCart(item.id))}
-                          className="hover:bg-bg-secondary transition-colors btn"
+                          className="btn hover:btn-primary"
                         >
                           <Minus className="h-4 w-4 text-text" />
                         </button>
@@ -171,7 +182,7 @@ const CartSidebar = () => {
                             image: item.image,
                             quantity: 1
                           }))}
-                          className=" hover:bg-bg-secondary btn"
+                          className="btn hover:btn-primary"
                         >
                           <Plus className="h-4 w-4 text-text" />
                         </button>
@@ -180,7 +191,7 @@ const CartSidebar = () => {
                       {/* Remove Button */}
                       <button
                         onClick={() => dispatch(removeItemCompletely(item.id))}
-                        className="text-error hover:bg-error/10 transition-colors btn"
+                        className="text-error hover:bg-error/10 btn"
                       >
                         <Trash2 className="h-5 w-5" />
                       </button>
@@ -235,14 +246,13 @@ const CartSidebar = () => {
                     View Cart
                   </Link>
                   
-                  <Link
-                    href={checkoutUrl}
-                    onClick={handleClose}
+                  <button
+                    onClick={handleCheckout}
                     className="flex-1 btn-primary flex items-center justify-center gap-2"
                   >
                     Checkout
                     <ArrowRight className="h-5 w-5" />
-                  </Link>
+                  </button>
                 </div>
 
                 {/* Clear Cart */}
