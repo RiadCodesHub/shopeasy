@@ -13,7 +13,7 @@ import {
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 const CartSidebar = () => {
   const dispatch = useAppDispatch();
@@ -248,7 +248,7 @@ const CartSidebar = () => {
                   
                   <button
                     onClick={handleCheckout}
-                    className="flex-1 btn-primary flex items-center justify-center gap-2"
+                    className="flex-1 btn btn-primary flex items-center justify-center gap-2"
                   >
                     Checkout
                     <ArrowRight className="h-5 w-5" />
