@@ -45,7 +45,7 @@ const PaymentStep = () => {
       exit={{ opacity: 0, x: 20 }}
       className="card p-6"
     >
-      <h3 className="text-2xl font-bold text-(--foreground) mb-6 flex items-center gap-3">
+      <h3 className="text-2xl font-bold text-text mb-6 flex items-center gap-3">
         <div className="p-3 bg-accent/10 rounded-xl">
           <CreditCard className="h-6 w-6 text-accent" />
         </div>
@@ -64,21 +64,21 @@ const PaymentStep = () => {
             className={`p-4 rounded-lg border-2 transition-all ${
               selectedMethod === method.value
                 ? 'border-accent bg-accent/10'
-                : 'border-(--border) hover:border-accent/50 bg-(--background-secondary)'
+                : 'border-border hover:border-accent/50 bg-bg-secondary'
             }`}
           >
             <div className="flex items-center gap-3">
               <div className={`p-2 rounded-lg transition-colors ${
                 selectedMethod === method.value 
                   ? 'bg-accent text-white'
-                  : 'bg-(--background-tertiary) text-(--foreground-secondary)'
+                  : 'bg-bg-tertiary text-text'
               }`}>
                 {method.icon}
               </div>
               <span className={`font-medium ${
                 selectedMethod === method.value 
                   ? 'text-accent'
-                  : 'text-(--foreground-secondary)'
+                  : 'text-text'
               }`}>
                 {method.label}
               </span>
@@ -89,7 +89,7 @@ const PaymentStep = () => {
 
       {/* Credit card details */}
       {selectedMethod === 'credit-card' && (
-        <div className="space-y-4 border-t border-(--border) pt-6">
+        <div className="space-y-4 border-t border-border pt-6">
           <FormInput
             label="Card Number"
             name="payment.cardNumber"
@@ -125,11 +125,11 @@ const PaymentStep = () => {
               type="checkbox"
               id="saveCard"
               {...register('payment.saveCard')}
-              className="h-4 w-4 text-accent rounded border-(--border) focus:ring-accent focus:ring-offset-0"
+              className="h-4 w-4 text-accent rounded border-border focus:ring-accent focus:ring-offset-0"
             />
             <label 
               htmlFor="saveCard" 
-              className="ml-2 text-sm text-(--foreground-secondary)"
+              className="ml-2 text-sm text-text-secondary"
             >
               Save card for future purchases
             </label>
@@ -139,7 +139,7 @@ const PaymentStep = () => {
 
       {/* PayPal/Apple Pay Message */}
       {selectedMethod !== 'credit-card' && (
-        <div className="border-t border-(--border) pt-6">
+        <div className="border-t border-border pt-6">
           <div className="bg-info/10 border border-info/20 p-4 rounded-lg">
             <div className="flex items-start gap-3">
               <div className="p-1.5 bg-info/20 rounded-lg">
@@ -160,8 +160,8 @@ const PaymentStep = () => {
       )}
 
       {/* Security Note */}
-      <div className="mt-6 pt-6 border-t border-(--border)">
-        <div className="flex items-center justify-center gap-2 text-sm text-(--foreground-tertiary)">
+      <div className="mt-6 pt-6 border-t border-border">
+        <div className="flex items-center justify-center gap-2 text-sm text-text-secondary">
           <CreditCard className="h-4 w-4" />
           <span>Your payment information is encrypted and secure</span>
         </div>

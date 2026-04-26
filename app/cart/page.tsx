@@ -139,7 +139,7 @@ const CartPage = () => {
             </div>
             <button
               onClick={() => dispatch(clearCart())}
-              className="text-error text-sm font-medium"
+              className="text-error btn text-sm font-medium"
             >
               Clear
             </button>
@@ -160,13 +160,13 @@ const CartPage = () => {
             <div className="flex gap-3">
               <button
                 onClick={() => setShowMobileSummary(!showMobileSummary)}
-                className="btn-secondary text-sm py-2"
+                className="btn-secondary text-sm btn"
               >
                 Details
               </button>
               <button
                 onClick={handleProceedToCheckout}
-                className="btn-primary text-sm py-2"
+                className="btn-primary text-sm btn"
               >
                 Checkout
               </button>
@@ -183,33 +183,33 @@ const CartPage = () => {
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 25 }}
-            className="absolute bottom-0 left-0 right-0 bg-(--background-secondary)rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto border-t border-(--border)"
+            className="absolute bottom-0 left-0 right-0 bg-bg-secondary rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto border-t border-(--border)"
           >
-            <div className="sticky top-0 bg-(--background-secondary)border-b border-(--border) px-6 py-4">
+            <div className="sticky top-0 bg-bg-secondary border-b border-text px-6 py-4">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-bold text-text">Order Summary</h3>
                 <button
                   onClick={() => setShowMobileSummary(false)}
-                  className="p-2 hover:bg-(--background-tertiary) rounded-full transition-colors"
+                  className="btn hover:bg-bg-tertiary rounded-full transition-colors"
                 >
-                  <X className="h-5 w-5 text-(--foreground-secondary)" />
+                  <X className="h-5 w-5 text-text" />
                 </button>
               </div>
             </div>
             
             <div className="p-6 space-y-4">
               <div className="flex justify-between">
-                <span className="text-(--foreground-secondary)">Subtotal</span>
+                <span className="text-text">Subtotal</span>
                 <span className="font-medium text-text">${totalPrice.toFixed(2)}</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-(--foreground-secondary)">Shipping</span>
+                <span className="text-text">Shipping</span>
                 <span className="font-medium text-text">
                   {shippingCost === 0 ? 'FREE' : `$${shippingCost.toFixed(2)}`}
                 </span>
               </div>
               <div className="flex justify-between">
-                <span className="text-(--foreground-secondary)">Tax</span>
+                <span className="text-text">Tax</span>
                 <span className="font-medium text-text">${tax.toFixed(2)}</span>
               </div>
               <div className="divider"></div>
@@ -260,7 +260,7 @@ const CartPage = () => {
                   </div>
                   <span className="font-medium">Checkout</span>
                 </div>
-                <div className="w-12 h-1 bg-(--border)"></div>
+                <div className="w-12 h-1 bg-border"></div>
                 <div className="flex items-center gap-2 text-text">
                   <div className="w-8 h-8 rounded-full flex items-center justify-center bg-bg-tertiary">
                     3
@@ -271,7 +271,7 @@ const CartPage = () => {
               
               <button
                 onClick={() => dispatch(clearCart())}
-                className="text-error hover:text-error/80 font-medium flex items-center gap-2 transition-colors"
+                className="text-error btn hover:text-error/80 font-medium flex items-center gap-2 transition-colors"
               >
                 <Trash2 className="h-4 w-4" />
                 Clear Cart
@@ -323,7 +323,7 @@ const CartPage = () => {
                             </p>
                             <button
                               onClick={() => dispatch(removeItemCompletely(item.id))}
-                              className="text-error hover:text-error/80"
+                              className="text-error hover:text-error/80 btn"
                             >
                               <X className="h-5 w-5" />
                             </button>
@@ -362,7 +362,7 @@ const CartPage = () => {
                               <div className="flex items-center border border-border rounded-lg">
                                 <button
                                   onClick={() => dispatch(removeFromCart(item.id))}
-                                  className="p-2 hover:bg-bg-secondary transition-colors"
+                                  className="p-2 hover:bg-bg-secondary transition-colors btn"
                                 >
                                   <Minus className="h-4 w-4 text-text-secondary" />
                                 </button>
@@ -377,14 +377,14 @@ const CartPage = () => {
                                     image: item.image,
                                     quantity: 1
                                   }))}
-                                  className="p-2 hover:bg-bg-tertiary transition-colors"
+                                  className="btn hover:bg-bg-tertiary transition-colors"
                                 >
                                   <Plus className="h-4 w-4 text-text-secondary" />
                                 </button>
                               </div>
                               <button
                                 onClick={() => dispatch(removeItemCompletely(item.id))}
-                                className="text-error hover:text-error/80 flex items-center gap-1 text-sm transition-colors"
+                                className="text-error hover:text-error/80 flex items-center gap-1 text-sm transition-colors btn"
                               >
                                 <Trash2 className="h-4 w-4" />
                                 <span className="hidden lg:inline">Remove</span>
@@ -399,7 +399,7 @@ const CartPage = () => {
                         <div className="flex items-center border border-border rounded-lg">
                           <button
                             onClick={() => dispatch(removeFromCart(item.id))}
-                            className="p-2 hover:bg-bg-tertiary"
+                            className="btn hover:bg-bg-tertiary"
                           >
                             <Minus className="h-4 w-4" />
                           </button>
@@ -414,7 +414,7 @@ const CartPage = () => {
                               image: item.image,
                               quantity: 1,
                             }))}
-                            className="p-2 hover:bg-bg-tertiary"
+                            className="btn hover:bg-bg-tertiary"
                           >
                             <Plus className="h-4 w-4" />
                           </button>
@@ -446,7 +446,7 @@ const CartPage = () => {
                         placeholder="Promo code"
                         className="input-field flex-1"
                       />
-                      <button className="btn-primary">
+                      <button className="btn-primary btn">
                         Apply
                       </button>
                     </div>
@@ -538,7 +538,7 @@ const CartPage = () => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     onClick={handleProceedToCheckout}
-                    className="btn-primary w-full flex items-center justify-center gap-2 text-lg mb-4"
+                    className="btn-primary w-full flex items-center justify-center gap-2 text-lg mb-4 btn"
                   >
                     Proceed to Checkout
                     <ArrowRight className="h-5 w-5" />
@@ -551,7 +551,7 @@ const CartPage = () => {
                       {['Visa', 'MasterCard', 'PayPal', 'Apple Pay'].map((method) => (
                         <div
                           key={method}
-                          className="p-2 bg-(--background-tertiary) rounded-lg"
+                          className="p-2 bg-bg-tertiary rounded-lg"
                         >
                           <CreditCard className="h-6 w-6 text-text-secondary" />
                         </div>

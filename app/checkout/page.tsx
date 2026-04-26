@@ -18,6 +18,7 @@ interface CheckoutProgressProps {
 }
 
 const CheckoutProgress = ({ steps = [], currentStep, onStepClick }: CheckoutProgressProps) => {
+   console.log("checkout page rendered")
 
   return (
     <div className="mb-8">

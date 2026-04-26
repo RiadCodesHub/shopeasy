@@ -148,15 +148,15 @@ const CartSidebar = () => {
                       </Link>
                       
                       {/* Product Details */}
-                      <div className="flex-1 min-w-0">
+                      <div className="flex flex-1 min-w-0">
                         <Link 
                           href={`/products/${item.id}`}
                           onClick={handleClose}
-                          className="font-medium text-text hover:text-primary transition-colors line-clamp-1"
+                          className="font-medium text-sm text-text hover:text-primary transition-colors line-clamp-1"
                         >
                           {item.name}
                         </Link>
-                        <p className="text-primary font-semibold mt-1">
+                        <p className="text-primary text-sm font-semibold mt-1">
                           ${item.price.toFixed(2)}
                         </p>
                       </div>
@@ -241,7 +241,7 @@ const CartSidebar = () => {
                   <Link
                     href="/cart"
                     onClick={handleClose}
-                    className="flex-1 btn-secondary text-center"
+                    className="flex-1 btn btn-secondary"
                   >
                     View Cart
                   </Link>

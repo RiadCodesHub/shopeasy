@@ -45,7 +45,7 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
       exit={{ opacity: 0, x: 20 }}
       className="card p-6"
     >
-      <h2 className="text-2xl font-bold text-(--foreground) mb-6 flex items-center gap-3">
+      <h2 className="text-2xl font-bold text-text mb-6 flex items-center gap-3">
         <div className="p-3 bg-success/10 rounded-xl">
           <CheckCircle className="h-6 w-6 text-success" />
         </div>
@@ -55,7 +55,7 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
       {/* Order Items */}
       <div className="mb-8">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="text-lg font-semibold text-(--foreground) flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-text flex items-center gap-2">
             <ShoppingBag className="h-5 w-5 text-primary" />
             Order Items ({items.length})
           </h3>
@@ -63,8 +63,8 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
         
         <div className="space-y-4">
           {items.map((item) => (
-            <div key={item.id} className="flex items-center gap-4 p-4 border border-(--border) rounded-lg bg-(--background-secondary)">
-              <div className="w-16 h-16 rounded-lg overflow-hidden bg-(--background-tertiary)">
+            <div key={item.id} className="flex items-center gap-4 p-4 border border-border rounded-lg bg-bg-secondary">
+              <div className="w-16 h-16 rounded-lg overflow-hidden bg-bg-tertiary">
                 <img
                   src={item.image}
                   alt={item.name}
@@ -72,12 +72,12 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
                 />
               </div>
               <div className="flex-1">
-                <h4 className="font-medium text-(--foreground)">{item.name}</h4>
+                <h4 className="font-medium text-text">{item.name}</h4>
                 <div className="flex items-center justify-between mt-1">
-                  <p className="text-(--foreground-tertiary) text-sm">
+                  <p className="text-text-secondary text-sm">
                     Qty: {item.quantity} × ${item.price.toFixed(2)}
                   </p>
-                  <p className="font-semibold text-(--foreground)">
+                  <p className="font-semibold text-text">
                     ${(item.price * item.quantity).toFixed(2)}
                   </p>
                 </div>
@@ -92,7 +92,7 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
         {/* Shipping Information */}
         <div>
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-(--foreground) flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-text flex items-center gap-2">
               <MapPin className="h-5 w-5 text-primary" />
               Shipping Information
             </h3>
@@ -105,21 +105,21 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
               Edit
             </button>
           </div>
-          <div className="bg-(--background-tertiary) rounded-lg p-4 border border-(--border)">
-            <p className="font-medium text-(--foreground)">
+          <div className="bg-bg-tertiary rounded-lg p-4 border border-border">
+            <p className="font-medium text-text">
               {formData.personalInfo?.firstName} {formData.personalInfo?.lastName}
             </p>
-            <p className="text-(--foreground-secondary)">{formData.shipping?.address?.street}</p>
-            <p className="text-(--foreground-secondary)">
+            <p className="text-text-secondary">{formData.shipping?.address?.street}</p>
+            <p className="text-text-secondary">
               {formData.shipping?.address?.city}, {formData.shipping?.address?.state} {formData.shipping?.address?.zipCode}
             </p>
-            <p className="text-(--foreground-secondary)">{formData.shipping?.address?.country}</p>
-            <p className="text-(--foreground-secondary) mt-2">{formData.personalInfo?.phone}</p>
-            <p className="text-(--foreground-secondary)">{formData.personalInfo?.email}</p>
+            <p className="text-text-secondary">{formData.shipping?.address?.country}</p>
+            <p className="text-text-secondary mt-2">{formData.personalInfo?.phone}</p>
+            <p className="text-text-secondary">{formData.personalInfo?.email}</p>
             
             {formData.shipping?.deliveryInstructions && (
-              <div className="mt-3 pt-3 border-t border-(--border)">
-                <p className="text-sm font-medium text-(--foreground-secondary)">Delivery Instructions:</p>
+              <div className="mt-3 pt-3 border-t border-bordr">
+                <p className="text-sm font-medium text-text-secondary">Delivery Instructions:</p>
                 <p className="text-sm text-(--foreground-tertiary)">{formData.shipping.deliveryInstructions}</p>
               </div>
             )}
@@ -129,7 +129,7 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
         {/* Payment Method */}
         <div>
           <div className="flex items-center justify-between mb-4">
-            <h3 className="text-lg font-semibold text-(--foreground) flex items-center gap-2">
+            <h3 className="text-lg font-semibold text-text flex items-center gap-2">
               <CreditCard className="h-5 w-5 text-accent" />
               Payment Method
             </h3>
@@ -142,10 +142,10 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
               Edit
             </button>
           </div>
-          <div className="bg-(--background-tertiary) rounded-lg p-4 border border-(--border)">
+          <div className="bg-(--background-tertiary) rounded-lg p-4 border border-border">
             <div className="flex items-center gap-2 mb-3">
               <CreditCard className="h-5 w-5 text-accent" />
-              <p className="font-medium text-(--foreground)">
+              <p className="font-medium text-text">
                 {formData.payment?.paymentMethod === 'credit-card' 
                   ? 'Credit/Debit Card' 
                   : formData.payment?.paymentMethod === 'paypal' 
@@ -159,11 +159,11 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
             
             {formData.payment?.paymentMethod === 'credit-card' && formData.payment?.cardNumber && (
               <>
-                <p className="text-(--foreground-secondary)">
+                <p className="text-text-secondary">
                   •••• {formData.payment.cardNumber.slice(-4)}
                 </p>
                 {formData.payment.expiryDate && (
-                  <p className="text-(--foreground-secondary)">
+                  <p className="text-text-secondary">
                     Expires: {formData.payment.expiryDate}
                   </p>
                 )}
@@ -171,7 +171,7 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
             )}
             
             {formData.payment?.paymentMethod !== 'credit-card' && (
-              <p className="text-(--foreground-secondary)">
+              <p className="text-text-secondary">
                 You will be redirected to complete your payment securely.
               </p>
             )}
@@ -182,35 +182,35 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
       {/* Billing Address (if different) */}
       {!useShippingAsBilling && formData.billing && (
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-(--foreground) mb-4 flex items-center gap-2">
+          <h3 className="text-lg font-semibold text-text mb-4 flex items-center gap-2">
             <MapPin className="h-5 w-5 text-primary" />
             Billing Address
           </h3>
-          <div className="bg-(--background-tertiary) rounded-lg p-4 border border-(--border)">
-            <p className="text-(--foreground-secondary)">{formData.billing.street}</p>
-            <p className="text-(--foreground-secondary)">
+          <div className="bg-(--background-tertiary) rounded-lg p-4 border border-border">
+            <p className="text-text-secondary">{formData.billing.street}</p>
+            <p className="text-text-secondary">
               {formData.billing.city}, {formData.billing.state} {formData.billing.zipCode}
             </p>
-            <p className="text-(--foreground-secondary)">{formData.billing.country}</p>
+            <p className="text-text-secondary">{formData.billing.country}</p>
           </div>
         </div>
       )}
 
       {/* Price Summary */}
       <div className="mb-8">
-        <h3 className="text-lg font-semibold text-(--foreground) mb-4 flex items-center gap-2">
+        <h3 className="text-lg font-semibold text-text mb-4 flex items-center gap-2">
           <DollarSign className="h-5 w-5 text-success" />
           Price Summary
         </h3>
-        <div className="bg-(--background-tertiary) rounded-lg p-4 border border-(--border)">
+        <div className="bg-(--background-tertiary) rounded-lg p-4 border border-border">
           <div className="space-y-3">
             <div className="flex justify-between">
-              <span className="text-(--foreground-secondary)">Subtotal</span>
-              <span className="font-medium text-(--foreground)">${subtotal.toFixed(2)}</span>
+              <span className="text-text-secondary">Subtotal</span>
+              <span className="font-medium text-text">${subtotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between">
-              <span className="text-(--foreground-secondary)">Shipping</span>
-              <span className="font-medium text-(--foreground)">
+              <span className="text-text-secondary">Shipping</span>
+              <span className="font-medium text-text">
                 {shippingCost === 0 ? (
                   <span className="text-success flex items-center gap-1">
                     <Truck className="h-4 w-4" />
@@ -222,12 +222,12 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
               </span>
             </div>
             <div className="flex justify-between">
-              <span className="text-(--foreground-secondary)">Tax</span>
-              <span className="font-medium text-(--foreground)">${tax.toFixed(2)}</span>
+              <span className="text-text-secondary">Tax</span>
+              <span className="font-medium text-text">${tax.toFixed(2)}</span>
             </div>
             <div className="divider"></div>
             <div className="flex justify-between text-lg font-bold">
-              <span className="text-(--foreground)">Total</span>
+              <span className="text-text">Total</span>
               <span className="text-primary">${orderTotal.toFixed(2)}</span>
             </div>
           </div>
@@ -270,9 +270,9 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
             <input
               type="checkbox"
               {...register('agreeToTerms')}
-              className="mt-1 h-4 w-4 rounded border-(--border) text-primary focus:ring-primary focus:ring-offset-0"
+              className="mt-1 h-4 w-4 rounded border-border text-primary focus:ring-primary focus:ring-offset-0"
             />
-            <span className="text-sm text-(--foreground-secondary)">
+            <span className="text-sm text-text-secondary">
               I agree to the{' '}
               <a href="/terms" className="text-primary hover:underline">
                 Terms and Conditions

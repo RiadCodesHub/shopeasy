@@ -216,13 +216,13 @@ const Header = () => {
                     >
                       {/* User Info Header */}
                       <div className="px-4 py-3 bg-[linear-gradient(to_right,var(--primary)/0.1,var(--accent)/0.1) border-b border-border">
-                        <p className="font-semibold text-bg-secondary">
+                        <p className="font-semibold text-text">
                           {session.user?.name}
                         </p>
-                        <p className="text-sm text-bg-secondary truncate">
+                        <p className="text-sm text-text-secondary truncate">
                           {session.user?.email}
                         </p>
-                        <p className="text-xs text-bg-tertiary mt-1">
+                        <p className="text-xs text-text-secondary mt-1">
                           Role: {session.user?.role}
                         </p>
                       </div>
