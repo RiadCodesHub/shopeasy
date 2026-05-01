@@ -32,7 +32,7 @@ const CheckoutNavigation: React.FC<CheckoutNavigationProps> = ({
         <button
           type="button"
           onClick={onBackToCart}
-          className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium"
+          className="flex items-center justify-center gap-2 btn border-2 border-border text-text rounded-lg hover:bg-bg-tertiary transition-colors font-medium"
         >
           <ChevronLeft className="h-5 w-5" />
           Back to Cart
@@ -41,7 +41,7 @@ const CheckoutNavigation: React.FC<CheckoutNavigationProps> = ({
         <button
           type="button"
           onClick={onPrev}
-          className="flex items-center justify-center gap-2 px-6 py-3 border-2 border-gray-300 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors font-medium"
+          className="flex items-center justify-center gap-2 btn border-2 border-border text-text rounded-lg hover:bg-bg-tertiary  transition-colors font-medium"
         >
           <ChevronLeft className="h-5 w-5" />
           Previous
@@ -54,7 +54,7 @@ const CheckoutNavigation: React.FC<CheckoutNavigationProps> = ({
           onClick={onNext}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="flex items-center justify-center gap-2 px-8 py-3 gradient text-white rounded-lg hover:opacity-90 transition-all font-bold"
+          className="flex items-center justify-center gap-2 px-8 py-3 btn btn-primary rounded-lg hover:opacity-90 transition-all font-bold"
         >
           Continue
           <ChevronRight className="h-5 w-5" />
@@ -65,7 +65,7 @@ const CheckoutNavigation: React.FC<CheckoutNavigationProps> = ({
           disabled={isSubmitting}
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          className="ml-auto flex items-center justify-center gap-2 px-8 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold"
+          className="ml-auto flex items-center justify-center btn bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all font-bold"
         >
           {isSubmitting ? (
             <>
