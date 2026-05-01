@@ -22,9 +22,13 @@ const CheckoutNavigation: React.FC<CheckoutNavigationProps> = ({
   isSubmitting,
   onBackToCart
 }) => {
+
+   const safeStep = currentStep || 1;
+
+
   return (
     <div className="flex flex-col gap-4 sm:gap-0 sm:flex-row sm:justify-between  mt-8">
-      {currentStep === 1 ? (
+      {safeStep === 1 ? (
         <button
           type="button"
           onClick={onBackToCart}
@@ -44,7 +48,7 @@ const CheckoutNavigation: React.FC<CheckoutNavigationProps> = ({
         </button>
       )}
       
-      {currentStep < totalSteps ? (
+      {safeStep < totalSteps ? (
         <motion.button
           type="button"
           onClick={onNext}
