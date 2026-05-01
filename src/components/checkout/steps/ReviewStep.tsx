@@ -120,7 +120,7 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
             {formData.shipping?.deliveryInstructions && (
               <div className="mt-3 pt-3 border-t border-bordr">
                 <p className="text-sm font-medium text-text-secondary">Delivery Instructions:</p>
-                <p className="text-sm text-(--foreground-tertiary)">{formData.shipping.deliveryInstructions}</p>
+                <p className="text-sm text-text">{formData.shipping.deliveryInstructions}</p>
               </div>
             )}
           </div>
@@ -142,7 +142,7 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
               Edit
             </button>
           </div>
-          <div className="bg-(--background-tertiary) rounded-lg p-4 border border-border">
+          <div className="bg-bg-tertiary rounded-lg p-4 border border-border">
             <div className="flex items-center gap-2 mb-3">
               <CreditCard className="h-5 w-5 text-accent" />
               <p className="font-medium text-text">
@@ -186,7 +186,7 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
             <MapPin className="h-5 w-5 text-primary" />
             Billing Address
           </h3>
-          <div className="bg-(--background-tertiary) rounded-lg p-4 border border-border">
+          <div className="bg-bg-tertiary rounded-lg p-4 border border-border">
             <p className="text-text-secondary">{formData.billing.street}</p>
             <p className="text-text-secondary">
               {formData.billing.city}, {formData.billing.state} {formData.billing.zipCode}
@@ -202,7 +202,7 @@ const ReviewStep: React.FC<ReviewStepProps> = ({
           <DollarSign className="h-5 w-5 text-success" />
           Price Summary
         </h3>
-        <div className="bg-(--background-tertiary) rounded-lg p-4 border border-border">
+        <div className="bg-bg-tertiary rounded-lg p-4 border border-border">
           <div className="space-y-3">
             <div className="flex justify-between">
               <span className="text-text-secondary">Subtotal</span>

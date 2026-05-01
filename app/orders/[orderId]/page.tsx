@@ -22,7 +22,7 @@ const statusColors = {
   shipped: 'bg-primary/10 text-primary',
   delivered: 'bg-success/10 text-success',
   cancelled: 'bg-error/10 text-error',
-  refunded: 'bg-[var(--background-tertiary)] text-[var(--foreground-secondary)]'
+  refunded: 'bg-bg-tertiary text-text-secondary'
 }
 
 export default function OrderDetailsPage() {
@@ -52,10 +52,10 @@ export default function OrderDetailsPage() {
 
   if (sessionStatus === 'loading' || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
+      <div className="min-h-screen flex items-center justify-center bg-bg">
         <div className="text-center">
           <div className="loading-spinner mx-auto mb-4"></div>
-          <p className="text-[var(--foreground-secondary)]">
+          <p className="text-text-secondary">
             Loading order details...
           </p>
         </div>
@@ -69,15 +69,15 @@ export default function OrderDetailsPage() {
 
   if (!order) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[var(--background)]">
+      <div className="min-h-screen flex items-center justify-center bg-bg">
         <div className="text-center">
-          <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-[var(--background-tertiary)] flex items-center justify-center">
-            <Package className="h-12 w-12 text-[var(--foreground-tertiary)]" />
+          <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-bg-tertiary flex items-center justify-center">
+            <Package className="h-12 w-12 text-text" />
           </div>
-          <h2 className="text-2xl font-bold text-[var(--foreground)] mb-2">
+          <h2 className="text-2xl font-bold text-text mb-2">
             Order Not Found
           </h2>
-          <p className="text-[var(--foreground-secondary)] mb-6">
+          <p className="text-text-secondary mb-6">
             The order you're looking for doesn't exist or you don't have permission to view it.
           </p>
           <Link
@@ -93,13 +93,13 @@ export default function OrderDetailsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--background)] py-8">
+    <div className="min-h-screen bg-bg py-8">
       <div className="container mx-auto px-4 max-w-5xl">
         {/* Header */}
         <div className="mb-6">
           <Link
             href='/orders'
-            className="inline-flex items-center gap-2 text-[var(--foreground-secondary)] hover:text-primary transition-colors mb-4"
+            className="inline-flex items-center gap-2 text-text-secondary hover:text-primary transition-colors mb-4"
           >
             <ChevronLeft className="w-4 h-4" />
             Back to Orders
@@ -107,10 +107,10 @@ export default function OrderDetailsPage() {
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-[var(--foreground)] mb-2">
+              <h1 className="text-3xl font-bold text-text mb-2">
                 Order #{order.orderId}
               </h1>
-              <p className="text-[var(--foreground-secondary)]">
+              <p className="text-text-secondary">
                 Placed on {new Date(order.createdAt).toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
@@ -124,15 +124,15 @@ export default function OrderDetailsPage() {
             <div className="flex items-center gap-3">
               <button
                 onClick={() => window.print()}
-                className="p-2 border border-[var(--border)] rounded-lg hover:bg-[var(--background-tertiary)] transition-colors"
+                className="p-2 border border-border rounded-lg hover:bg-bg-tertiary transition-colors"
               >
-                <Printer className="h-5 w-5 text-[var(--foreground-secondary)]" />
+                <Printer className="h-5 w-5 text-text-secondary" />
               </button>
               <button
                 onClick={() => {}}
-                className="p-2 border border-[var(--border)] rounded-lg hover:bg-[var(--background-tertiary)] transition-colors"
+                className="p-2 border border-border rounded-lg hover:bg-bg-tertiary transition-colors"
               >
-                <Download className="h-5 w-5 text-[var(--foreground-secondary)]" />
+                <Download className="h-5 w-5 text-text-secondary" />
               </button>
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function OrderDetailsPage() {
         >
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text-[var(--foreground-tertiary)] mb-1">
+              <p className="text-sm text-text mb-1">
                 Order Status
               </p>
               <span
@@ -158,10 +158,10 @@ export default function OrderDetailsPage() {
 
             {order.trackingNumber && (
               <div>
-                <p className="text-sm text-[var(--foreground-tertiary)] mb-1">
+                <p className="text-sm text-text mb-1">
                   Tracking Number
                 </p>
-                <p className="font-mono text-[var(--foreground)]">
+                <p className="font-mono text-text">
                   {order.trackingNumber}
                 </p>
               </div>
@@ -176,7 +176,7 @@ export default function OrderDetailsPage() {
           transition={{ delay: 0.1 }}
           className="card mb-6"
         >
-          <h2 className="text-xl font-bold text-[var(--foreground)] mb-4 flex items-center gap-2">
+          <h2 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
             <Package className="h-5 w-5 text-primary" />
             Order Items
           </h2>
@@ -185,26 +185,26 @@ export default function OrderDetailsPage() {
             {order.items.map((item, index) => (
               <div
                 key={index}
-                className="flex gap-4 py-4 border-b border-[var(--border)] last:border-0"
+                className="flex gap-4 py-4 border-b border-border last:border-0"
               >
-                <div className="w-20 h-20 bg-[var(--background-tertiary)] rounded-lg overflow-hidden flex-shrink-0">
+                <div className="w-20 h-20 bg-bg-tertiary rounded-lg overflow-hidden shrink-0">
                   {item.image ? (
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                      <Package className="h-8 w-8 text-[var(--foreground-tertiary)]" />
+                      <Package className="h-8 w-8 text-text" />
                     </div>
                   )}
                 </div>
 
                 <div className="flex-1">
-                  <h3 className="font-semibold text-[var(--foreground)]">
+                  <h3 className="font-semibold text-text">
                     {item.name}
                   </h3>
-                  <p className="text-sm text-[var(--foreground-secondary)] mb-2">
+                  <p className="text-sm text-text-secondary mb-2">
                     Quantity: {item.quantity}
                   </p>
-                  <p className="font-bold text-[var(--foreground)]">
+                  <p className="font-bold text-text">
                     ${(item.price * item.quantity).toFixed(2)}
                   </p>
                 </div>
@@ -222,23 +222,23 @@ export default function OrderDetailsPage() {
             transition={{ delay: 0.2 }}
             className="card"
           >
-            <h2 className="text-xl font-bold text-[var(--foreground)] mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
               <Truck className="h-5 w-5 text-primary" />
               Shipping Information
             </h2>
             <div className="space-y-3">
-              <p className="text-[var(--foreground)] font-medium">
+              <p className="text-text font-medium">
                 {order.customerInfo.firstName} {order.customerInfo.lastName}
               </p>
-              <p className="text-[var(--foreground-secondary)]">
+              <p className="text-text-secondary">
                 {order.shippingAddress.street} <br />
                 {order.shippingAddress.city}, {order.shippingAddress.state} {order.shippingAddress.zipCode} <br />
                 {order.shippingAddress.country}
               </p>
-              <p className="text-[var(--foreground-secondary)]">
+              <p className="text-text-secondary">
                 Phone: {order.customerInfo.phone}
               </p>
-              <p className="text-[var(--foreground-secondary)]">
+              <p className="text-text-secondary">
                 Method: {order.shippingMethod === 'standard' ? 'Standard Shipping' : 'Express Shipping'}
               </p>
             </div>
@@ -251,38 +251,38 @@ export default function OrderDetailsPage() {
             transition={{ delay: 0.3 }}
             className="card"
           >
-            <h2 className="text-xl font-bold text-[var(--foreground)] mb-4 flex items-center gap-2">
+            <h2 className="text-xl font-bold text-text mb-4 flex items-center gap-2">
               <CreditCard className="h-5 w-5 text-primary" />
               Payment Information
             </h2>
             <div className="space-y-3">
-              <p className="text-[var(--foreground-secondary)]">
+              <p className="text-text-secondary">
                 Payment Method: {order.paymentMethod?.replace('-', ' ').toUpperCase()}
               </p>
               {order.lastFourDigits && (
-                <p className="text-[var(--foreground-secondary)]">
+                <p className="text-text-secondary">
                   Card ending in **** {order.lastFourDigits}
                 </p>
               )}
               <div className="divider"></div>
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="text-[var(--foreground-secondary)]">Subtotal:</span>
-                  <span className="text-[var(--foreground)]">${order.subtotal?.toFixed(2)}</span>
+                  <span className="text-text-secondary">Subtotal:</span>
+                  <span className="text-text">${order.subtotal?.toFixed(2)}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[var(--foreground-secondary)]">Shipping:</span>
-                  <span className="text-[var(--foreground)]">
+                  <span className="text-text-secondary">Shipping:</span>
+                  <span className="text-text">
                     {order.shippingCost === 0 ? 'Free' : `$${order.shippingCost?.toFixed(2)}`}
                   </span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-[var(--foreground-secondary)]">Tax:</span>
-                  <span className="text-[var(--foreground)]">${order.tax?.toFixed(2)}</span>
+                  <span className="text-text-secondary">Tax:</span>
+                  <span className="text-text">${order.tax?.toFixed(2)}</span>
                 </div>
                 <div className="divider"></div>
                 <div className="flex justify-between">
-                  <span className="text-lg font-bold text-[var(--foreground)]">Total:</span>
+                  <span className="text-lg font-bold text-text">Total:</span>
                   <span className="text-lg font-bold text-primary">${order.total?.toFixed(2)}</span>
                 </div>
               </div>
@@ -297,10 +297,10 @@ export default function OrderDetailsPage() {
           transition={{ delay: 0.4 }}
           className="bg-info/10 border border-info/20 rounded-lg p-6 text-center"
         >
-          <h3 className="text-lg font-semibold text-[var(--foreground)] mb-2">
+          <h3 className="text-lg font-semibold text-text mb-2">
             Need help with this order?
           </h3>
-          <p className="text-[var(--foreground-secondary)] mb-4">
+          <p className="text-text-secondary mb-4">
             Contact our support team for assistance with your order
           </p>
           <Link

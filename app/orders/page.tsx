@@ -87,7 +87,7 @@ const OrderPage = () => {
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-(--foreground) mb-2">
+          <h1 className="text-3xl font-bold text-text mb-2">
             My Orders
           </h1>
           <p className="text-(--foreground-secondary)">
@@ -101,13 +101,13 @@ const OrderPage = () => {
             {/* Search Input */}
             <div className="flex-1 w-full">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text" />
                 <input
                   type="text"
                   placeholder="Search by order ID or product name..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="input-field pl-10"
+                  className="input pl-10"
                 />
               </div>
             </div>
@@ -115,7 +115,7 @@ const OrderPage = () => {
             {/* Filter Dropdown */}
             <div className="w-full md:w-auto">
               <div className="relative">
-                <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
+                <Filter className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text" />
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value)}
@@ -131,7 +131,7 @@ const OrderPage = () => {
                 </select>
                 {/* Custom dropdown arrow */}
                 <div className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                  <svg className="h-4 w-4 text-(--foreground-tertiary)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="h-4 w-4 text-text" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -144,9 +144,9 @@ const OrderPage = () => {
         {filteredOrders.length === 0 ? (
           <div className="card text-center p-12">
             <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-(--background-tertiary) flex items-center justify-center">
-              <Package className="h-12 w-12 text-(--foreground-tertiary)" />
+              <Package className="h-12 w-12 text-text" />
             </div>
-            <h2 className="text-2xl font-bold text-(--foreground) mb-2">
+            <h2 className="text-2xl font-bold text-text mb-2">
               No orders found
             </h2>
             <p className="text-(--foreground-secondary) mb-6">
@@ -203,7 +203,7 @@ const OrderPage = () => {
                             </div>
 
                             <div className="mt-2 md:mt-0">
-                              <span className="text-2xl font-bold text-(--foreground)">
+                              <span className="text-2xl font-bold text-text">
                                 ${order.total.toFixed(2)}
                               </span>
                             </div>
