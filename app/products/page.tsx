@@ -3,14 +3,14 @@ import CategoryFilter from "../products/CategoryFilter";
 
 export default function ProductPage() {
     return (
-        <div className="min-h-screen bg-(--background) py-8">
+        <div className="min-h-screen bg-bg py-8">
             <div className="container mx-auto px-4">
                 {/* Header Section */}
                 <div className="mb-8">
-                    <h1 className="text-3xl md:text-4xl font-bold text-(--foreground) mb-3">
+                    <h1 className="text-3xl md:text-4xl font-bold text-text mb-3">
                         Our Products
                     </h1>
-                    <p className="text-(--foreground-secondary) text-lg">
+                    <p className="text-text-secondary text-lg">
                         Discover amazing products at great prices
                     </p>
                 </div>

@@ -151,7 +151,7 @@ const CategoryFilter = () => {
     <div className="mb-8">
       {/* Mobile Filter Header */}
       <div className="md:hidden">
-        <div className="flex items-center justify-between p-4 bg-(--background-secondary) rounded-xl shadow-lg mb-4 border border-(--border)">
+        <div className="flex items-center justify-between p-4 bg-bg-secondary rounded-xl shadow-lg mb-4 border border-border">
           <div className="flex items-center gap-3">
             <div className="relative">
               <div className="p-2 bg-2-to-r from-primary to-accent rounded-lg">
@@ -168,8 +168,8 @@ const CategoryFilter = () => {
               )}
             </div>
             <div>
-              <p className="font-bold text-lg text-(--foreground)">{filteredProducts.length} Products</p>
-              <p className="text-sm text-(--foreground-tertiary)">
+              <p className="font-bold text-lg text-text">{filteredProducts.length} Products</p>
+              <p className="text-sm text-text-secondary">
                 {activeCategory !== 'all' ? `${activeCategory}` : 'All Categories'}
                 {selectedSort !== 'default' && ` • ${selectedSort}`}
               </p>
@@ -204,27 +204,27 @@ const CategoryFilter = () => {
                 animate={{ x: 0 }}
                 exit={{ x: '100%' }}
                 transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                className="fixed right-0 top-0 h-full w-full max-w-sm bg-(--background-secondary) shadow-2xl z-50 overflow-y-auto"
+                className="fixed right-0 top-0 h-full w-full max-w-sm bg-bg-secondary shadow-2xl z-50 overflow-y-auto"
               >
                 {/* Filter Header */}
-                <div className="sticky top-0 bg-(--background-secondary) border-b border-(--border) p-6">
+                <div className="sticky top-0 bg-bg-secondary border-b border-border p-6">
                   <div className="flex items-center justify-between mb-6">
                     <div className="flex items-center gap-3">
                       <div className="p-2 bg-linear-to-r from-primary to-accent rounded-lg">
                         <ShoppingBag className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-xl font-bold text-(--foreground)">
+                        <h3 className="text-xl font-bold text-text">
                           ShopEasy Filters
                         </h3>
-                        <p className="text-sm text-(--foreground-tertiary)">Browse by categories</p>
+                        <p className="text-sm text-text-secondary">Browse by categories</p>
                       </div>
                     </div>
                     <button
                       onClick={() => dispatch(toggleFilterMenu())}
-                      className="p-2 hover:bg-(--background-tertiary) rounded-lg transition-colors"
+                      className="p-2 hover:bg-bg-tertiary rounded-lg transition-colors"
                     >
-                      <X className="h-5 w-5 text-(--foreground-secondary)" />
+                      <X className="h-5 w-5 text-text-secondary" />
                     </button>
                   </div>
                 </div>
@@ -233,7 +233,7 @@ const CategoryFilter = () => {
                 <div className="p-6 space-y-8">
                   {/* Featured Categories */}
                   <div>
-                    <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-(--foreground)">
+                    <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-text">
                       <Sparkles className="h-5 w-5 text-accent" />
                       Featured Collections
                     </h4>
@@ -261,11 +261,11 @@ const CategoryFilter = () => {
                   {/* All Categories */}
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <h4 className="font-bold text-lg flex items-center gap-2 text-(--foreground)">
+                      <h4 className="font-bold text-lg flex items-center gap-2 text-text">
                         <Filter className="h-5 w-5 text-primary" />
                         All Categories
                       </h4>
-                      <span className="text-sm text-(--foreground-tertiary)">
+                      <span className="text-sm text-text-secondary">
                         {categories.length} categories
                       </span>
                     </div>
@@ -279,7 +279,7 @@ const CategoryFilter = () => {
                           className={`px-4 py-3 rounded-xl text-center transition-all ${
                             activeCategory === category
                               ? 'bg-linear-to-r from-primary to-accent text-white shadow-lg font-semibold'
-                              : 'bg-(--background-tertiary) hover:bg-(--background-tertiary)/80 text-(--foreground-secondary)'
+                              : 'bg-bg-tertiary hover:bg-bg-tertiary/80 text-text-secondary'
                           }`}
                         >
                           {category === 'all' ? 'All Products' : category}
@@ -290,7 +290,7 @@ const CategoryFilter = () => {
 
                   {/* Sort Options */}
                   <div>
-                    <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-(--foreground)">
+                    <h4 className="font-bold text-lg mb-4 flex items-center gap-2 text-text">
                       <SortAsc className="h-5 w-5 text-primary" />
                       Sort By
                     </h4>
@@ -304,7 +304,7 @@ const CategoryFilter = () => {
                           className={`px-4 py-3 rounded-xl text-center transition-all flex items-center justify-center gap-2 ${
                             selectedSort === option.value
                               ? 'bg-linear-to-r from-primary to-accent text-white shadow-lg'
-                              : 'bg-(--background-tertiary) hover:bg-(--background-tertiary)/80 text-(--foreground-secondary)'
+                              : 'bg-bg-tertiary hover:bg-bg-tertiary/80 text-text-secondary'
                           }`}
                         >
                           {option.icon}
@@ -315,13 +315,13 @@ const CategoryFilter = () => {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="sticky bottom-0 bg-(--background-secondary) pt-6 border-t border-(--border)">
+                  <div className="sticky bottom-0 bg-bg-secondary pt-6 border-t border-border">
                     <div className="flex gap-3">
                       <motion.button
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
                         onClick={clearAllFilters}
-                        className="flex-1 px-4 py-3 border-2 border-(--border) rounded-xl hover:bg-(--background-tertiary) transition-colors font-medium text-(--foreground-secondary)"
+                        className="flex-1 px-4 py-3 border-2 border-border rounded-xl hover:bg-bg-tertiary transition-colors font-medium text-text-secondary"
                       >
                         Clear All
                       </motion.button>
@@ -349,31 +349,31 @@ const CategoryFilter = () => {
           {/* Title and Sort Row */}
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-2xl font-bold text-(--foreground)">
+              <h2 className="text-2xl font-bold text-text">
                 Browse Products
               </h2>
-              <p className="text-(--foreground-secondary)">
+              <p className="text-text-secondary">
                 Find exactly what you're looking for
               </p>
             </div>
         
             {/* Sort Dropdown */}
             <div className="relative group">
-              <button className="flex items-center gap-2 px-4 py-3.5 bg-(--background-tertiary) rounded-xl hover:bg-(--background-tertiary)/80 transition-colors font-medium text-(--foreground-secondary)">
+              <button className="flex items-center gap-2 px-4 py-3.5 bg-bg-tertiary rounded-xl hover:bg-bg-tertiary/80 transition-colors font-medium text-text-secondary">
                 <SortAsc className="h-4 w-4" />
                 <span>{sortOptions.find(o => o.value === selectedSort)?.label}</span>
                 <ChevronDown className="h-4 w-4" />
               </button>
               
-              <div className="absolute right-0 top-full mt-2 w-56 bg-(--background-secondary) rounded-xl shadow-2xl border border-(--border) opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+              <div className="absolute right-0 top-full mt-2 w-56 bg-bg-secondary rounded-xl shadow-2xl border border-border opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
                 {sortOptions.map((option) => (
                   <button
                     key={option.value}
                     onClick={() => handleSortChange(option.value)}
-                    className={`w-full px-4 py-3 text-left hover:bg-(--background-tertiary) transition-colors first:rounded-t-xl last:rounded-b-xl flex items-center gap-3 ${
+                    className={`w-full px-4 py-3 text-left hover:bg-bg-tertiary transition-colors first:rounded-t-xl last:rounded-b-xl flex items-center gap-3 ${
                       selectedSort === option.value
                         ? 'bg-primary/10 text-primary'
-                        : 'text-(--foreground-secondary)'
+                        : 'text-text-secondary'
                     }`}
                   >
                     {option.icon}
@@ -388,7 +388,7 @@ const CategoryFilter = () => {
           <div className="space-y-6">
             {/* Featured Categories */}
             <div>
-              <h3 className="font-bold text-lg mb-4 text-(--foreground)">
+              <h3 className="font-bold text-lg mb-4 text-text">
                 Shop by Collection
               </h3>
               <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide">
@@ -420,10 +420,10 @@ const CategoryFilter = () => {
             {/* All Categories */}
             <div>
               <div className="flex items-center justify-between mb-4">
-                <h3 className="font-bold text-lg text-(--foreground)">
+                <h3 className="font-bold text-lg text-text">
                   Browse All Categories
                 </h3>
-                <span className="text-sm text-(--foreground-tertiary)">
+                <span className="text-sm text-text-secondary">
                   {activeCategory !== 'all' ? `${activeCategory} selected` : `${categories.length} categories`}
                 </span>
               </div>
@@ -437,7 +437,7 @@ const CategoryFilter = () => {
                     className={`px-5 py-2.5 rounded-full font-medium transition-all ${
                       activeCategory === category
                         ? 'bg-linear-to-r from-primary to-accent text-white shadow-lg'
-                        : 'bg-(--background-tertiary) hover:bg-(--background-tertiary)/80 text-(--foreground-secondary)'
+                        : 'bg-bg-tertiary hover:bg-bg-tertiary/80 text-text-secondary'
                     }`}
                   >
                     {category === 'all' ? 'All Products' : category}
@@ -457,12 +457,12 @@ const CategoryFilter = () => {
           >
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-4">
-                <div className="p-2 bg-(--background-secondary) rounded-lg shadow border border-(--border)">
+                <div className="p-2 bg-bg-secondary rounded-lg shadow border border-border">
                   <Filter className="h-5 w-5 text-primary" />
                 </div>
                 <div>
-                  <h4 className="font-bold text-(--foreground)">Active Filters</h4>
-                  <p className="text-sm text-(--foreground-secondary)">
+                  <h4 className="font-bold text-text">Active Filters</h4>
+                  <p className="text-sm text-text-secondary">
                     {filteredProducts.length} products match your criteria
                   </p>
                 </div>
@@ -470,29 +470,29 @@ const CategoryFilter = () => {
               
               <div className="flex flex-wrap gap-2">
                 {activeCategory !== 'all' && (
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-(--background-secondary) rounded-full text-sm shadow border border-(--border)">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-bg-secondary rounded-full text-sm shadow border border-border">
                     <Tag className="h-3 w-3 text-primary" />
-                    <span className="font-medium text-(--foreground)">{activeCategory}</span>
+                    <span className="font-medium text-text">{activeCategory}</span>
                     <button
                       onClick={() => handleCategoryClick('all')}
-                      className="p-1 hover:bg-(--background-tertiary) rounded-full"
+                      className="p-1 hover:bg-bg-tertiary rounded-full"
                     >
-                      <X className="h-3 w-3 text-(--foreground-tertiary)" />
+                      <X className="h-3 w-3 text-text-secondary" />
                     </button>
                   </span>
                 )}
             
                 {selectedSort !== 'default' && (
-                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-(--background-secondary) rounded-full text-sm shadow border border-(--border)">
+                  <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-bg-secondary rounded-full text-sm shadow border border-border">
                     <SortAsc className="h-3 w-3 text-primary" />
-                    <span className="font-medium text-(--foreground)">
+                    <span className="font-medium text-text">
                       {sortOptions.find(o => o.value === selectedSort)?.label}
                     </span>
                     <button
                       onClick={() => handleSortChange('default')}
-                      className="p-1 hover:bg-(--background-tertiary) rounded-full"
+                      className="p-1 hover:bg-bg-tertiary rounded-full"
                     >
-                      <X className="h-3 w-3 text-(--foreground-tertiary)" />
+                      <X className="h-3 w-3 text-text-secondary" />
                     </button>
                   </span>
                 )}
@@ -511,9 +511,9 @@ const CategoryFilter = () => {
 
         {/* Results Summary */}
         <div className="text-center py-4">
-          <p className="text-(--foreground-secondary)">
+          <p className="text-text-secondary">
             Showing <span className="font-bold text-primary">{filteredProducts.length}</span> of{' '}
-            <span className="font-bold text-(--foreground)">{products.length}</span> products
+            <span className="font-bold text-text">{products.length}</span> products
             {activeCategory !== 'all' && (
               <> in <span className="font-bold text-accent">{activeCategory}</span></>
             )}

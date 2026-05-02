@@ -28,7 +28,7 @@ const FormSelect: React.FC<FormSelectProps> = ({
   return (
     <div className="mb-4">
       {/* Label */}
-      <label className="block text-sm font-medium mb-2 text-(--foreground-secondary)">
+      <label className="block text-sm font-medium mb-2 text-text-secondary">
         {label} {required && <span className="text-error">*</span>}
       </label>
 
@@ -36,7 +36,7 @@ const FormSelect: React.FC<FormSelectProps> = ({
       <select
         {...register(name)}
         {...props}
-        className={`input-field ${error ? 'input-error' : ''} ${className}`}
+        className={`input  ${error ? 'badge-error' : ''} ${className}`}
         aria-invalid={error ? 'true' : 'false'}
       >
         <option value="">Select an option</option>

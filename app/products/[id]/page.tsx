@@ -128,10 +128,10 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
           <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-error/10 flex items-center justify-center">
             <Package className="h-12 w-12 text-error" />
           </div>
-          <h2 className="text-2xl font-bold text-(--foreground) mb-4">
+          <h2 className="text-2xl font-bold text-text mb-4">
             Product Not Found
           </h2>
-          <p className="text-(--foreground-secondary) mb-6">
+          <p className="text-text-secondary mb-6">
             The product you're looking for doesn't exist or has been removed.
           </p>
           <Link 
@@ -155,7 +155,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
     <div className="min-h-screen bg-(--background)">
       {/* Breadcrumb */}
       <div className="container mx-auto px-4 py-6">
-        <div className="flex items-center text-sm text-(--foreground-secondary)">
+        <div className="flex items-center text-sm text-text-secondary">
           <Link href="/" className="hover:text-primary transition-colors">
             Home
           </Link>
@@ -168,7 +168,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
             {product.category}
           </Link>
           <ChevronRight className="h-4 w-4 mx-2" />
-          <span className="text-(--foreground) font-medium truncate max-w-xs">
+          <span className="text-text font-medium truncate max-w-xs">
             {product.name}
           </span>
         </div>
@@ -185,7 +185,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
               transition={{ duration: 0.3 }}
               className="mb-6"
             >
-              <div className="relative h-96 md:h-125 rounded-2xl overflow-hidden bg-(--background-tertiary)">
+              <div className="relative h-96 md:h-125 rounded-2xl overflow-hidden bg-bg-tertiary">
                 <img
                   src={product.image}
                   alt={product.name}
@@ -213,7 +213,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   className={`shrink-0 w-20 h-20 rounded-lg overflow-hidden border-2 transition-all ${
                     selectedImage === index
                       ? 'border-primary ring-2 ring-primary/20'
-                      : 'border-(--border) hover:border-primary/50'
+                      : 'border-border hover:border-primary/50'
                   }`}
                 >
                   <img
@@ -253,30 +253,30 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                       />
                     ))]}
                   </div>
-                  <span className="text-(--foreground-secondary)">
+                  <span className="text-text-secondary">
                     ({(product.rating || 0).toFixed(1)}/5)
                   </span>
                 </div>
               </div>
 
               {/* Product Name */}
-              <h1 className="text-3xl md:text-4xl font-bold text-(--foreground) mb-4">
+              <h1 className="text-3xl md:text-4xl font-bold text-text mb-4">
                 {product.name}
               </h1>
 
               {/* Description */}
-              <p className="text-(--foreground-secondary) mb-6 text-lg">
+              <p className="text-text-secondary mb-6 text-lg">
                 {product.description || 'No description available'}
               </p>
 
               {/* Price */}
               <div className="mb-8">
                 <div className="flex items-center gap-4 mb-2">
-                  <span className="text-4xl font-bold text-(--foreground)">
+                  <span className="text-4xl font-bold text-text">
                     ${product.price.toFixed(2)}
                   </span>
                 </div>
-                <p className="text-(--foreground-secondary)">
+                <p className="text-text-secondary">
                   {(product.stock || 0) > 0 ? (
                     <span className="text-success font-medium">
                       <CheckCircle className="h-4 w-4 inline mr-1" />
@@ -292,25 +292,25 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
 
               {/* Quantity Selector */}
               <div className="mb-8">
-                <p className="text-(--foreground) font-medium mb-3">Quantity</p>
+                <p className="text-text font-medium mb-3">Quantity</p>
                 <div className="flex items-center gap-4">
-                  <div className="flex items-center border border-(--border) rounded-lg">
+                  <div className="flex items-center border border-border rounded-lg">
                     <button
                       onClick={() => handleQuantityChange('decrease')}
                       disabled={quantity <= 1}
-                      className="p-3 hover:bg-(--background-tertiary) disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                      className="p-3 hover:bg-bg-tertiary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
-                      <Minus className="h-4 w-4 text-(--foreground-secondary)" />
+                      <Minus className="h-4 w-4 text-text-secondary" />
                     </button>
-                    <span className="w-12 text-center text-lg font-semibold text-(--foreground)">
+                    <span className="w-12 text-center text-lg font-semibold text-text">
                       {quantity}
                     </span>
                     <button
                       onClick={() => handleQuantityChange('increase')}
                       disabled={quantity >= (product.stock || 10)}
-                      className="p-3 hover:bg-(--background-tertiary) disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                      className="p-3 hover:bg-bg-tertiary disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
-                      <Plus className="h-4 w-4 text-(--foreground-secondary)" />
+                      <Plus className="h-4 w-4 text-text-secondary" />
                     </button>
                   </div>
                   <p className="text-sm text-(--foreground-tertiary)">
@@ -328,7 +328,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   disabled={(product.stock || 0) === 0}
                   className={`flex-1 flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all ${
                     (product.stock || 0) === 0
-                      ? 'bg-(--background-tertiary) text-(--foreground-tertiary) cursor-not-allowed'
+                      ? 'bg-bg-tertiary text-(--foreground-tertiary) cursor-not-allowed'
                       : 'btn-primary'
                   }`}
                 >
@@ -343,7 +343,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   disabled={(product.stock || 0) === 0}
                   className={`flex-1 flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all ${
                     (product.stock || 0) === 0
-                      ? 'bg-(--background-tertiary) text-(--foreground-tertiary) cursor-not-allowed'
+                      ? 'bg-bg-tertiary text-(--foreground-tertiary) cursor-not-allowed'
                       : 'btn-secondary'
                   }`}
                 >
@@ -361,7 +361,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                   className={`w-full flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-lg border-2 transition-all ${
                     isFavorite
                       ? 'border-error text-error bg-error/10'
-                      : 'border-(--border) text-(--foreground-secondary) hover:border-error/50 hover:text-error'
+                      : 'border-border text-text-secondary hover:border-error/50 hover:text-error'
                   }`}
                 >
                   <Heart className={`h-6 w-6 ${isFavorite ? 'fill-error' : ''}`} />
@@ -371,24 +371,24 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
 
               {/* Features */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                <div className="flex items-center gap-3 p-4 bg-(--background-secondary) rounded-lg border border-(--border)">
+                <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-lg border border-border">
                   <Truck className="h-6 w-6 text-primary" />
                   <div>
-                    <p className="font-semibold text-(--foreground)">Free Shipping</p>
+                    <p className="font-semibold text-text">Free Shipping</p>
                     <p className="text-sm text-(--foreground-tertiary)">Orders over $50</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-4 bg-(--background-secondary) rounded-lg border border-(--border)">
+                <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-lg border border-border">
                   <RotateCcw className="h-6 w-6 text-success" />
                   <div>
-                    <p className="font-semibold text-(--foreground)">30-Day Returns</p>
+                    <p className="font-semibold text-text">30-Day Returns</p>
                     <p className="text-sm text-(--foreground-tertiary)">Easy returns</p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-4 bg-(--background-secondary) rounded-lg border border-(--border)">
+                <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-lg border border-border">
                   <Shield className="h-6 w-6 text-accent" />
                   <div>
-                    <p className="font-semibold text-(--foreground)">Secure Payment</p>
+                    <p className="font-semibold text-text">Secure Payment</p>
                     <p className="text-sm text-(--foreground-tertiary)">100% secure</p>
                   </div>
                 </div>
@@ -396,9 +396,9 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
 
               {/* Share */}
               <div className="flex items-center gap-4">
-                <p className="text-(--foreground-secondary)">Share:</p>
-                <button className="p-2 hover:bg-(--background-tertiary) rounded-lg transition-colors">
-                  <Share2 className="h-5 w-5 text-(--foreground-secondary)" />
+                <p className="text-text-secondary">Share:</p>
+                <button className="p-2 hover:bg-bg-tertiary rounded-lg transition-colors">
+                  <Share2 className="h-5 w-5 text-text-secondary" />
                 </button>
               </div>
             </motion.div>
@@ -414,7 +414,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
             className="mt-16"
           >
             <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl font-bold text-(--foreground)">
+              <h2 className="text-2xl font-bold text-text">
                 Related Products
               </h2>
               <Link
@@ -441,7 +441,7 @@ export default function ProductDetailPage({ params }: ProductDetailPageProps) {
                       />
                     </div>
                     <div className="p-4">
-                      <h3 className="font-semibold text-lg mb-2 text-(--foreground) group-hover:text-primary transition-colors">
+                      <h3 className="font-semibold text-lg mb-2 text-text group-hover:text-primary transition-colors">
                         {relatedProduct.name}
                       </h3>
                       <div className="flex items-center justify-between">

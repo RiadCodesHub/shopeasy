@@ -20,7 +20,7 @@ const statusColors = {
   shipped: 'badge-primary',
   delivered: 'badge-success',
   cancelled: 'badge-error',
-  refunded: 'bg-(--background-tertiary) text-(--foreground-secondary)'
+  refunded: 'bg-bg-tertiary text-text-secondary'
 }
 
 const statusIcons = {
@@ -67,10 +67,10 @@ const OrderPage = () => {
 
   if (status === 'loading' || loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-(--background)">
+      <div className="min-h-screen flex items-center justify-center bg-bg">
         <div className="text-center">
           <div className="loading-spinner mx-auto mb-4"></div>
-          <p className="text-(--foreground-secondary)">
+          <p className="text-text-secondary">
             Loading your orders...
           </p>
         </div>
@@ -83,14 +83,14 @@ const OrderPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-(--background) py-8">
+    <div className="min-h-screen bg-bg py-8">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-text mb-2">
             My Orders
           </h1>
-          <p className="text-(--foreground-secondary)">
+          <p className="text-text-secondary">
             View and track your orders
           </p>
         </div>
@@ -119,7 +119,7 @@ const OrderPage = () => {
                 <select
                   value={filterStatus}
                   onChange={(e) => setFilterStatus(e.target.value)}
-                  className="input-field pl-10 pr-8 appearance-none cursor-pointer"
+                  className="input pl-10 pr-8 appearance-none cursor-pointer"
                 >
                   <option value="all">All orders</option>
                   <option value="pending">Pending</option>
@@ -143,13 +143,13 @@ const OrderPage = () => {
         {/* Orders List */}
         {filteredOrders.length === 0 ? (
           <div className="card text-center p-12">
-            <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-(--background-tertiary) flex items-center justify-center">
+            <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-bg-tertiary flex items-center justify-center">
               <Package className="h-12 w-12 text-text" />
             </div>
             <h2 className="text-2xl font-bold text-text mb-2">
               No orders found
             </h2>
-            <p className="text-(--foreground-secondary) mb-6">
+            <p className="text-text-secondary mb-6">
               {searchTerm || filterStatus !== 'all'
                 ? 'Try adjusting your filters'
                 : "You haven't placed any orders yet"}
@@ -182,7 +182,7 @@ const OrderPage = () => {
                           <div className="flex flex-col md:flex-row md:items-center justify-between mb-4">
                             <div>
                               <div className="flex items-center gap-3 mb-2">
-                                <span className="text-sm font-mono text-(--foreground-secondary)">
+                                <span className="text-sm font-mono text-text-secondary">
                                   #{order.orderId}
                                 </span>
                                 <span className={`badge ${statusColors[order.status]}`}>
@@ -192,7 +192,7 @@ const OrderPage = () => {
                                   </span>
                                 </span>
                               </div>
-                              <div className="flex items-center gap-2 text-sm text-(--foreground-secondary)">
+                              <div className="flex items-center gap-2 text-sm text-text-secondary">
                                 <Calendar className="h-4 w-4" />
                                 {new Date(order.createdAt).toLocaleDateString('en-US', {
                                   year: 'numeric',

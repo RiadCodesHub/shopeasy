@@ -76,11 +76,11 @@ const Pagination = () => {
       <div className="flex flex-col md:flex-row items-center justify-between mb-6">
         <div className="flex items-center gap-3">
 
-          <span className="text-sm text-(--foreground-secondary)">
+          <span className="text-sm text-text-secondary">
             Items per page:
           </span>
 
-          <div className="flex rounded-lg p-1 bg-(--background-tertiary) border border-(--border)">
+          <div className="flex rounded-lg p-1 bg-bg-tertiary border border-(--border)">
             {[10, 20, 30].map((num) => (
               <button
                 key={num}
@@ -89,8 +89,8 @@ const Pagination = () => {
                   px-3 py-1 rounded-md text-sm font-medium transition-all
                   ${
                     productPerPage === num
-                      ? 'bg-(--background) shadow text-(--foreground)'
-                      : 'text-(--foreground-secondary) hover:bg-(--background)/50'
+                      ? 'bg-bg shadow text-text'
+                      : 'text-text-secondary hover:bg-bg/50'
                   }
                 `}
               >
@@ -116,7 +116,7 @@ const Pagination = () => {
             ${
               currentPage === 1
                 ? 'text-(--foreground-tertiary) cursor-not-allowed'
-                : 'nav-link hover:bg-(--background-tertiary)'
+                : 'nav-link hover:bg-bg-tertiary'
             }
           `}
         >
@@ -139,7 +139,7 @@ const Pagination = () => {
                     ? 'bg-primary text-white shadow'
                     : page === '...'
                     ? 'text-(--foreground-tertiary) cursor-default'
-                    : 'nav-link hover:bg-(--background-tertiary)'
+                    : 'nav-link hover:bg-bg-tertiary'
                 }
               `}
             >
@@ -159,7 +159,7 @@ const Pagination = () => {
             ${
               currentPage === totalPages
                 ? 'text-(--foreground-tertiary) cursor-not-allowed'
-                : 'nav-link hover:bg-(--background-tertiary)'
+                : 'nav-link hover:bg-bg-tertiary'
             }
           `}
         >
@@ -169,9 +169,9 @@ const Pagination = () => {
       </div>
 
       {/* Page Info */}
-      <div className="text-center mt-4 text-(--foreground-secondary)">
-        Page <span className="font-semibold text-(--foreground)">{currentPage}</span> of{' '}
-        <span className="font-semibold text-(--foreground)">{totalPages}</span>
+      <div className="text-center mt-4 text-text-secondary">
+        Page <span className="font-semibold text-text">{currentPage}</span> of{' '}
+        <span className="font-semibold text-text">{totalPages}</span>
       </div>
 
     </div>
