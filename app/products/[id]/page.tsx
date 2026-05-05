@@ -24,11 +24,11 @@ import { fetchProducts, Product } from '@/lib/store/slices/productSlice';
 import Link from 'next/link';
 
 interface ProductDetailPageProps {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 }
 
 export default function ProductDetailPage({ params }: ProductDetailPageProps) {
-  const { id } = use(params);
+const { id } = params;
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { products, status } = useAppSelector((state) => state.products);

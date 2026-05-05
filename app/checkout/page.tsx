@@ -38,10 +38,37 @@ const CheckoutPage = () => {
     useAppSelector((state) => state.form);
 
   const methods = useForm<CheckoutFormData>({
-    resolver: zodResolver(checkoutSchema) as any,
-    mode: 'onChange',
-    defaultValues: formData,
-  });
+  resolver: zodResolver(checkoutSchema),
+  mode: 'onChange',
+  defaultValues: formData || {
+    personalInfo: {
+      firstName: '',
+      lastName: '',
+      email: '',
+      phone: '',
+    },
+    shipping: {
+      address: {
+        street: '',
+        city: '',
+        state: '',
+        zipCode: '',
+        country: 'Bangladesh',
+      },
+      shippingMethod: 'standard',
+      deliveryInstructions: '',
+    },
+    payment: {
+      paymentMethod: 'credit-card',
+      cardNumber: '',
+      expiryDate: '',
+      cvv: '',
+      saveCard: false,
+    },
+    agreeToTerms: false,
+    useShippingAsBilling: true,
+  },
+});
 
   const { handleSubmit, trigger, formState: { errors, isValid }, watch } = methods;
 
@@ -68,30 +95,20 @@ const CheckoutPage = () => {
 
   // validation
   const validateStep = useCallback(async (step: number) => {
-    switch (step) {
-      case 1:
-        return await trigger([
-          'personalInfo.firstName',
-          'personalInfo.lastName',
-          'personalInfo.email',
-          'personalInfo.phone',
-          'shipping.address.street',
-          'shipping.address.city',
-          'shipping.address.state',
-          'shipping.address.zipCode',
-          'shipping.address.country',
-        ]);
+  if (step === 1) {
+    return await trigger(['personalInfo', 'shipping']);
+  }
 
-      case 2:
-        return await trigger(['payment.paymentMethod']);
+  if (step === 2) {
+    return await trigger(['payment']);
+  }
 
-      case 3:
-        return await trigger(['agreeToTerms']);
+  if (step === 3) {
+    return await trigger(['agreeToTerms']);
+  }
 
-      default:
-        return false;
-    }
-  }, [trigger]);
+  return false;
+}, [trigger]);
 
   const handleNextStep = async () => {
     const ok = await validateStep(currentStep);
