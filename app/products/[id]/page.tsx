@@ -115,7 +115,7 @@ const { id } = params;
   // Loading state
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-(--background)">
+      <div className="min-h-screen flex items-center justify-center bg-bg">
         <div className="loading-spinner"></div>
       </div>
     );
@@ -123,7 +123,7 @@ const { id } = params;
 
   if (!product) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-(--background)">
+      <div className="min-h-screen flex items-center justify-center bg-bg">
         <div className="card text-center max-w-md p-8">
           <div className="w-24 h-24 mx-auto mb-6 rounded-full bg-error/10 flex items-center justify-center">
             <Package className="h-12 w-12 text-error" />
@@ -152,7 +152,7 @@ const { id } = params;
     .slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-(--background)">
+    <div className="min-h-screen bg-bg">
       {/* Breadcrumb */}
       <div className="container mx-auto px-4 py-6">
         <div className="flex items-center text-sm text-text-secondary">

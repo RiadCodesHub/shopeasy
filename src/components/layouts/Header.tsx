@@ -80,8 +80,8 @@ const Header = () => {
   const profileMenuItems = [
     { href: '/profile', icon: <User className="h-4 w-4" />, label: 'My Profile' },
     { href: '/orders', icon: <Package className="h-4 w-4" />, label: 'My Orders' },
-    { href: '/wishlist', icon: <Heart className="h-4 w-4" />, label: 'Wishlist' },
-    { href: '/settings', icon: <Settings className="h-4 w-4" />, label: 'Settings' },
+    { href: '/', icon: <Heart className="h-4 w-4" />, label: 'Wishlist' },
+    { href: '/', icon: <Settings className="h-4 w-4" />, label: 'Settings' },
   ];
 
   const adminMenuItem = { 
@@ -212,7 +212,7 @@ const Header = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute right-0 mt-2 w-64 bg-bg-secondary rounded-xl shadow-xl border border-border overflow-hidden z-50"
+                      className="absolute right-0 mt-2 w-full bg-bg-secondary rounded-xl shadow-xl border border-border overflow-hidden z-50"
                     >
                       {/* User Info Header */}
                       <div className="px-4 py-3 bg-[linear-gradient(to_right,primary/0.1,success/0.1) border-b border-border">
