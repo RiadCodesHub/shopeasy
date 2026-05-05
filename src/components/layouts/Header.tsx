@@ -215,7 +215,7 @@ const Header = () => {
                       className="absolute right-0 mt-2 w-64 bg-bg-secondary rounded-xl shadow-xl border border-border overflow-hidden z-50"
                     >
                       {/* User Info Header */}
-                      <div className="px-4 py-3 bg-[linear-gradient(to_right,var(--primary)/0.1,var(--accent)/0.1) border-b border-border">
+                      <div className="px-4 py-3 bg-[linear-gradient(to_right,primary/0.1,success/0.1) border-b border-border">
                         <p className="font-semibold text-text">
                           {session.user?.name}
                         </p>
@@ -292,9 +292,9 @@ const Header = () => {
                 className="md:hidden p-2 rounded-lg hover:bg-bg-tertiary"
               >
                 {isMobileMenuOpen ? (
-                  <X className="h-6 w-6 text-bg-secondary" />
+                  <X className="h-6 w-6 text-text" />
                 ) : (
-                  <Menu className="h-6 w-6 text-bg-secondary" />
+                  <Menu className="h-6 w-6 text-text" />
                 )}
               </button>
             </div>
@@ -308,9 +308,9 @@ const Header = () => {
                 value={searchQuery}
                 onChange={handleSearchChange}
                 placeholder="Search products..."
-                className="input-field pl-10 pr-10"
+                className="input pl-10 pr-10"
               />
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-bg-tertiary" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-text-secondary" />
               {searchQuery && (
                 <button
                   type="button"
