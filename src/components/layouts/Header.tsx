@@ -215,7 +215,7 @@ const Header = () => {
                       className="absolute right-0 mt-2 w-60 bg-bg-secondary rounded-xl shadow-xl border border-border overflow-hidden z-50"
                     >
                       {/* User Info Header */}
-                      <div className="px-4 py-3 bg-gradient border-b border-border">
+                      <div className="px-4 py-3 bg-bg-tertiary border-b border-border">
                         <p className="font-semibold text-text">
                           {session.user?.name}
                         </p>

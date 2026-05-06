@@ -47,7 +47,7 @@ const { id } = params;
 
   useEffect(() => {
     if (status === 'succeeded' && products.length > 0 && id) {
-      const foundProduct = products.find(p => p.id === id);
+      const foundProduct = products.find(p => String(p.id) === String(id));
       if (foundProduct) {
         setProduct(foundProduct);
         setLoading(false);
