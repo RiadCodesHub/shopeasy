@@ -80,7 +80,7 @@ const OrderSummary = () => {
           <input
             type="text"
             placeholder="Promo code"
-            className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg dark:bg-gray-700 dark:text-white"
+            className="flex-1 input border border-border rounded-lg bg-bg"
           />
           <button
             type="button"

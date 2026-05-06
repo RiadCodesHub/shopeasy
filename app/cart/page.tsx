@@ -444,7 +444,7 @@ const CartPage = () => {
                       <input
                         type="text"
                         placeholder="Promo code"
-                        className="input-field flex-1"
+                        className="input flex-1"
                       />
                       <button className="btn-primary btn">
                         Apply
