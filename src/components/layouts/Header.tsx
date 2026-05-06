@@ -169,7 +169,7 @@ const Header = () => {
             {/* Actions */}
             <div className="flex items-center space-x-2 md:space-x-4">
               {/* Profile Dropdown */}
-              <div className="relative overflow-hidden" ref={profileMenuRef}>
+              <div className="relative" ref={profileMenuRef}>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -212,7 +212,7 @@ const Header = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute inset-0 mt-2 w-60 bg-bg-secondary rounded-xl shadow-xl border border-border overflow-hidden z-50"
+                      className="absolute right-0 mt-2 w-60 bg-bg-secondary rounded-xl shadow-xl border border-border overflow-hidden z-50"
                     >
                       {/* User Info Header */}
                       <div className="px-4 py-3 bg-gradient border-b border-border">

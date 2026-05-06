@@ -148,7 +148,7 @@ const CartSidebar = () => {
                       </Link>
                       
                       {/* Product Details */}
-                      <div className="flex flex-1 min-w-0">
+                      <div className="flex flex-1 w-auto">
                         <Link 
                           href={`/products/${item.id}`}
                           onClick={handleClose}
@@ -165,12 +165,12 @@ const CartSidebar = () => {
                       <div className="flex items-center gap-1">
                         <button
                           onClick={() => dispatch(removeFromCart(item.id))}
-                          className="btn hover:btn-primary"
+                          className="p-3 hover:btn-primary"
                         >
                           <Minus className="h-4 w-4 text-text" />
                         </button>
                         
-                        <span className="w-8 text-center font-medium text-text">
+                        <span className="w-4 text-center font-medium text-text">
                           {item.quantity}
                         </span>
                         
@@ -182,7 +182,7 @@ const CartSidebar = () => {
                             image: item.image,
                             quantity: 1
                           }))}
-                          className="btn hover:btn-primary"
+                          className="p-3 hover:btn-primary"
                         >
                           <Plus className="h-4 w-4 text-text" />
                         </button>
