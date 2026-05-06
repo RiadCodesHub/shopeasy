@@ -212,7 +212,7 @@ const Header = () => {
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute inset-x-0 mt-2 md:w-md w-60 bg-bg-secondary rounded-xl shadow-xl border border-border overflow-hidden z-50"
+                      className="absolute inset-x-0 mt-2 w-60 bg-bg-secondary rounded-xl shadow-xl border border-border overflow-hidden z-50"
                     >
                       {/* User Info Header */}
                       <div className="px-4 py-3 bg-gradient border-b border-border">
