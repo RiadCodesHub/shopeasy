@@ -63,13 +63,13 @@ export default function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-blue-500 to-purple-500 dark:from-gray-900 dark:to-gray-800 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-bg flex items-center justify-center p-4">
       <div className="card max-w-md w-full">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-(--foreground) mb-2">
+          <h1 className="text-3xl font-bold text-text mb-2">
             Create Account
           </h1>
-          <p className="text-(--foreground-secondary)">
+          <p className="text-text-secondary">
             Join ShopEasy for exclusive deals
           </p>
         </div>
@@ -84,11 +84,11 @@ export default function SignupPage() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Full Name */}
           <div>
-            <label className="block text-sm font-medium text-(--foreground-secondary) mb-2">
+            <label className="block text-sm font-medium text-text-secondary mb-2">
               Full Name *
             </label>
             <div className="relative">
-              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
+              <User className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text" />
               <input
                 type="text"
                 value={formData.name}
@@ -102,11 +102,11 @@ export default function SignupPage() {
 
           {/* Email Address */}
           <div>
-            <label className="block text-sm font-medium text-(--foreground-secondary) mb-2">
+            <label className="block text-sm font-medium text-text-secondary mb-2">
               Email Address *
             </label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
+              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text" />
               <input
                 type="email"
                 value={formData.email}
@@ -120,11 +120,11 @@ export default function SignupPage() {
 
           {/* Phone Number */}
           <div>
-            <label className="block text-sm font-medium text-(--foreground-secondary) mb-2">
+            <label className="block text-sm font-medium text-text-secondary mb-2">
               Phone Number
             </label>
             <div className="relative">
-              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
+              <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text" />
               <input
                 type="tel"
                 value={formData.phone}
@@ -137,16 +137,16 @@ export default function SignupPage() {
 
           {/* Password */}
           <div>
-            <label className="block text-sm font-medium text-(--foreground-secondary) mb-2">
+            <label className="block text-sm font-medium text-text-secondary mb-2">
               Password *
             </label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-(--foreground-tertiary)" />
+              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text" />
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="input pl-20 pr-12"
+                className="input pl-10 pr-12"
                 placeholder="••••••••"
                 minLength={6}
                 required
