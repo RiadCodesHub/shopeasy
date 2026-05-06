@@ -67,8 +67,8 @@ export default function ProfilePage() {
   const navItems = [
     { href: "/profile", label: "Profile", icon: <User className="h-5 w-5" />, active: true },
     { href: "/orders", label: "Orders", icon: <Package className="h-5 w-5" />, active: false },
-    { href: "/profile/addresses", label: "Addresses", icon: <MapPin className="h-5 w-5" />, active: false },
-    { href: "/profile/settings", label: "Settings", icon: <Settings className="h-5 w-5" />, active: false },
+    { href: "/", label: "Addresses", icon: <MapPin className="h-5 w-5" />, active: false },
+    { href: "/", label: "Settings", icon: <Settings className="h-5 w-5" />, active: false },
   ];
 
   return (

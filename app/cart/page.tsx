@@ -64,7 +64,7 @@ const CartPage = () => {
     return (
       <div className="min-h-screen bg-(--background)">
         {/* Mobile Header */}
-        <div className="lg:hidden sticky top-0 z-10 bg-(--background-secondary)shadow-sm border-b border-(--border)">
+        <div className="lg:hidden sticky top-0 z-10 bg-bg-secondaryshadow-sm border-b border-border">
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
               <Link href="/" className="flex items-center gap-2 text-(--foreground-secondary)">
@@ -126,7 +126,7 @@ const CartPage = () => {
   return (
     <div className="min-h-screen bg-(--background)">
       {/* Mobile Header */}
-      <div className="lg:hidden sticky top-0 z-20 bg-(--background-secondary)shadow-sm border-b border-(--border)">
+      <div className="lg:hidden sticky top-0 z-20 bg-bg-secondaryshadow-sm border-b border-border">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2 text-(--foreground-secondary)">
@@ -135,7 +135,7 @@ const CartPage = () => {
             </Link>
             <div className="text-center">
               <h1 className="text-lg font-bold text-text">Shopping Cart</h1>
-              <p className="text-xs text- (--foreground-tertiary)">{totalQuantity} items</p>
+              <p className="text-xs text-text">{totalQuantity} items</p>
             </div>
             <button
               onClick={() => dispatch(clearCart())}
@@ -148,11 +148,11 @@ const CartPage = () => {
       </div>
 
       {/* Mobile Order Summary Toggle */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-20 bg-(--background-secondary) border-t border-(--border) shadow-lg">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-20 bg-bg-secondary border-t border-border shadow-lg">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm text- (--foreground-tertiary)">Total</p>
+              <p className="text-sm text-text">Total</p>
               <p className="text-xl font-bold text-text">
                 ${orderTotal.toFixed(2)}
               </p>
@@ -183,7 +183,7 @@ const CartPage = () => {
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 25 }}
-            className="absolute bottom-0 left-0 right-0 bg-bg-secondary rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto border-t border-(--border)"
+            className="absolute bottom-0 left-0 right-0 bg-bg-secondary rounded-t-2xl shadow-2xl max-h-[80vh] overflow-y-auto border-t border-border"
           >
             <div className="sticky top-0 bg-bg-secondary border-b border-text px-6 py-4">
               <div className="flex items-center justify-between">
@@ -433,7 +433,7 @@ const CartPage = () => {
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link
                     href="/"
-                    className="flex-1 btn-secondary flex items-center justify-center gap-2"
+                    className="flex-1 btn btn-secondary flex items-center justify-center gap-2"
                   >
                     <ArrowLeft className="h-5 w-5" />
                     Continue Shopping
@@ -458,7 +458,7 @@ const CartPage = () => {
               <div className="lg:hidden mt-6">
                 <Link
                   href="/"
-                  className="btn-secondary w-full flex items-center justify-center gap-2"
+                  className="btn-secondary btn w-full flex items-center justify-center gap-2"
                 >
                   <ArrowLeft className="h-5 w-5" />
                   Continue Shopping
@@ -562,7 +562,7 @@ const CartPage = () => {
 
                 {/* Features */}
                 <div className="space-y-3">
-                  <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-xl shadow-sm border border-(--border)">
+                  <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-xl shadow-sm border border-border">
                     <Truck className="h-5 w-5 text-primary" />
                     <div>
                       <p className="font-medium text-text">Free Shipping</p>
@@ -570,7 +570,7 @@ const CartPage = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-xl shadow-sm border border-(--border)">
+                  <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-xl shadow-sm border border-border">
                     <CheckCircle className="h-5 w-5 text-success" />
                     <div>
                       <p className="font-medium text-text">30-Day Returns</p>
@@ -578,7 +578,7 @@ const CartPage = () => {
                     </div>
                   </div>
                   
-                  <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-xl shadow-sm border border-(--border)">
+                  <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-xl shadow-sm border border-border">
                     <Package className="h-5 w-5 text-accent" />
                     <div>
                       <p className="font-medium text-text">Secure Packaging</p>
