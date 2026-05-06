@@ -130,7 +130,7 @@ const CartSidebar = () => {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      className="relative flex items-center gap-4 p-4 bg-bg-tertiary rounded-lg border border-border"
+                      className="relative flex items-center justify-between gap-4 p-4 bg-bg-tertiary rounded-lg border border-border overflow-hidden"
                     >
                       {/* Product Image */}
                       <Link 

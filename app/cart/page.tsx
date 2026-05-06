@@ -62,12 +62,12 @@ const CartPage = () => {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-(--background)">
+      <div className="min-h-screen bg-bg">
         {/* Mobile Header */}
-        <div className="lg:hidden sticky top-0 z-10 bg-bg-secondaryshadow-sm border-b border-border">
+        <div className="lg:hidden sticky top-0 z-10 bg-bg-secondary shadow-sm border-b border-border">
           <div className="container mx-auto px-4 py-4">
             <div className="flex items-center justify-between">
-              <Link href="/" className="flex items-center gap-2 text-(--foreground-secondary)">
+              <Link href="/" className="flex items-center gap-2 text-text-secondary">
                 <ChevronLeft className="h-5 w-5" />
                 <span>Back</span>
               </Link>
@@ -92,7 +92,7 @@ const CartPage = () => {
               Your cart is empty
             </h1>
             
-            <p className="text-(--foreground-secondary) mb-8 px-4">
+            <p className="text-text-secondary mb-8 px-4">
               Looks like you haven't added any items to your cart yet.
             </p>
             
@@ -124,12 +124,12 @@ const CartPage = () => {
   const orderTotal = totalPrice + shippingCost + tax;
 
   return (
-    <div className="min-h-screen bg-(--background)">
+    <div className="min-h-screen bg-bg">
       {/* Mobile Header */}
       <div className="lg:hidden sticky top-0 z-20 bg-bg-secondaryshadow-sm border-b border-border">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            <Link href="/" className="flex items-center gap-2 text-(--foreground-secondary)">
+            <Link href="/" className="flex items-center gap-2 text-text-secondary">
               <ChevronLeft className="h-5 w-5" />
               <span className="text-sm">Back</span>
             </Link>
@@ -403,7 +403,7 @@ const CartPage = () => {
                           >
                             <Minus className="h-4 w-4" />
                           </button>
-                          <span className="w-4 text-center font-medium">
+                          <span className="w-8 text-center font-medium">
                             {item.quantity}
                           </span>
                           <button
