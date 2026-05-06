@@ -127,7 +127,7 @@ const Header = () => {
                 Categories
               </Link>
               <Link 
-                href="/orders" 
+                href="/" 
                 className="nav-link"
               >
                 Deals
