@@ -104,7 +104,7 @@ const Footer = () => {
                 <motion.div
                   key={index}
                   whileHover={{ scale: 1.05 }}
-                  className="p-3 rounded-lg bg-bgtertiary flex items-center justify-center border border-border"
+                  className="p-3 rounded-lg bg-bg-tertiary flex items-center justify-center border border-border"
                 >
                   <CreditCard className="h-8 w-8 text-primary" />
                 </motion.div>
@@ -112,7 +112,7 @@ const Footer = () => {
             </div>
 
             <div className="mt-8 p-4 rounded-lg bg-bg-tertiary border border-border">
-              <p className="text-sm text-(--foreground-secondary) mb-2">
+              <p className="text-sm text-text-secondary mb-2">
                 Secure & Encrypted
               </p>
               <p className="text-xs text-text">

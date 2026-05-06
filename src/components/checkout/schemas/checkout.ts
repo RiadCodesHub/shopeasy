@@ -12,7 +12,7 @@ export const personalSchema = z.object({
     firstName : z.string().min(1, "First name is required").max(50),
     lastName: z.string().min(1, "Last name is required").max(50),
     email: z.string().email("invalid email address"),
-    phone: z.string().regex(/^(01[3-9]\d{8})$/, "Phone must be 11 digits")
+    phone: z.string().regex(/^(01[3-9]\d{8,})$/, "Phone must be 11 digits")
 });
 
 export const shippingSchema = z.object({
