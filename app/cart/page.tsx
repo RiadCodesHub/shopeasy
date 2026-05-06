@@ -403,7 +403,7 @@ const CartPage = () => {
                           >
                             <Minus className="h-4 w-4" />
                           </button>
-                          <span className="w-12 text-center font-medium">
+                          <span className="w-6 text-center font-medium">
                             {item.quantity}
                           </span>
                           <button
