@@ -24,11 +24,11 @@ import { fetchProducts, Product } from '@/lib/store/slices/productSlice';
 import Link from 'next/link';
 
 interface ProductDetailPageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }
 
 export default function ProductDetailPage({ params }: ProductDetailPageProps) {
-const { id } = params;
+const { id } = use(params);
   const router = useRouter();
   const dispatch = useAppDispatch();
   const { products, status } = useAppSelector((state) => state.products);
@@ -41,9 +41,14 @@ const { id } = params;
   useEffect(() => {
     const loadProduct = async () => {
       setLoading(true);
-        if (status === 'idle') {
+
+      try {
+      if (status === 'idle') {
         await dispatch(fetchProducts()).unwrap();
       }
+      } finally {
+      setLoading(false);
+    }
     };
     loadProduct();
     }, [dispatch, status,id]);
@@ -229,7 +234,7 @@ const { id } = params;
                 </Link>
                 <div className="flex items-center gap-2">
                   <div className="flex">
-                    {[...Array(5).map((_, i) => (
+                    {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
                         className={`h-5 w-5 ${
@@ -238,7 +243,7 @@ const { id } = params;
                             : 'text-text-secondary'
                         }`}
                       />
-                    ))]}
+                    ))}
                   </div>
                   <span className="text-text-secondary">
                     ({(product.rating || 0).toFixed(1)}/5)
