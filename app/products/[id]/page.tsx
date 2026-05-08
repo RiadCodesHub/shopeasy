@@ -38,38 +38,25 @@ const { id } = params;
   const [selectedImage, setSelectedImage] = useState(0);
   const [loading, setLoading] = useState(true);
   
-  // Fetch products if not loaded
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(fetchProducts());
-    }
-  }, [status, dispatch]);
+    const loadProduct = async () => {
+      setLoading(true);
+        if (status === 'idle') {
+        await dispatch(fetchProducts()).unwrap();
+      }
+    };
+    loadProduct();
+    }, [dispatch, status,id]);
 
-  useEffect(() => {
+     useEffect(() => {
     if (status === 'succeeded' && products.length > 0 && id) {
       const foundProduct = products.find(p => String(p.id) === String(id));
-      if (foundProduct) {
-        setProduct(foundProduct);
-        setLoading(false);
-      } else {
-        fetchProductDirectly(id);
-      }
+      setProduct(foundProduct || null);
+      setLoading(false);
     } else if (status === 'failed') {
       setLoading(false);
     }
-  }, [products, status, id]);
-
-  const fetchProductDirectly = async (productId: string) => {
-    try {
-      const response = await fetch(`/api/products/${productId}`);
-      const data = await response.json();
-      setProduct(data);
-    } catch (error) {
-      console.error('Failed to fetch product:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  }, [status, products, id]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -248,7 +235,7 @@ const { id } = params;
                         className={`h-5 w-5 ${
                           i < Math.floor(product.rating || 0)
                             ? 'text-warning fill-warning'
-                            : 'text-(--foreground-tertiary)'
+                            : 'text-text-secondary'
                         }`}
                       />
                     ))]}
@@ -313,7 +300,7 @@ const { id } = params;
                       <Plus className="h-4 w-4 text-text-secondary" />
                     </button>
                   </div>
-                  <p className="text-sm text-(--foreground-tertiary)">
+                  <p className="text-sm text-text-secondary">
                     {product.stock || 10} units available
                   </p>
                 </div>
@@ -328,7 +315,7 @@ const { id } = params;
                   disabled={(product.stock || 0) === 0}
                   className={`flex-1 flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all ${
                     (product.stock || 0) === 0
-                      ? 'bg-bg-tertiary text-(--foreground-tertiary) cursor-not-allowed'
+                      ? 'bg-bg-tertiary text-text-secondary cursor-not-allowed'
                       : 'btn-primary'
                   }`}
                 >
@@ -343,7 +330,7 @@ const { id } = params;
                   disabled={(product.stock || 0) === 0}
                   className={`flex-1 flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-bold text-lg transition-all ${
                     (product.stock || 0) === 0
-                      ? 'bg-bg-tertiary text-(--foreground-tertiary) cursor-not-allowed'
+                      ? 'bg-bg-tertiary text-text-secondary cursor-not-allowed'
                       : 'btn-secondary'
                   }`}
                 >
@@ -375,21 +362,21 @@ const { id } = params;
                   <Truck className="h-6 w-6 text-primary" />
                   <div>
                     <p className="font-semibold text-text">Free Shipping</p>
-                    <p className="text-sm text-(--foreground-tertiary)">Orders over $50</p>
+                    <p className="text-sm text-text-secondary">Orders over $50</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-lg border border-border">
                   <RotateCcw className="h-6 w-6 text-success" />
                   <div>
                     <p className="font-semibold text-text">30-Day Returns</p>
-                    <p className="text-sm text-(--foreground-tertiary)">Easy returns</p>
+                    <p className="text-sm text-text-secondary">Easy returns</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 p-4 bg-bg-secondary rounded-lg border border-border">
                   <Shield className="h-6 w-6 text-accent" />
                   <div>
                     <p className="font-semibold text-text">Secure Payment</p>
-                    <p className="text-sm text-(--foreground-tertiary)">100% secure</p>
+                    <p className="text-sm text-text-secondary">100% secure</p>
                   </div>
                 </div>
               </div>
